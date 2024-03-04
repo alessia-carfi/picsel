@@ -1,0 +1,85 @@
+:root {
+    font-family: "Poppins", sans-serif;
+    --color-black: #0d0221;
+    --color-white: #ebebeb;
+    --color-gray: #cdc6da;
+    --color-blue: #6461a0;
+    --color-purple: #321d59;
+    color: var(--color-white);
+}
+
+body {
+    background-color: var(--color-black);
+}
+
+@media only screen and (min-width: 650px){
+    div.poster {
+        margin: 2%;
+        margin-top: 5%;
+        text-align: left;
+        display: flex;
+        align-items: center;
+    }
+    
+    img#profileimg {
+        border-radius: 50%;
+        margin-top: 2%;
+    }
+    
+    label#username {
+        font-weight: bold;
+        margin-left: 2%;
+    }
+    
+    article p {
+        text-align: left;
+        margin: 2%;
+        margin-top: 2%;
+    }
+    
+    article {
+        background-color: var(--color-purple);
+        max-width: 35%;
+        max-height: 35%;
+        text-align: center;
+        margin-left: 30%;
+        margin-right: 30%;
+        border-radius: 4%;
+    }
+    
+    img#postimg {
+        max-width: 95%;
+        height: auto;
+        border-radius: 4%;
+    }
+
+    div.post-interactions {
+        display: flex;
+        align-items: center;
+        margin: 2% 2% 2% 0;
+    }
+
+    input#save {
+        margin-left: 44%;
+    }
+
+    .comment-section {
+        text-align: left;
+        background-color: var(--color-purple);
+        max-width: 35%;
+        max-height: 35%;
+        margin-left: 30%;
+        margin-right: 30%;
+        border-radius: 4%;
+    }
+
+    .commenter {
+        padding-top: 3%;
+    }
+
+    div.interactions {
+        display: flex;
+        align-self: right;
+        margin: 2%;
+    }
+}    
