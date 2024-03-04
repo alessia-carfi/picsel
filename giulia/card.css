@@ -5,20 +5,24 @@
     --color-gray: #cdc6da;
     --color-blue: #6461a0;
     --color-purple: #321d59;
-    color: var(--color-white);
 }
-
+  
 body {
+    margin: 0;
+    padding: 0;
     background-color: var(--color-black);
 }
 
 @media only screen and (min-width: 650px){
+    
+    div.post {
+        min-width: 20rem;
+    }
+    
     div.poster {
-        margin: 2%;
-        margin-top: 5%;
         text-align: left;
         display: flex;
-        align-items: center;
+        align-items: left;
     }
     
     img#profileimg {
@@ -28,29 +32,25 @@ body {
     
     label#username {
         font-weight: bold;
-        margin-left: 2%;
     }
     
     article p {
         text-align: left;
-        margin: 2%;
-        margin-top: 2%;
     }
     
     article {
         background-color: var(--color-purple);
-        max-width: 35%;
-        max-height: 35%;
         text-align: center;
-        margin-left: 30%;
-        margin-right: 30%;
-        border-radius: 4%;
+        margin-left: 35rem;
+        margin-right: 35rem;
+        border-radius: 3rem;
+        padding: 1rem;
     }
     
     img#postimg {
-        max-width: 95%;
-        height: auto;
-        border-radius: 4%;
+        width: 95%;
+        height: 95%;
+        border-radius: 3rem;
     }
 
     div.post-interactions {
