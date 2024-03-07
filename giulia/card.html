@@ -1,51 +1,62 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <link rel="stylesheet" type="text/css" href="./card.css" />
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
-    <script defer src="./assets/fontawesome/js/solid.js"></script>
-    <script defer src="./assets/fontawesome/js/fontawesome.js"></script>
+    <script defer src="../assets/fontawesome/js/solid.js"></script>
+    <script defer src="../assets/fontawesome/js/fontawesome.js"></script>
 </head>
-<article>
-    <div class="post">
-        <div class="poster">
-            <img src="prova.png" alt="" width="40" height="40" name="profileimg" id="profileimg" />
-            <label name="username" id="username">Franchino</label>
-            <label name="tag" id="tag">@franchino09</label>
-        </div>
-        <p>Ho cambiato immagine di profilo! :D</p>
-        <img src="prova.png" alt="" id="postimg" name="postimg" />
-        <div class="post-interactions">
-            <div class="interactions">
-                <label hidden for="upvote">Upvote post</label>
-                <i class="fa-solid fa-caret-up" name="upvote" id="upvote"></i>
-                <label>10</label>
-                <label hidden for="downvote">Downvote post</label>
-                <i class="fa-solid fa-caret-down" name="downvote" id="downvote"></i>
-            </div>
-            <label hidden for="viewcomments">View comments</label>
-            <input type="button" name="viewcomments" id="viewcomments" value="Commenti" />
-            <label hidden for="save"></label>
-            <input type="button" name="save" id="save" value="Salva" />
-        </div>
-    </div>
-</article>
-<div class="comment-section">
-    <span class="comment">
-        <span class="commenter">
-            <p name="username" id="username">Marcellino</p>
-            <p name="time" id="time">55m</p>
-        </span>
-        <p>Bellaaaaaaaa :3</p>
-    </span>
-    <div class="interactions">
-        <label hidden for="upvote">Upvote</label>
-        <input type="button" name="upvote" id="upvote" value="YAY" />
-        <p>10</p>
-        <label hidden for="downvote">Downvote</label>
-        <input type="button" name="downvote" id="downvote" value="NAY" />
-    </div>
-</div>
+<main>
 
+    <article>
+        <div class="post">
+            <div class="poster">
+                <img src="prova.png" alt="" width="40" height="40" name="profileimg" id="profileimg" />
+                <p class="user-tag">
+                    <span class="username" name="username-post" id="username-post">Franchino</span>
+                    <span name="tag" id="tag">@franchino09</span>
+                </p>
+            </div>
+            <p>Ho cambiato immagine di profilo! :D</p>
+            <img src="prova.png" alt="" id="postimg" name="postimg" />
+            <div class="post-interactions">
+                <div class="interactions-plus-comments">
+                    <div class="interactions">
+                        <label hidden for="upvote">Upvote post</label>
+                        <i class="fa-solid fa-caret-up" name="upvote" id="upvote"></i>
+                        <p>10</p>
+                        <label hidden for="downvote">Downvote post</label>
+                        <i class="fa-solid fa-caret-down" name="downvote" id="downvote"></i>
+                    </div>
+                    <div class="comments-icons">
+                        <label hidden for="view-comments">View comments</label>
+                        <i class="fa-solid fa-comments" name="view-comments" id="view-comments"></i>
+                        <p>407</p>
+                    </div>
+                </div>
+                <label hidden for="save">Save post</label>
+                <i class="fa-solid fa-floppy-disk" name="save" id="save"></i>
+            </div>
+        </div>
+    </article>
+    <div class="comment-section">
+        <div class="comment">
+            <p class="commenter">
+                <span class="username" name="username-comm" id="username-comm">Marcellino</span>
+                <span name="time" id="time">55m</span>
+            </p>
+            <p>Bellaaaaaaaa :3</p>
+            <div class="comment-interactions">
+                <div class="interactions">
+                    <label hidden for="upvote-comm">Upvote</label>
+                    <i class="fa-solid fa-caret-up" name="upvote-comm" id="upvote-comm"></i>
+                    <p>10</p>
+                    <label hidden for="downvote-comm">Downvote</label>
+                    <i class="fa-solid fa-caret-down" name="downvote" id="downvote"></i>
+                </div>
+                <i class="fa-solid fa-reply" id="reply" name="reply"></i>
+            </div>
+        </div>
+    </div>
+</main>
 </html>
