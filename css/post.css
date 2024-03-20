@@ -1,0 +1,165 @@
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.svg-inline--fa:hover {
+  color: var(--color-red);
+  cursor: pointer;
+}
+
+.svg-inline--fa {
+  color: var(--color-white);
+  width: 1.5rem;
+  height: auto;
+}
+
+/*Post - global*/
+
+.post {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.poster {
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#profileimg {
+  border-radius: 50%;
+  width: 3rem;
+  height: auto;
+}
+
+.user-tag {
+  display: flex;
+  align-items: left;
+}
+
+.username {
+  font-weight: bold;
+}
+
+article p {
+  text-align: left;
+}
+
+.interactions-plus-comments {
+  display: flex;
+  flex-direction: row;
+  align-items: left;
+}
+
+/* Comments - global*/
+
+.comment-interactions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-self: right;
+}
+
+#username-post {
+  padding-left: 1rem;
+}
+
+article {
+  background-color: var(--color-purple);
+  text-align: center;
+  margin-left: 35rem;
+  margin-right: 35rem;
+  border-radius: 2rem;
+  padding: 1rem;
+}
+
+#postimg {
+  width: 97%;
+  height: 97%;
+  border-radius: 2rem;
+  align-self: center;
+}
+
+.post-interactions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+}
+
+.interactions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 5rem;
+  height: 2rem;
+  background-color: var(--color-blue);
+  border-radius: 1rem;
+  padding: 0.5rem;
+}
+
+#save {
+  width: 2rem;
+  height: auto;
+}
+
+.comments-icons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 4rem;
+  height: 2rem;
+  margin-left: 1rem;
+  background-color: var(--color-blue);
+  border-radius: 1rem;
+  padding: 0.5rem;
+}
+
+.comment-section {
+  text-align: left;
+  margin-left: 10rem;
+  margin-right: 10rem;
+}
+
+.comment {
+  background-color: var(--color-purple);
+  border-radius: 2rem;
+  max-width: 32rem;
+  min-width: 20rem;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: space-around;
+  margin-top: 1.5rem;
+  padding: 1rem 1rem 1rem 1rem;
+}
+
+#reply {
+  margin-left: 1rem;
+  background-color: var(--color-blue);
+  border-radius: 1rem;
+  padding: 0.5rem;
+  height: 2rem;
+  width: 2rem;
+}
+
+@media only screen and (min-width: 650px) {
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  .post {
+    min-width: 20rem;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+}

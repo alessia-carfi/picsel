@@ -1,0 +1,24 @@
+:root {
+  font-family: "Poppins", sans-serif;
+  --color-black: #0d0221;
+  --color-white: #ebebeb;
+  --color-gray: #cdc6da;
+  --color-blue: #6461a0;
+  --color-purple: #321d59;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-black);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  color: var(--color-white);
+}
+
+.svg-inline--fa {
+  color: var(--color-white);
+}
