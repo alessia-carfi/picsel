@@ -35,7 +35,10 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getPostsByFollowedTags($userid) {
+
+    public function getSuggestedPosts($userid) {
+        // Questa è per i consigliati, che propongono post che riguardano
+        // giochi con tag uguali ai giochi che segui
         $stmt = $this->db->prepare("JOIN ");
     }
 
