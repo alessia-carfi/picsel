@@ -1,0 +1,283 @@
+:root {
+  font-family: "Poppins", sans-serif;
+  --color-black: #0d0221;
+  --color-white: #ebebeb;
+  --color-gray: #cdc6da;
+  --color-blue: #6461a0;
+  --color-purple: #321d59;
+  --color-red: #d81159;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-white);
+  font-size: 15px;
+}
+
+.pr-name {
+  font-weight: bold;
+}
+
+.follows-list,
+.sub-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.fl-label,
+.sub-label {
+  color: var(--color-gray);
+}
+
+.fl-mainname,
+.sub-mainname {
+  color: var(--color-white);
+}
+
+.name,
+.fl-name,
+.sub-name {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  line-height: 1rem;
+}
+
+.small-text {
+  color: var(--color-gray);
+  font-size: 14px;
+  margin: 0;
+}
+
+@media only screen and (min-width: 1001px) {
+
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-black);
+  }
+
+  header {
+    padding: 1rem;
+    background-color: var(--color-blue);
+  }
+
+  .profile {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+  }
+
+  .fl-name,
+  .sub-name {
+    margin-left: 1rem;
+  }
+
+  .menu {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1.5rem;
+  }
+
+  header>a>img {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    margin-right: 1rem;
+  }
+
+  .follows img,
+  .subscriptions img {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+  }
+
+  .follows a {
+    display: flex;
+    color: var(--color-white);
+  }
+
+  .follows-list>li>a,
+  .sub-list>li>a {
+    display: flex;
+    align-items: center;
+  }
+
+  .subscriptions {
+    color: var(--color-gray);
+  }
+}
+
+@media only screen and (max-width: 600px) {
+
+  header {
+    padding: 0.5rem;
+    background-color: var(--color-blue);
+    border-bottom: 0.2rem solid var(--color-purple);
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-blue);
+  }
+
+  .menu {
+    padding: 0;
+    line-height: 1rem;
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+  }
+
+  .profile {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+  }
+
+  .name,
+  .fl-name,
+  .sub-name {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .fl-name,
+  .sub-name {
+    margin-left: 1rem;
+  }
+
+  .border {
+    border-bottom: 0.2rem solid var(--color-purple);
+    margin-left: -1rem;
+  }
+
+  header>a>img {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    margin-right: 1rem;
+  }
+
+  .follows img,
+  .subscriptions img {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+  }
+
+
+  .follows-list>li>a,
+  .sub-list>li>a {
+    display: flex;
+    align-items: center;
+  }
+
+  .subscriptions {
+    margin-top: -1rem;
+  }
+}
+
+@media only screen and (max-width: 1000px) and (min-width: 601px) {
+  a {
+    font-size: 40px;
+  }
+
+  header {
+    padding: 1rem;
+    background-color: var(--color-blue);
+    border-bottom: 0.2rem solid var(--color-purple);
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-blue);
+  }
+
+  .menu {
+    padding: 0;
+    line-height: 2rem;
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+  }
+
+  .profile {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+  }
+
+  .name,
+  .fl-name,
+  .sub-name {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .fl-name,
+  .sub-name {
+    margin-left: 1rem;
+  }
+
+  .fl-label,
+  .sub-label {
+    color: var(--color-gray);
+    font-size: 40px;
+  }
+
+  .fl-mainname,
+  .sub-mainname {
+    color: var(--color-white);
+  }
+
+  .name,
+  .fl-name,
+  .sub-name {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+    line-height: 2rem;
+  }
+
+  .border {
+    border-bottom: 0.2rem solid var(--color-purple);
+    margin-left: -1rem;
+  }
+
+  header>a>img {
+    width: 7rem;
+    height: 7rem;
+    border-radius: 50%;
+    margin-right: 1rem;
+  }
+
+  .follows img,
+  .subscriptions img {
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+  }
+
+
+  .follows-list>li>a,
+  .sub-list>li>a {
+    display: flex;
+    align-items: center;
+  }
+
+  .small-text {
+    color: var(--color-gray);
+    font-size: 35px;
+    margin: 0;
+  }
+
+  .subscriptions {
+    margin-top: -1rem;
+  }
+}
