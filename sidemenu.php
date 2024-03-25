@@ -1,4 +1,4 @@
-<div class="sidemenu">
+<div class="sidemenu" id="sidemenuid">
     <div class="follows">
         <ul class="follows-list">
             <li>
