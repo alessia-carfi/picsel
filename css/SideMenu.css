@@ -97,7 +97,7 @@
   
   .sidemenu {
     padding: 0;
-    display: flex;
+    display: none;
     flex-direction: column;
     position: relative;
     align-items:initial;
