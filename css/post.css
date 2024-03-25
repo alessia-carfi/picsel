@@ -1,31 +1,23 @@
-main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .svg-inline--fa:hover {
   color: var(--color-red);
   cursor: pointer;
 }
 
-.svg-inline--fa {
-  color: var(--color-white);
-  width: 1.5rem;
-  height: auto;
-}
-
 /*Post - global*/
 
 .post {
+  background-color: var(--color-purple);
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
+  margin-top: 1rem;
+  border-radius: 2rem;
+  padding: 1rem;
 }
 
 .poster {
-  text-align: left;
   display: flex;
+  text-align: left;
   flex-direction: row;
   align-items: center;
 }
@@ -45,7 +37,7 @@ main {
   font-weight: bold;
 }
 
-article p {
+p {
   text-align: left;
 }
 
@@ -61,20 +53,10 @@ article p {
   display: flex;
   flex-direction: row;
   align-items: center;
-  align-self: right;
 }
 
 #username-post {
   padding-left: 1rem;
-}
-
-article {
-  background-color: var(--color-purple);
-  text-align: center;
-  margin-left: 35rem;
-  margin-right: 35rem;
-  border-radius: 2rem;
-  padding: 1rem;
 }
 
 #postimg {
@@ -114,7 +96,7 @@ article {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  width: 4rem;
+  width: auto;
   height: 2rem;
   margin-left: 1rem;
   background-color: var(--color-blue);
@@ -157,9 +139,21 @@ article {
   }
 
   .post {
-    min-width: 20rem;
+    min-width: 30rem;
+    max-width: 30rem;
+    margin: 2rem;
+  }
+
+  .fa-caret-down,
+  .fa-caret-up {
+    padding-right: 0;
   }
 }
 
 @media only screen and (max-width: 650px) {
+  .post {
+    margin: 2rem;
+    min-width: 20rem;
+    max-width: 20rem;
+  }
 }

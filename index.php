@@ -17,7 +17,9 @@
     <?php include 'header.php'; ?>
     <?php include 'nav.php'; ?>
     <?php include 'options.php'; ?>
+    <main>
     <?php include 'post.php'; ?>
+    </main>
   </body>
 
 </html>

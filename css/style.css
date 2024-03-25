@@ -19,6 +19,13 @@ body {
   color: var(--color-white);
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .svg-inline--fa {
   color: var(--color-white);
 }
