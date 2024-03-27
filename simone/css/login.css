@@ -1,0 +1,88 @@
+:root {
+    font-family: "Poppins", sans-serif;
+    --color-black: #0d0221;
+    --color-white: #ebebeb;
+    --color-gray: #cdc6da;
+    --color-blue: #6461a0;
+    --color-purple: #321d59;
+    --color-red: #d81159;
+}
+
+body {
+    background-color: var(--color-black);
+}
+
+.logindata>input:focus {
+    border: 1px solid var(--color-red);
+    outline: none;
+}
+
+.signintext:hover {
+    color: var(--color-white);
+    text-decoration: none;
+}
+
+.signintext {
+    color: var(--color-red);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.logintext {
+    color: var(--color-white);
+    font-size: 50px;
+    display: flex;
+    font-weight: bold;
+    justify-content: center;
+    padding-right: 17rem;
+}
+
+.logindata {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.logindata>input {
+    color: var(--color-white);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    background-color: var(--color-purple);
+    border: 1px solid var(--color-white);
+    border-radius: 1rem;
+    padding: 1rem 2rem;
+    font-size: 22px;
+    text-align: left;
+}
+
+.signin {
+    color: var(--color-white);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+@media only screen and (min-width: 830px) {
+
+    .logintext {
+        padding-right: 17rem;
+    }
+
+    .logindata>input {
+        padding: 1rem 2rem;
+        margin-left: 1rem;
+        padding-right: 9rem;
+    }
+}
+
+@media only screen and (max-width: 830px) {
+    .logintext {
+        padding-right: 12rem;
+    }
+}
