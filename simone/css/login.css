@@ -45,6 +45,7 @@ body {
 }
 
 .logindata>input {
+    font-family: "Poppins", sans-serif;
     color: var(--color-white);
     display: flex;
     flex-direction: row;
@@ -77,12 +78,20 @@ body {
     .logindata>input {
         padding: 1rem 2rem;
         margin-left: 1rem;
-        padding-right: 9rem;
+        padding-right: 3rem;
+        width: 22rem;
     }
 }
 
 @media only screen and (max-width: 830px) {
     .logintext {
         padding-right: 12rem;
+    }
+
+    .logindata>input {
+        padding: 1rem 2rem;
+        margin-left: 1rem;
+        padding-right: 3rem;
+        width: 16rem;
     }
 }
