@@ -1,7 +1,6 @@
-
 <header>
-    <div class="profile">
-    <img src="assets/logo.svg" alt="" />
+    <div class="profile" >
+    <img src="assets/logo.svg" alt="" id="profileimageid"/>
     <div class="name">
         <p id="name">Franchino</p>
         <p id="tag">@franchino</p>
