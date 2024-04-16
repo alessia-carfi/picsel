@@ -7,12 +7,14 @@
     <link rel="stylesheet" type="text/css" href="./css/header.css" />
     <link rel="stylesheet" type="text/css" href="./css/post.css" />
     <link rel="stylesheet" type="text/css" href="./css/sidemenu.css" />
+    <!-- <link rel="javascript" type="text/javascript" href="./js/sidemenu.js"> -->
     <link
       href="https://fonts.googleapis.com/css?family=Poppins"
       rel="stylesheet" />
     <script defer src="./assets/fontawesome/js/solid.js"></script>
     <script defer src="./assets/fontawesome/js/fontawesome.js"></script>
-    <script type="text/javascript" src="js/sidemenu.js"></script>
+    <script type="text/javascript" src="./js/sidemenu.js"></script>
+
   </head>
 
   <body>

@@ -1,10 +1,10 @@
 <header>
     <div class="profile" >
     <img src="assets/logo.svg" alt="" id="profileimageid"/>
-    <div class="name">
-        <p id="name">Franchino</p>
-        <p id="tag">@franchino</p>
-    </div>
+    <p class="name">
+        <span id="name">Franchino</span>
+        <span id="tag">@franchino</span>
+    </p>
     </div>
     <div class="search">
     <i class="fa-solid fa-magnifying-glass"></i>

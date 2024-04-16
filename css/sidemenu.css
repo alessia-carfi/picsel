@@ -44,7 +44,6 @@
 
 @media only screen and (min-width: 830px) {
   .sidemenu {
-    display: flex;
     flex-direction: column;
     top: 7rem;
     position: fixed;
@@ -114,8 +113,36 @@
     margin-top: 2rem;
   }
 
-  #name {
+  .name-mobile {
+    display: flex;
+    flex-direction: column;
     margin-left: 1rem;
+    justify-content: end;
+  }
+
+  span#name {
+    font-weight: bold;
+    margin-bottom: 0;
+  }
+
+  span#tag {
+    color: var(--color-gray);
+    margin-top: 0;
+  }
+
+  .profile-mobile {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    cursor: pointer;
+    align-items: center;
+  }
+
+  button#close {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 1rem;
   }
 
   .profile-mobile > img {

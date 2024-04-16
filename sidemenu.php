@@ -1,8 +1,14 @@
-<div class="shadow" id="shadowid" style="display: none">
-    <div class="sidemenu" id="sidemenuid" style="display: none">
-        <div class=profile-mobile id="profile-mobile">
-            <img src="assets/logo.svg" alt="" id="profileimageid"/>
-            <p id="name"><span><strong>Franchino<strong></span><span>@franchino</span></p>
+<div class="shadow" id="shadowid">
+    <div class="sidemenu" id="sidemenuid">
+        <div class="top-sidemenu"  id="top-sidemenu" style="display: none">
+            <div class=profile-mobile>
+                <img src="assets/logo.svg" alt=""/>
+                <p class="name-mobile">
+                    <span id="name">Franchino</span>
+                    <span id="tag">@franchino</span>
+                </p>
+            </div>
+            <button id="close"><i class="fa-solid fa-xmark"></i></button>
         </div>
         <div class="follows">
             <ul class="follows-list">
