@@ -2,5 +2,5 @@
 require_once('./bootstrap.php');
 $templateParams['title'] = "Picsel - Login";
 
-require("./login.php");
+require("./login_form.php");
 ?>
