@@ -18,7 +18,7 @@ class DatabaseHelper {
     }
 
     public function getPostsByUserId($userid) {
-        $stmt = $this->db->prepare("SELECT text, image, tag_id, nickname from post, user WHERE user_id==?");
+        $stmt = $this->db->prepare("SELECT * from POST JOIN USR ON USR.user_id=POST.user_id WHERE USR.user_id=?");
         $stmt->bind_param('i', $userid);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -40,6 +40,15 @@ class DatabaseHelper {
         // Questa è per i consigliati, che propongono post che riguardano
         // giochi con tag uguali ai giochi che segui
         $stmt = $this->db->prepare("JOIN ");
+    }
+
+    public function getGameFromId($id) {
+        $stmt = $this->db->prepare("SELECT name from GAME where game_id=?");
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_assoc()['name'];
     }
 
     public function getSavedPostsFromUser($userid) {

@@ -1,0 +1,12 @@
+INSERT INTO USR (user_id, p_iva, name, nickname, email, password, image)
+VALUES (1, NULL, 'franco baglio', 'francognolo', 'franc@gmail.com', '1234', NULL),
+(0, '60461190500', 'FROM Software', '@fromsoftware', 'from@software.com', 'yes1nd33d', null)
+
+INSERT INTO POST (post_id, text, image, likes, user_id, game_id)
+VALUES (0, "Ho vintoooooo", NULL, 0, 1, 0)
+
+INSERT INTO TAG
+VALUES ("Survival"), ("Soulslike"), ("Hack and Slash"), ("Fighting Game"), ("Action"), ("RPG"), ("Metroidvania")
+
+INSERT INTO GAME
+VALUES (0, "Dark Souls 2", "Giocate l'1 e il 3 poi provate questo che è meglio", 0)
