@@ -9,10 +9,35 @@
 }
 
 body {
+    margin: 0;
+    padding: 0;
     background-color: var(--color-black);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+    color: var(--color-white);
 }
 
-.logindata>input:focus {
+.login {
+    display: flex;
+    flex-direction: column;
+    align-self: center; 
+    position: relative;
+    min-height: 100vh;
+}
+
+.usernamelabel,
+.passwordlabel,
+.loginlabel {
+    display: none;
+}
+
+
+
+.usernamelg:focus,
+.passwordlg:focus {
     border: 1px solid var(--color-red);
     outline: none;
 }
@@ -28,28 +53,38 @@ body {
     text-decoration: none;
 }
 
+.loginform {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.donthaveaccount {
+    font-size: 20px;
+    text-align: center;
+    margin-top: 15rem;
+}
+
+.textaccount {
+    color: var(--color-white);
+}
+
 .logintext {
     color: var(--color-white);
     font-size: 50px;
-    display: flex;
-    font-weight: bold;
-    justify-content: center;
-    padding-right: 17rem;
-}
-
-.logindata {
-    display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
+    font-weight: bold;
+    align-self: flex-start;
 }
 
-.logindata>input {
+
+.usernamelg,
+.passwordlg {
     font-family: "Poppins", sans-serif;
     color: var(--color-white);
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
     margin-bottom: 2rem;
     background-color: var(--color-purple);
@@ -60,37 +95,37 @@ body {
     text-align: left;
 }
 
-.signin {
+.loginbutton {
     color: var(--color-white);
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+    background-color: var(--color-red);
     margin-bottom: 1rem;
+    border: 0px;
+    border-radius: 0.8rem;
+    font-size: 20px;
+    padding: 0.5rem 0.5rem;
+    cursor: pointer;
+    font-family: "Poppins", sans-serif;
+    align-self: flex-end
 }
 
+.loginbutton:hover {
+    background-color: var(--color-blue);
+}
+
+
 @media only screen and (min-width: 830px) {
-
-    .logintext {
-        padding-right: 17rem;
-    }
-
-    .logindata>input {
-        padding: 1rem 2rem;
-        margin-left: 1rem;
-        padding-right: 3rem;
+    .usernamelg,
+    .passwordlg {
         width: 22rem;
+        height: 2rem;
     }
 }
 
 @media only screen and (max-width: 830px) {
-    .logintext {
-        padding-right: 12rem;
-    }
 
-    .logindata>input {
+    .usernamelg,
+    .passwordlg {
         padding: 1rem 2rem;
-        margin-left: 1rem;
         padding-right: 3rem;
         width: 16rem;
     }

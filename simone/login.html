@@ -11,17 +11,21 @@
 </head>
 
 <body>
-    <header>
+    <div class="login">
         <p class="logintext">Login</p>
-        <div class="logindata">
-            <input id="usernameid" type="text" placeholder="Username" />
-            <input id="passid" type="password" placeholder="Password" />
-        </div>
-        <div class="signin">
-            <p class="text">Don't have an account?&nbsp;</p>
+        <form class="loginform" action="login.php" method="get">
+            <label hidden for="usernameid" class="usernamelabel">Username</label>
+            <label hidden for="passid" class="passwordlabel">Password</label>
+            <label hidden for="loginbuttonid">Login</label>
+            <input class="usernamelg" id="usernameid" type="text" placeholder="Username" />
+            <input class="passwordlg" id="passid" type="password" placeholder="Password" />
+            <input type="submit" class="loginbutton" id="loginbuttonid" value="Submit" />
+        </form>
+        <p class="donthaveaccount">
+            <span class="textaccount">Don't have an account? </span>
             <a href="#" class="signintext">Sign in</a>
-        </div>
-    </header>
+        </p>
+    </div>
 </body>
 
 </html>
