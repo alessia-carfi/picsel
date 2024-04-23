@@ -16,5 +16,5 @@
         placeholder="Search on Picsel" />
     </div>
     <img src="assets/logofull.svg" alt="Picsel logo" class="logo" />
-    <i class="fa-solid fa-bars"></i>
+    <button id="burger"><i class="fa-solid fa-bars"></i></button>
 </header>

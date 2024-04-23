@@ -175,11 +175,10 @@ label {
 
   .logo,
   p#menu,
-  p#other,
   .name,
   .options,
   .search,
-  .options > a {
+  .options > ul > li > a {
     display: none;
   }
 
@@ -191,5 +190,34 @@ label {
   .fa-magnifying-glass {
     display: inline-flex;
     align-items: right;
+  }
+
+  .options > ul {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 3rem;
+  }
+
+  .options > ul > li {
+    background-color: var(--color-blue);
+    border-radius: 4rem;
+    padding: 0.5rem 0.5rem;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  p#other {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-top: 1.5rem;
+  }
+
+  button#burger {
+    display: contents;
   }
 }
