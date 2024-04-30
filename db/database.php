@@ -10,7 +10,7 @@ class DatabaseHelper {
     }
     
     public function login($email, $password) {
-        $stmt = $this->db->prepare("SELECT * FROM usr WHERE email=? AND `password`=? LIMIT 1;");
+        $stmt = $this->db->prepare("SELECT * FROM USR WHERE email=? AND `password`=? LIMIT 1;");
         $stmt->bind_param("ss", $email, $password);
         $stmt->execute();
         $stmt->store_result();

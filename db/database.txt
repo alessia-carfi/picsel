@@ -1,6 +1,6 @@
 CREATE TABLE login_attempts (
   user_id INT(11) not null,
-  `time` VARCHAR(30) not null
+  `time` VARCHAR(30) not null 
 );
 
 create table COMMENT (
@@ -141,4 +141,4 @@ alter table SAVED add constraint FKsav_USE
 alter table SAVED add constraint FKsav_POS
      foreign key (post_id)
      references POST (post_id);
-
+     
