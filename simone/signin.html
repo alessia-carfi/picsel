@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <title> Signin </title>
+    <meta charset="UTF-8" />
+    <link href="css/signin.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
+    <script defer src="./assets/fontawesome/js/solid.js"></script>
+    <script defer src="./assets/fontawesome/js/fontawesome.js"></script>
+</head>
+
+<body>
+    <div class="signin">
+        <p class="signintext">Sign in</p>
+        <form class="signinform" action="signin.php" method="get">
+            <label hidden for="nameid" class="namelabel">Name</label>
+            <input class="namesig" id="nameid" type="text" placeholder="Name" />
+            <label hidden for="usernameid" class="usernamelabel">Username</label>
+            <input class="usernamesig" id="usernameid" type="text" placeholder="Username" />
+            <label hidden for="emailid" class="emaillabel">Email</label>
+            <input class="emailsig" id="emailid" type="email" placeholder="Email" />
+            <label hidden for="passid" class="passwordlabel">Password</label>
+            <input class="passwordsig" id="passid" type="password" placeholder="Password" />
+            <label hidden for="confirmpassid" class="confirmpasswordlabel">Confirm Password</label>
+            <input class="confirmpasswordsig" id="confirmpassid" type="password" placeholder="Confirm Password" />
+            <label hidden for="signinbuttonid" class="signinbuttonlabel">Signin</label>
+            <input type="submit" class="signinbutton" id="signinbuttonid" value="Submit" />
+        </form>
+    </div>
+</body>
+
+</html>
