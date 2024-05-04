@@ -141,6 +141,10 @@ label {
   #placeholder {
     color: var(--color-gray);
   }
+
+  button#burger {
+    display: none;
+  }
 }
 
 @media only screen and (max-width: 830px) {

@@ -33,11 +33,3 @@ export function closeMenu(shadow, menu, topmenu) {
   menu.style = "display:none";
   topmenu.style = "display:none";
 }
-
-export function responsiveMenu(menu) {
-  if (window.matchMedia("(max-width: 830px)").matches) {
-    menu.style.display = "none";
-  } else {
-    menu.style.display = "flex";
-  }
-}

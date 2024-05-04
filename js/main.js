@@ -9,6 +9,14 @@ let topmenu = null;
 let options = null;
 let burger = null;
 
+function responsiveMenu(menu) {
+  if (window.matchMedia("(max-width: 830px)").matches) {
+    menu.style.display = "none";
+  } else {
+    menu.style.display = "flex";
+  }
+}
+
 window.addEventListener("DOMContentLoaded", () => {
   menu = document.getElementById("sidemenuid");
   image = document.getElementById("profileimageid");
@@ -24,8 +32,10 @@ window.addEventListener("DOMContentLoaded", () => {
   close.addEventListener("click", () =>
     sidemenu.closeMenu(shadow, menu, topmenu)
   );
-  sidemenu.responsiveMenu(menu);
+  responsiveMenu(menu);
+  responsiveMenu(options);
 
   burger.addEventListener("click", () => opt.openOptions(options, shadow));
-  window.addEventListener("resize", () => sidemenu.responsiveMenu(menu));
+  window.addEventListener("resize", () => responsiveMenu(menu));
+  window.addEventListener("resize", () => responsiveMenu(options));
 });
