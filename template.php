@@ -17,12 +17,12 @@
   </head>
 
   <body>
-    <?php include 'header.php'; ?>
-    <?php include 'nav.php'; ?>
-    <?php include 'options.php'; ?>
-    <?php include 'sidemenu.php'; ?>
+    <?php include 'components/header.php'; ?>
+    <?php include 'components/nav.php'; ?>
+    <?php include 'components/options.php'; ?>
+    <?php include 'components/sidemenu.php'; ?>
     <main>
-    <?php include 'post.php'; ?>
+    <?php include 'generate_posts.php'; ?>
     </main>
   </body>
 

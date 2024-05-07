@@ -104,13 +104,8 @@ p {
   padding: 0.5rem;
 }
 
-.comment-section {
-  text-align: left;
-  margin-left: 10rem;
-  margin-right: 10rem;
-}
-
 .comment {
+  text-align: left;
   background-color: var(--color-purple);
   border-radius: 2rem;
   max-width: 32rem;
@@ -119,8 +114,7 @@ p {
   flex-direction: column;
   align-content: center;
   justify-content: space-around;
-  margin-top: 1.5rem;
-  padding: 1rem 1rem 1rem 1rem;
+  padding: 1rem;
 }
 
 #reply {
@@ -130,6 +124,11 @@ p {
   padding: 0.5rem;
   height: 2rem;
   width: 2rem;
+}
+
+.post-and-comments {
+  display: flex;
+  align-items: center;
 }
 
 @media only screen and (min-width: 650px) {
@@ -148,6 +147,10 @@ p {
   .fa-caret-up {
     padding-right: 0;
   }
+
+  .post-and-comments {
+    flex-direction: row;
+  }
 }
 
 @media only screen and (max-width: 650px) {
@@ -155,5 +158,9 @@ p {
     margin: 2rem;
     min-width: 20rem;
     max-width: 20rem;
+  }
+
+  .post-and-comments {
+    flex-direction: column;
   }
 }
