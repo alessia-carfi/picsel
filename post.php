@@ -1,6 +1,8 @@
 <?php
-    include "account_utils.php";
-    sec_session_start();
+    include_once "account_utils.php";
+    if (session_status() !== PHP_SESSION_ACTIVE) {
+        sec_session_start();
+    }
 ?>
 <div class="post">
     <div class="poster">

@@ -3,7 +3,7 @@
 
 <?php else:
         foreach ($templateParams["posts"] as $post) {
-            require 'post.php';
+            include 'post.php';
         } 
     endif;
 ?>
