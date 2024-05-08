@@ -6,7 +6,7 @@ if (isLoggedIn()) {
     $templateParams['title'] = "Picsel - Home";
     $templateParams['posts'] = $dbh->getPostsByUserId(1);
     
-    require ("./userprofile.php");
+    require ("./template.php");
 } else {
     echo 'Please log in to access content';
 }

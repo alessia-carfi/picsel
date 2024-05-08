@@ -1,5 +1,5 @@
-const upvote = document.querySelector("#upvote")
-const downvote = document.querySelector("#downvote")
+let upvote = document.getElementById("upvote")
+let downvote = document.getElementById("downvote")
 
 //Update upvote and downvote if one of them is pressed
 
