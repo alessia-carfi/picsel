@@ -8,6 +8,16 @@ class DatabaseHelper {
             die("Connection failed: " . $this->db->connect_error);
         }
     }
+
+    public function register($name, $username, $email, $password, $confirmpassword) {
+        if ($password !== $confirmpassword) {
+            return false;
+        }
+        $stmt = $this->db->prepare("INSERT INTO USR (name, nickname, email, `password`) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("ssss", $name, $username, $email, $password);
+        $stmt->execute();
+        return true;
+    }
     
     public function login($email, $password) {
         $stmt = $this->db->prepare("SELECT * FROM USR WHERE email=? AND `password`=? LIMIT 1;");
@@ -99,35 +109,6 @@ class DatabaseHelper {
         $stmt->execute();
         $stmt->store_result();
         return $stmt->num_rows() > 5;
-    }
-
-
-    public function getPostById($post_id) {
-        $stmt = $this->db->prepare("SELECT * FROM POST WHERE post_id = ?");
-        $stmt->bind_param("i", $post_id);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        if (mysqli_num_rows($result) > 0) {
-            $post = mysqli_fetch_assoc($result);
-        } else {
-            echo "Post not found";
-            exit;
-        }
-        return $post;
-    }
-
-    public function getCommentsByPostId($post_id) {
-        $stmt = $this->db->prepare("SELECT * FROM COMMENT WHERE post_id= ?");
-        $stmt->bind_param("i", $post_id);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        $comments = array();
-        while ($comment = mysqli_fetch_assoc($result)) {
-            $comments[] = $comment;
-        }
-        return $comments;
     }
     
 }
