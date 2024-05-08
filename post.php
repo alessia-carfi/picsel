@@ -13,21 +13,25 @@
     <div class="post-interactions">
         <div class="interactions-plus-comments">
             <div class="interactions">
-                <label hidden for="upvote">Upvote post</label>
-                <i class="fa-solid fa-caret-up" name="upvote" id="upvote"></i>
+                <button id="upvote" aria-label="upvote post">
+                    <i class="fa-solid fa-caret-up"></i>
+                </button>
                 <p><?php echo $post['likes']?></p>
-                <label hidden for="downvote">Downvote post</label>
-                <i class="fa-solid fa-caret-down" name="downvote" id="downvote"></i>
+                <button id="downvote" aria-label="downvote post">
+                    <i class="fa-solid fa-caret-down"></i>
+                </button>
             </div>
-            
+
             <a href="openpost.php?post_id=<?php echo $post['post_id']; ?>" class="comments-icons">
-                <label hidden for="view-comments">View comments</label>
-                <i class="fa-solid fa-comments" name="view-comments" id="view-comments"></i>
+                <button id="view-comments" aria-label="view comments">
+                    <i class="fa-solid fa-comments"></i>
+                </button>
                 <!-- TODO -->
                 <p>0</p>
             </a>
         </div>
-        <label hidden for="save">Save post</label>
-        <i class="fa-solid fa-floppy-disk" name="save" id="save"></i>
+        <button id="save" aria-label="save post">
+            <i class="fa-solid fa-floppy-disk"></i>
+        </button>
     </div>
 </div>

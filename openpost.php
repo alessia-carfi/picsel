@@ -4,7 +4,6 @@
     <meta charset="utf-8" />
     <title>Picsel</title>
     <link rel="stylesheet" type="text/css" href="./css/style.css" />
-    <link rel="stylesheet" type="text/css" href="./css/header.css" />
     <link rel="stylesheet" type="text/css" href="./css/post.css" />
     <link
       href="https://fonts.googleapis.com/css?family=Poppins"
@@ -15,8 +14,7 @@
   </head>
 
   <body>
-    <?php include 'components/header.php'; ?>
-    <?php include 'components/nav.php'; ?>
+    <a class="go-back" href="/picsel/userfeed.php"><i class="fa-solid fa-arrow-left"></i></a>
     <main>
         <?php include_once 'bootstrap.php'; ?>
         <div class="post-and-comments">
