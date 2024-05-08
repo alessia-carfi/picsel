@@ -103,7 +103,7 @@ class DatabaseHelper {
 
 
     public function getPostById($post_id) {
-        $stmt = $this->db->prepare("SELECT * FROM POST WHERE post_id = ?");
+        $stmt = $this->db->prepare("SELECT * FROM POST JOIN USR ON USR.user_id=POST.user_id WHERE post_id = ?");
         $stmt->bind_param("i", $post_id);
         $stmt->execute();
         $result = $stmt->get_result();
