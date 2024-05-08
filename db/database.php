@@ -39,6 +39,16 @@ class DatabaseHelper {
             return false; //User does not exist
         }
     }
+
+    public function register($name, $username, $email, $password, $confirmpassword) {
+        if ($password !== $confirmpassword) {
+            return false;
+        }
+        $stmt = $this->db->prepare("INSERT INTO USR (name, nickname, email, `password`) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("ssss", $name, $username, $email, $password);
+        $stmt->execute();
+        return true;
+    }
     
     public function getRandomPosts($n) {
         $stmt = $this->db->prepare("SELECT text, image, tag_id, nickname FROM post, user ORDER BY RAND() LIMIT ?");

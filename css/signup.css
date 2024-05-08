@@ -1,0 +1,111 @@
+
+.signup {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    position: relative;
+    min-height: 100vh;
+}
+
+.namelabel,
+.usernamelabel,
+.emaillabel,
+.passwordlabel,
+.confirmpasswordlabel,
+.buttonlabel {
+    display: none;
+}
+
+.name:focus,
+.username:focus,
+.email:focus,
+.password:focus,
+.confirmpassword:focus {
+    border: 1px solid var(--color-blue);
+    outline: none;
+}
+
+.signupform {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.text {
+    color: var(--color-white);
+    font-size: 50px;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.name,
+.username,
+.email,
+.password,
+.confirmpassword {
+    font-family: "Poppins", sans-serif;
+    color: var(--color-white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 1.2rem;
+    background-color: var(--color-purple);
+    border: 1px solid var(--color-white);
+    border-radius: 1rem;
+    padding: 1rem 2rem;
+    font-size: 22px;
+    text-align: left;
+}
+
+.nameerror,
+.usernameerror,
+.emailerror,
+.passworderror,
+.confirmpassworderror{
+    visibility: hidden;
+    color: var(--color-red);
+    font-size: 14px;
+}
+
+.button {
+    color: var(--color-white);
+    background-color: var(--color-red);
+    margin-top: 0.5rem;
+    border: 0px;
+    border-radius: 0.8rem;
+    font-size: 20px;
+    padding: 0.5rem 0.5rem;
+    cursor: pointer;
+    font-family: "Poppins", sans-serif;
+    align-self: flex-end;
+}
+
+.button:hover {
+    background-color: var(--color-blue);
+}
+
+@media only screen and (min-width: 830px) {
+
+    .name,
+    .username,
+    .email,
+    .password,
+    .confirmpassword {
+        width: 22rem;
+        height: 2rem;
+    }
+}
+
+@media only screen and (max-width: 830px) {
+
+    .name,
+    .username,
+    .email,
+    .password,
+    .confirmpassword {
+        padding: 1rem 2rem;
+        padding-right: 3rem;
+        width: 16rem;
+    }
+}
