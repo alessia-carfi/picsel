@@ -1,3 +1,7 @@
+<?php
+    include "account_utils.php";
+    sec_session_start();
+?>
 <div class="post">
     <div class="poster">
         <img src="<?php echo $post['image']; ?>" alt="" name="profileimg" id="profileimg" />
@@ -13,11 +17,11 @@
     <div class="post-interactions">
         <div class="interactions-plus-comments">
             <div class="interactions">
-                <button id="upvote" aria-label="upvote post">
+                <button id="upvote" data-post-id=<?php echo $post['post_id']?> data-logged-id=<?php echo $_SESSION['user_id']?> aria-label="upvote post">
                     <i class="fa-solid fa-caret-up"></i>
                 </button>
                 <p><?php echo $post['likes']?></p>
-                <button id="downvote" aria-label="downvote post">
+                <button id="downvote" data-post-id=<?php echo $post['post_id']?> data-logged-id=<?php echo $_SESSION['user_id']?> aria-label="downvote post">
                     <i class="fa-solid fa-caret-down"></i>
                 </button>
             </div>
