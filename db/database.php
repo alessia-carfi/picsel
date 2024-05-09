@@ -14,7 +14,7 @@ class DatabaseHelper {
         $stmt->bind_param("ss", $email, $password);
         $stmt->execute();
         $stmt->store_result();
-        $stmt->bind_result($user_id, $p_iva, $name, $nickname, $db_email, $db_password, $image);
+        $stmt->bind_result($user_id, $name, $nickname, $db_email, $db_password, $image);
         $stmt->fetch();
         
         if ($stmt->num_rows() == 1) {
