@@ -1,33 +1,19 @@
-let upvote = document.getElementById("upvote")
-let downvote = document.getElementById("downvote")
-
-//Update upvote and downvote if one of them is pressed
-
-upvote.addEventListener("click", event => {
-    let button = event.target
-    if (button.classList.contains('pressed')) {
-        //Remove like from database and decrease counter
-        unpress(button)
+export function upvoteClick(button, downvotesMap) {
+    if (button.classList.contains("pressed")) {
+        
     } else {
-        if (downvote.classList.contains('pressed')) {
-            unpress(downvote)
-        }
-        press(button)
-    }
-})
 
-downvote.addEventListener("click", event => {
-    let button = event.target
-    if (button.classList.contains('pressed')) {
-        //Remove like from database and decrease counter
-        unpress(button)
-    } else {
-        if (upvote.classList.contains('pressed')) {
-            unpress(upvote)
-        }
-        press(button)
     }
-})
+}
+// REMINDER
+// DO NOT add query to check if it was pressed, we're doing it in the other file
+export function downvoteClick(button, upvotesMap) {
+    console.log("BAnne");
+}
+
+function isOppositePressed(buttons) {
+
+}
 
 function unpress(button) {
     button.classList.remove('pressed')

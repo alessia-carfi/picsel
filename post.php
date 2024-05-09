@@ -13,11 +13,11 @@
     <div class="post-interactions">
         <div class="interactions-plus-comments">
             <div class="interactions">
-                <button id="upvote" data-post-id=<?php echo $post['post_id']?> aria-label="upvote post">
+                <button id="upvote" name="upvote" data-post-id=<?php echo $post['post_id']?> aria-label="upvote post">
                     <i class="fa-solid fa-caret-up"></i>
                 </button>
                 <p><?php echo $post['likes']?></p>
-                <button id="downvote" data-post-id=<?php echo $post['post_id']?> aria-label="downvote post">
+                <button id="downvote" name="downvote" data-post-id=<?php echo $post['post_id']?> aria-label="downvote post">
                     <i class="fa-solid fa-caret-down"></i>
                 </button>
             </div>
