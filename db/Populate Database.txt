@@ -10,3 +10,10 @@ VALUES ("Ho vintoooooo", NULL, 0, 0, 1, 1);
 
 INSERT INTO TAG
 VALUES ("Survival"), ("Soulslike"), ("Hack and Slash"), ("Fighting Game"), ("Action"), ("RPG"), ("Metroidvania");
+
+INSERT INTO LIKED (post_id, user_id, type)
+VALUES (1, 1, 1);
+
+UPDATE POST
+SET likes=1
+WHERE post_id=1 AND user_id=1;

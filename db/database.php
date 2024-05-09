@@ -1,5 +1,12 @@
 <?php
+include_once "account_utils.php";
+if (session_status() !== PHP_SESSION_ACTIVE) {
+    sec_session_start();
+}
+
 class DatabaseHelper {
+    private const UP = 1;
+    private const DOWN = -1;
     private $db;
     
     public function __construct($servername, $username, $password, $dbname) {
@@ -101,17 +108,33 @@ class DatabaseHelper {
         /*TODO*/
     }
     
-    private function checkbrute($user_id) {
-        $now = time();
-        $valid_attempts = $now - (2 * 60 * 60); //Attempts in the past 2 hours
-        $stmt = $this->db->prepare("SELECT `time` FROM login_attempts WHERE user_id=? AND `time` > $valid_attempts");
-        $stmt->bind_param("i", $user_id);
+    public function getPostVoteType($post_id) {
+        $stmt = $this->db->prepare("SELECT type FROM LIKED WHERE LIKED.user_id=? and LIKED.post_id=?");
+        $stmt->bind_param("ii", $_SESSION['user_id'], $post_id);
         $stmt->execute();
-        $stmt->store_result();
-        return $stmt->num_rows() > 5;
+        $result = $stmt->get_result();
+
+        if ($result->num_rows == 0) {
+            return "None";
+        }
+        
+        // Post has been liked if type=true, it's been disliked if type=false
+        return $result->fetch_assoc()['type'] ? "Up" : "Down";
     }
 
+    public function votePost($post_id, $type, $alreadyVoted) {
+        $query = "";
+        if ($alreadyVoted) {
+            $stmt = $this->db->prepare("UPDATE LIKED SET `type`=? WHERE LIKED.user_id=? AND LIKED.post_id=?");
+        } else {
+            $stmt = $this->db->prepare("INSERT INTO LIKED (user_id, post_id, `type`) VALUES (?, ?, ?)");
+        }
+        $stmt->bind_param("iis", $_SESSION['user_id'], $post_id, $type);
+        $stmt->execute();
+        $this->updatePostVoteCount($post_id, $type, $alreadyVoted);
+    }
 
+    
     public function getPostById($post_id) {
         $stmt = $this->db->prepare("SELECT * FROM POST JOIN USR ON USR.user_id=POST.user_id WHERE post_id = ?");
         $stmt->bind_param("i", $post_id);
@@ -127,18 +150,45 @@ class DatabaseHelper {
         return $post;
     }
 
+    
     public function getCommentsByPostId($post_id) {
         $stmt = $this->db->prepare("SELECT * FROM COMMENT WHERE post_id= ?");
         $stmt->bind_param("i", $post_id);
         $stmt->execute();
         $result = $stmt->get_result();
-
+        
         $comments = array();
         while ($comment = mysqli_fetch_assoc($result)) {
             $comments[] = $comment;
         }
         return $comments;
     }
+
+    private function checkbrute($user_id) {
+        $now = time();
+        $valid_attempts = $now - (2 * 60 * 60); //Attempts in the past 2 hours
+        $stmt = $this->db->prepare("SELECT `time` FROM login_attempts WHERE user_id=? AND `time` > $valid_attempts");
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+        $stmt->store_result();
+        return $stmt->num_rows() > 5;
+    }
     
+    private function updatePostVoteCount($post_id, $type, $alreadyVoted) {
+        $old_likes = $this->getPostById($post_id)['likes'];
+    
+        // If the post had received an upvote already and changes to a downvote, the likes counter goes down by 2 (removes
+        // the +1 point of the upvote, then removes another point for the downvote), and vice versa.
+        $multiplier = ($alreadyVoted ? 2 : 1);
+        if ($type) {
+            $new_likes = $old_likes + ($multiplier * $this::UP);
+        } else {
+            $new_likes = $old_likes + ($multiplier * $this::DOWN);
+        }
+    
+        $stmt = $this->db->prepare("UPDATE POST SET likes=? WHERE POST.post_id=?");
+        $stmt->bind_param("ii", $new_likes, $post_id);
+        $stmt->execute();
+    }
 }
 ?>
