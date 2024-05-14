@@ -28,7 +28,7 @@ if(isset($_GET['error'])) {
         </form>
         <p class="donthaveaccount">
             <span class="textaccount">Don't you have an account? </span>
-            <a href="#" class="signintext">Sign in</a>
+            <a href="signup.php" class="signintext">Sign up</a>
         </p>
     </div>
 </body>

@@ -1,12 +1,20 @@
-INSERT INTO USR (p_iva, name, nickname, email, password, image)
-VALUES (NULL, 'franco baglio', 'francognolo', 'franc@gmail.com', '1234', NULL),
-('60461190500', 'FROM Software', '@fromsoftware', 'from@software.com', 'yes1nd33d', null);
+INSERT INTO USR (name, nickname, email, password, image)
+VALUES ('franco baglio', 'francognolo', 'franc@gmail.com', '1234', NULL),
+('FROM Software', '@fromsoftware', 'from@software.com', 'yes1nd33d', null);
 
 INSERT INTO GAME (name, description, user_id)
 VALUES ("Dark Souls 2", "Giocate l'1 e il 3 poi provate questo che è meglio", 2);
 
-INSERT INTO POST (text, image, likes, user_id, game_id)
-VALUES ("Ho vintoooooo", NULL, 0, 1, 1);
+INSERT INTO POST (text, image, likes, comments, user_id, game_id)
+VALUES ("Ho vintoooooo", NULL, 0, 0, 1, 1),
+VALUES ("Che figata sto gioco", NULL, 0, 0, 1, 1)
 
 INSERT INTO TAG
 VALUES ("Survival"), ("Soulslike"), ("Hack and Slash"), ("Fighting Game"), ("Action"), ("RPG"), ("Metroidvania");
+
+INSERT INTO LIKED (post_id, user_id, type)
+VALUES (1, 1, 1);
+
+UPDATE POST
+SET likes=1
+WHERE post_id=1 AND user_id=1;

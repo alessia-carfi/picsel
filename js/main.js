@@ -1,5 +1,6 @@
 import * as sidemenu from "./sidemenu.js";
 import * as opt from "./options.js";
+import * as interactions from "./post_interactions.js";
 
 let menu = null;
 let image = null;
@@ -38,4 +39,24 @@ window.addEventListener("DOMContentLoaded", () => {
   burger.addEventListener("click", () => opt.openOptions(options, shadow));
   window.addEventListener("resize", () => responsiveMenu(menu));
   window.addEventListener("resize", () => responsiveMenu(options));
+
+  //Setup post interactions
+  //Map the buttons to their respective posts, and add their respective eventListeners
+  let upvotes = document.getElementsByName("upvote")
+  let upvotesMap = new Map();
+  upvotes.forEach((b) => { 
+    upvotesMap.set(b.dataset.postId, b) ;
+    b.addEventListener("click", () => {
+      interactions.upvoteClick(b, downvotesMap);
+    });
+  });
+
+  let downvotes = document.getElementsByName("downvote");
+  let downvotesMap = new Map();
+  downvotes.forEach((b) => { 
+    downvotesMap.set(b.dataset.postId, b);
+    b.addEventListener("click", () => {
+      interactions.downvoteClick(b, upvotesMap);
+    });
+  });
 });

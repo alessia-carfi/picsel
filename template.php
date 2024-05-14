@@ -12,7 +12,6 @@
       rel="stylesheet" />
     <script defer src="./assets/fontawesome/js/solid.js"></script>
     <script defer src="./assets/fontawesome/js/fontawesome.js"></script>
-    <script type="text/javascript" src="./js/post_interactions.js"></script>
     <script type="module" src="./js/main.js"></script>
 
   </head>

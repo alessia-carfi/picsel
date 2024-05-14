@@ -1,40 +1,36 @@
-let upvote = document.getElementById("upvote")
-let downvote = document.getElementById("downvote")
-
-//Update upvote and downvote if one of them is pressed
-
-upvote.addEventListener("click", event => {
-    let button = event.target
-    if (button.classList.contains('pressed')) {
-        //Remove like from database and decrease counter
-        unpress(button)
+export function upvoteClick(button, downvotesMap) {
+    if (button.classList.contains("pressed")) {
+        
     } else {
-        if (downvote.classList.contains('pressed')) {
-            unpress(downvote)
-        }
-        press(button)
-    }
-})
 
-downvote.addEventListener("click", event => {
-    let button = event.target
-    if (button.classList.contains('pressed')) {
-        //Remove like from database and decrease counter
-        unpress(button)
-    } else {
-        if (upvote.classList.contains('pressed')) {
-            unpress(upvote)
-        }
-        press(button)
     }
-})
+}
+// REMINDER
+// DO NOT add query to check if it was pressed, we're doing it in the other file
+export function downvoteClick(button, upvotesMap) {
+    console.log("BAnne")
+    press(upvotesMap.get(button.dataset.postId))
+}
+
+function isOppositePressed(buttons) {
+
+}
 
 function unpress(button) {
     button.classList.remove('pressed')
-    button.style.color = "var(--color-white)"
+    colorInnerSvg(button, "var(--color-white)")
 }
 
 function press(button) {
     button.classList.add('pressed')
-    button.style.color = "var(--color-red)"
+    colorInnerSvg(button, "var(--color-red)")
+}
+
+function colorInnerSvg(button, color, id) {
+    let buttonInner = button.innerHTML
+    let parser = new DOMParser()
+    let doc = parser.parseFromString(buttonInner, 'application/xml')
+    let svg = doc.getElementsByClassName("svg-inline--fa")[0]
+    svg.style.color = color
+    console.log(svg.classList)
 }
