@@ -16,7 +16,7 @@
   <body>
     <header>
         <h1>Settings</h1>
-        <a class="go-back" href="/picsel/userfeed.php" aria-label="Go back"><i class="fa-solid fa-arrow-left"></i></a>
+        <a class="go-back" href="/picsel/userfeed.php" aria-label="Go back"><span class="fa-solid fa-arrow-left"></span></a>
     </header>
     <main>
       <h2>Profile</h2>

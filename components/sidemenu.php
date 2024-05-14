@@ -8,7 +8,7 @@
                     <span id="tag">@franchino</span>
                 </p>
             </div>
-            <button id="close"><i class="fa-solid fa-xmark"></i></button>
+            <button id="close"><span class="fa-solid fa-xmark"></span></button>
         </div>
         <div class="follows">
             <ul class="follows-list">

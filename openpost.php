@@ -14,7 +14,7 @@
   </head>
 
   <body>
-    <a class="go-back" href="/picsel/userfeed.php"><i class="fa-solid fa-arrow-left"></i></a>
+    <a class="go-back" href="/picsel/userfeed.php"><span class="fa-solid fa-arrow-left"></span></a>
     <main>
         <?php include_once 'bootstrap.php'; ?>
         <div class="post-and-comments">
@@ -33,12 +33,12 @@
                 <div class="comment-interactions">
                     <div class="interactions">
                         <label hidden for="upvote-comm">Upvote</label>
-                        <i class="fa-solid fa-caret-up" name="upvote-comm" id="upvote-comm"></i>
+                        <span class="fa-solid fa-caret-up" name="upvote-comm" id="upvote-comm"></span>
                         <p>10</p>
                         <label hidden for="downvote-comm">Downvote</label>
-                        <i class="fa-solid fa-caret-down" name="downvote" id="downvote"></i>
+                        <span class="fa-solid fa-caret-down" name="downvote" id="downvote"></span>
                     </div>
-                    <i class="fa-solid fa-reply" id="reply" name="reply"></i>
+                    <span class="fa-solid fa-reply" id="reply" name="reply"></span>
                 </div>
                 <?php endforeach; ?>
             <?php else: ?>

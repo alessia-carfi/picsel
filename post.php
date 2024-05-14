@@ -14,24 +14,24 @@
         <div class="interactions-plus-comments">
             <div class="interactions">
                 <button id="upvote" name="upvote" data-post-id=<?php echo $post['post_id']?> aria-label="upvote post">
-                    <i class="fa-solid fa-caret-up"></i>
+                    <span class="fa-solid fa-caret-up"></span>
                 </button>
                 <p><?php echo $post['likes']?></p>
                 <button id="downvote" name="downvote" data-post-id=<?php echo $post['post_id']?> aria-label="downvote post">
-                    <i class="fa-solid fa-caret-down"></i>
+                    <span class="fa-solid fa-caret-down"></span>
                 </button>
             </div>
 
             <a href="openpost.php?post_id=<?php echo $post['post_id']; ?>" class="comments-icons">
                 <button id="view-comments" aria-label="view comments">
-                    <i class="fa-solid fa-comments"></i>
+                    <span class="fa-solid fa-comments"></span>
                 </button>
                 <!-- TODO -->
                 <p>0</p>
             </a>
         </div>
         <button id="save" aria-label="save post">
-            <i class="fa-solid fa-floppy-disk"></i>
+            <span class="fa-solid fa-floppy-disk"></span>
         </button>
     </div>
 </div>

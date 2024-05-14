@@ -7,7 +7,7 @@
     </p>
     </div>
     <div class="search">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="fa-solid fa-magnifying-glass"></span>
     <label for="search">Search</label>
     <input
         type="text"
@@ -16,5 +16,5 @@
         placeholder="Search on Picsel" />
     </div>
     <img src="assets/logofull.svg" alt="Picsel logo" class="logo" />
-    <button id="burger"><i class="fa-solid fa-bars"></i></button>
+    <button id="burger"><span class="fa-solid fa-bars"></span></button>
 </header>
