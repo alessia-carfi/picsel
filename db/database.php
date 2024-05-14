@@ -15,7 +15,7 @@ class DatabaseHelper {
             die("Connection failed: " . $this->db->connect_error);
         }
     }
-    
+
     public function login($email, $password) {
         $stmt = $this->db->prepare("SELECT * FROM USR WHERE email=? AND `password`=? LIMIT 1;");
         $stmt->bind_param("ss", $email, $password);
@@ -122,16 +122,18 @@ class DatabaseHelper {
         return $result->fetch_assoc()['type'] ? "Up" : "Down";
     }
 
-    public function votePost($post_id, $type, $alreadyVoted) {
-        $query = "";
-        if ($alreadyVoted) {
+    public function votePost($post_id, $type, $already_voted) {
+        if ($already_voted) {
             $stmt = $this->db->prepare("UPDATE LIKED SET `type`=? WHERE LIKED.user_id=? AND LIKED.post_id=?");
         } else {
-            $stmt = $this->db->prepare("INSERT INTO LIKED (user_id, post_id, `type`) VALUES (?, ?, ?)");
+            $stmt = $this->db->prepare("INSERT INTO LIKED (`liked`, user_id, post_id) VALUES (?, ?, ?)");
         }
-        $stmt->bind_param("iis", $_SESSION['user_id'], $post_id, $type);
+        $stmt->bind_param("iii", $type, $_SESSION['user_id'], $post_id);
         $stmt->execute();
-        $this->updatePostVoteCount($post_id, $type, $alreadyVoted);
+        $stmt->store_result();
+        $affected_rows = $stmt->affected_rows;
+        $stmt->close();
+        return  $affected_rows + $this->updatePostVoteCount($post_id, $type, $already_voted);
     }
 
     
@@ -174,12 +176,12 @@ class DatabaseHelper {
         return $stmt->num_rows() > 5;
     }
     
-    private function updatePostVoteCount($post_id, $type, $alreadyVoted) {
+    private function updatePostVoteCount($post_id, $type, $already_voted) {
         $old_likes = $this->getPostById($post_id)['likes'];
     
         // If the post had received an upvote already and changes to a downvote, the likes counter goes down by 2 (removes
         // the +1 point of the upvote, then removes another point for the downvote), and vice versa.
-        $multiplier = ($alreadyVoted ? 2 : 1);
+        $multiplier = ($already_voted ? 2 : 1);
         if ($type) {
             $new_likes = $old_likes + ($multiplier * $this::UP);
         } else {
@@ -189,6 +191,8 @@ class DatabaseHelper {
         $stmt = $this->db->prepare("UPDATE POST SET likes=? WHERE POST.post_id=?");
         $stmt->bind_param("ii", $new_likes, $post_id);
         $stmt->execute();
+        $stmt->store_result();
+        return $stmt->affected_rows;
     }
 }
 ?>
