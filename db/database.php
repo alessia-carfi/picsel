@@ -194,5 +194,19 @@ class DatabaseHelper {
         $stmt->store_result();
         return $stmt->affected_rows;
     }
+
+    public function setProfileImage($image, $user_id) {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['image']['error'])) {
+            if ($_FILES['image']['error'] == UPLOAD_ERR_OK) {
+                $img = file_get_contents($_FILES['image']['tmp_name']);
+                $stmt = $this->db->prepare("UPDATE USR SET image=? WHERE user_id=?");
+                $stmt->bind_param("bi", $img, $user_id);
+                $stmt->execute();
+                echo "Image changed!";
+            } else {
+                echo "Upload failed with error code " . $_FILES['image']['error'];
+            }
+        }
+    }
 }
 ?>

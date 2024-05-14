@@ -1,0 +1,48 @@
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+  font-size: bold;
+}
+
+header > a > .fa-arrow-left {
+  width: 2rem;
+  height: 2rem;
+  color: var(--color-white);
+  cursor: pointer;
+}
+
+h1 {
+  color: var(--color-white);
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+main {
+  align-items: start;
+}
+
+h2 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--color-red);
+  margin: 0 0 0 2rem;
+}
+
+.settings-list {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin: 1rem, 2rem;
+}
+
+.settings-list > li {
+  padding-bottom: 1rem;
+}
+
+.settings-list label {
+  font-size: 1.2rem;
+  font-weight: regular;
+  color: var(--color-white);
+}

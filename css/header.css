@@ -48,7 +48,18 @@ label {
   display: none;
 }
 
+.options a,
+nav a {
+  display: flex;
+  align-items: center;
+}
+
 @media only screen and (min-width: 830px) {
+  .options a,
+  nav a {
+    flex-direction: row;
+  }
+
   .name {
     display: flex;
     flex-direction: column;
@@ -97,6 +108,10 @@ label {
     padding-right: 2rem;
   }
 
+  p#other {
+    padding-top: 2rem;
+  }
+
   nav > ul > li:first-child,
   .options > ul > li:first-child {
     padding-top: 0;
@@ -104,7 +119,7 @@ label {
 
   nav > ul > li,
   .options > ul > li {
-    padding: 2rem 2rem 0 2rem;
+    padding: 0 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -175,6 +190,7 @@ label {
 
   nav > ul > li > a {
     padding-top: 1rem;
+    flex-direction: column;
   }
 
   .logo,
@@ -182,7 +198,7 @@ label {
   .name,
   .options,
   .search,
-  .options > ul > li > a {
+  .options > ul > li > a > p {
     display: none;
   }
 
