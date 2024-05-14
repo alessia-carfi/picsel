@@ -3,17 +3,17 @@
         <p id="other">Other options</p>
         <ul>
         <li>
-            <i class="fa-solid fa-square-plus"></i><a href="" id="new">New</a>
+            <a href="" id="new"><i class="fa-solid fa-square-plus"></i><p>New</p></a>
         </li>
         <li>
-            <i class="fa-solid fa-floppy-disk"></i><a href="" id="saved">Saved</a>
+            <a href="" id="saved"><i class="fa-solid fa-floppy-disk"></i><p>Saved</p></a>
         </li>
         <li>
-            <i class="fa-solid fa-arrows-rotate"></i
-            ><a href="" id="refresh">Refresh</a>
+            <a href="" id="refresh"><i class="fa-solid fa-arrows-rotate"></i
+            ><p> Refresh</p></a>
         </li>
         <li>
-            <i class="fa-solid fa-gear"></i><a href="" id="settings">Settings</a>
+            <a href="/picsel/components/settings.php" id="settings"><i class="fa-solid fa-gear"></i><p>Settings</p></a>
         </li>
         </ul>
     </div>
