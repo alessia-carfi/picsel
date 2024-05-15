@@ -1,5 +1,6 @@
 <?php
-include 'account_utils.php';
+include __DIR__ . '/account_utils.php';
+include __DIR__ . '/bootstrap.php';
 
 sec_session_start();
 if (isset($_POST['email'], $_POST['password'])) {
