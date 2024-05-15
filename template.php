@@ -23,6 +23,7 @@
     <?php include 'components/sidemenu.php'; ?>
     <main>
     <?php include 'generate_posts.php'; ?>
+    <?php include './db/ajax_handling.php'; ?>
     </main>
   </body>
 

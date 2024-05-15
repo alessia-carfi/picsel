@@ -1,8 +1,6 @@
 <?php
-include_once "account_utils.php";
-if (session_status() !== PHP_SESSION_ACTIVE) {
-    sec_session_start();
-}
+include_once __DIR__ . "/../account_utils.php";
+sec_session_start();
 
 class DatabaseHelper {
     private const UP = 1;
@@ -176,7 +174,7 @@ class DatabaseHelper {
         return $stmt->num_rows() > 5;
     }
     
-    private function updatePostVoteCount($post_id, $type, $already_voted) {
+    public function updatePostVoteCount($post_id, $type, $already_voted) {
         $old_likes = $this->getPostById($post_id)['likes'];
     
         // If the post had received an upvote already and changes to a downvote, the likes counter goes down by 2 (removes
@@ -190,9 +188,11 @@ class DatabaseHelper {
     
         $stmt = $this->db->prepare("UPDATE POST SET likes=? WHERE POST.post_id=?");
         $stmt->bind_param("ii", $new_likes, $post_id);
-        $stmt->execute();
-        $stmt->store_result();
-        return $stmt->affected_rows;
+        if ($stmt->execute()) {
+            return ['success' => true];
+        } else {
+            return ['success' => false, 'message' => 'Error: ' . $stmt->error];
+        }
     }
 
     public function setProfileImage($image, $user_id) {

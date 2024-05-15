@@ -1,11 +1,14 @@
 <?php
-require_once("./database.php");
+    require_once __DIR__ . '/../bootstrap.php';
 
-if ($_POST['method'] == 'votePost') {
-    // $data = json_decode(file_get_contents('php://input'), true);
-    // $updated_rows = $dbh->votePost($data['post_id'], $data['type'], $data['already_voted']);
-    $updatedRows = "LE BANANE";
-    echo json_encode(['message' => 'Update successful', 'updatedRows' => $updatedRows]);
-}
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $data = json_decode(file_get_contents('php://input'), true);
+        $post_id = $data['post_id'];
+        $type = $data['type'];
+        $already_voted = $data['already_voted'];
 
+        $response = $dbh -> updatePostVoteCount($post_id, $type, $already_voted);
+
+        echo json_encode($response);
+    }
 ?>

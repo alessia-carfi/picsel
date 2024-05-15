@@ -1,6 +1,5 @@
 <?php
 include 'account_utils.php';
-require_once('./bootstrap.php');
 
 sec_session_start();
 if (isset($_POST['email'], $_POST['password'])) {
