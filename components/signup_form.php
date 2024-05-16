@@ -25,7 +25,7 @@ if (isset($_GET['error'])) {
             <input class="name" name="name" id="name" type="text" placeholder="Name" />
             <span class="nameerror" id="nameerror">Name not valid</span>
             <label hidden for="username" class="usernamelabel">Username</label>
-            <input class="username" name="username" id="username" type="text" placeholder="Username" onblur="checkusername()" />
+            <input class="username" name="username" id="username" type="text" placeholder="Username" />
             <span class="usernameerror" id="usernameerror">Username not valid</span>
             <label hidden for="email" class="emaillabel">Email</label>
             <input class="email" name="email" id="email" type="email" placeholder="Email" />

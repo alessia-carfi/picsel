@@ -32,16 +32,16 @@ window.addEventListener("DOMContentLoaded", () => {
 
 function signuperror() {
 
-    nameerror();
-    usernameerror();
+    checkName();
+    checkUsername();
     checkEmail();
-    passworderror();
-    confirmpassworderror();
+    checkPassword();
+    checkConfirmPassword();
     return error.name.style.visibility === "visible" || error.username.style.visibility === "visible" || error.email.style.visibility === "visible" || error.password.style.visibility === "visible" || error.confirmpassword.style.visibility === "visible";
 }
 
 
-function nameerror() {
+function checkName() {
     if (user.name.value === '') {
         showerror(user.name, error.name);
     } else {
@@ -49,12 +49,35 @@ function nameerror() {
     }
 }
 
-function usernameerror() {
-    if (user.username.value === '' || user.username.value.length < 3) {
-        showerror(user.username, error.username);
-    } else {
-        hideerror(user.username, error.username);
+function checkUsername() {
+    if (user.username.value === '') {
+       error.username.textContent = "Username not valid";
+       showerror(user.username, error.username);
+       return;
     }
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "/picsel/db/signupusernameajax.php", true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
+            var response = JSON.parse(xhr.responseText);
+            if (response.success) {
+                if (response.message === "In use") {
+                    error.username.textContent = "Username already in use";
+                    showerror(user.username, error.username);
+                } else {
+                    hideerror(user.username, error.username);
+                }
+            } else {
+                console.error("Error: " + response.message);
+            }
+        }
+    };
+
+    var data = JSON.stringify({
+        username: user.username.value,
+    });
+    xhr.send(data);
 }
 
 function checkEmail() {
@@ -73,7 +96,6 @@ function checkEmail() {
                 if (response.message === "In use") {
                     error.email.textContent = "Email already in use";
                     showerror(user.email, error.email);
-                    console.log("Email already in use");
                 } else {
                     hideerror(user.email, error.email);
                 }
@@ -91,7 +113,8 @@ function checkEmail() {
 
 
 
-function passworderror() {
+
+function checkPassword() {
     if (user.password.value === '' || user.password.value.length < 8) {
         showerror(user.password, error.password);
     } else {
@@ -99,7 +122,7 @@ function passworderror() {
     }
 }
 
-function confirmpassworderror() {
+function checkConfirmPassword() {
     if (user.confirmpassword.value !== user.password.value) {
         showerror(user.confirmpassword, error.confirmpassword);
     } else {

@@ -61,7 +61,23 @@ class DatabaseHelper {
         }
     }
 
-    
+    public function checkSignupUsername($username)
+    {
+        $stmt = $this->db->prepare("SELECT * FROM USR WHERE nickname=?");
+        $stmt->bind_param("s", $username);
+        if ($stmt->execute()) {
+            $result = $stmt->get_result();
+            if ($result->num_rows > 0) {
+                return ['success' => true, 'message' => 'In use'];
+            } else {
+                return ['success' => true, 'message' => 'Not in use'];
+            }
+        } else {
+            return ['success' => false, 'message' => 'Error: ' . $stmt->error];
+        }
+    }
+
+
     public function register($name, $username, $email, $password, $confirmpassword) {
         if ($password !== $confirmpassword) {
             return false;
