@@ -1,6 +1,6 @@
 <?php
-if(isset($_GET['error'])) { 
-   echo 'Error Signup!';
+if (isset($_GET['error'])) {
+    echo 'Error Signup!';
 }
 ?>
 
@@ -20,26 +20,27 @@ if(isset($_GET['error'])) {
 <body>
     <div class="signup">
         <p class="text">Sign Up</p>
-        <form class="signupform" action="./signup.php" method="post" name="signin_form">
-            <label hidden for="nameid" class="namelabel">Name</label>
-            <input class="name" name="name" id="nameid" type="text" placeholder="Name" />
-            <span  class="nameerror" id="nameerror">Nome non valido</span>
-            <label hidden for="usernameid" class="usernamelabel">Username</label>
-            <input class="username" name="username" id="usernameid" type="text" placeholder="Username" />
-            <span  class="usernameerror" id="usernameerror">Username non valido o già in uso</span>
-            <label hidden for="emailid" class="emaillabel">Email</label>
-            <input class="email" name="email" id="emailid" type="email" placeholder="Email" />
-            <span  class="emailerror" id="emailerror">Email non valida o già in uso</span>
-            <label hidden for="passid" class="passwordlabel">Password</label>
-            <input class="password" name="password" id="passid" type="password" placeholder="Password" />
-            <span  class="passworderror" id="passworderror">La password non contiene almeno 8 caratteri</span>
-            <label hidden for="confirmpassid" class="confirmpasswordlabel">Confirm Password</label>
-            <input class="confirmpassword" name="confirmpassword" id="confirmpassid" type="password" placeholder="Confirm Password" />
-            <span  class="confirmpassworderror" id="confirmpassworderror">Le password non corrispondono</span>
-            <label hidden for="buttonid" class="buttonlabel"></label>
-            <input type="submit" class="button" id="buttonid" value="Submit" />
+        <form class="signupform" action="" id="signupform" method="post">
+            <label hidden for="name" class="namelabel">Name</label>
+            <input class="name" name="name" id="name" type="text" placeholder="Name" />
+            <span class="nameerror" id="nameerror">Name not valid</span>
+            <label hidden for="username" class="usernamelabel">Username</label>
+            <input class="username" name="username" id="username" type="text" placeholder="Username" onblur="checkusername()" />
+            <span class="usernameerror" id="usernameerror">Username not valid</span>
+            <label hidden for="email" class="emaillabel">Email</label>
+            <input class="email" name="email" id="email" type="email" placeholder="Email" />
+            <span class="emailerror" id="emailerror">Email not valid</span>
+            <label hidden for="password" class="passwordlabel">Password</label>
+            <input class="password" name="password" id="password" type="password" placeholder="Password" />
+            <span class="passworderror" id="passworderror">Password should be at least 8 characters long</span>
+            <label hidden for="confirmpassword" class="confirmpasswordlabel">Confirm Password</label>
+            <input class="confirmpassword" name="confirmpassword" id="confirmpassword" type="password" placeholder="Confirm Password" />
+            <span class="confirmpassworderror" id="confirmpassworderror">Passwords do not match</span>
+            <label hidden for="button" class="buttonlabel"></label>
+            <input type="submit" class="button" id="button" value="Submit" />
         </form>
     </div>
+    <script type="text/javascript" src="./js/signup.js"></script>
 </body>
 
 </html>
