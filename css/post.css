@@ -162,6 +162,11 @@ button {
   margin-right: 1rem;
 }
 
+.liked > svg,
+.disliked > svg {
+  color: var(--color-red);
+}
+
 @media only screen and (min-width: 650px) {
   .post {
     min-width: 30rem;

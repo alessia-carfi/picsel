@@ -105,6 +105,15 @@ class DatabaseHelper {
         
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function getPostsByUserIdWithLiked($from_userid, $liked_userid) {
+        $stmt = $this->db->prepare("SELECT POST.post_id, POST.text, POST.image, POST.likes, POST.comments, POST.user_id, USR.nickname, LIKED.type from POST JOIN USR ON USR.user_id=POST.user_id LEFT JOIN LIKED ON LIKED.post_id=POST.post_id AND LIKED.user_id=? WHERE USR.user_id=?");
+        $stmt->bind_param('ii', $from_userid, $liked_userid);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
     
     public function getPostsByTag($tag) {
         $stmt = $this->db->prepare("SELECT text, image, tag_id, nickname from post, user WHERE tag=?");

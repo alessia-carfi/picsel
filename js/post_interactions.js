@@ -40,7 +40,7 @@ function updateOrInsertLike(postId, typeVote, alreadyVoted) {
       var response = JSON.parse(xhr.responseText);
       console.log(response);
       if (response.success) {
-        return true;
+        //
       } else {
         console.error("Error: " + response.message);
       }
@@ -51,27 +51,27 @@ function updateOrInsertLike(postId, typeVote, alreadyVoted) {
   var data = JSON.stringify({
     post_id: postId,
     type: typeVote,
-    already_voted: alreadyVoted,
+    /* already_voted: alreadyVoted, */
   });
   console.log(data);
   xhr.send(data);
 }
 
 function isOppositePressed(button, opposites) {
-  return opposites.get(button.dataset.postId).classList.contains("pressed");
+  return opposites.get(button.dataset.postId).classList.contains("liked");
 }
 
 function isPressed(button) {
-  return button.classList.contains("pressed");
+  return button.classList.contains("liked");
 }
 
 function unpress(button) {
-  button.classList.remove("pressed");
+  button.classList.remove("liked");
   colorInnerSvg(button, "var(--color-white)");
 }
 
 function press(button) {
-  button.classList.add("pressed");
+  button.classList.add("liked");
   colorInnerSvg(button, "var(--color-red)");
 }
 
