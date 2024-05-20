@@ -2,36 +2,14 @@ const DOWN = false;
 const UP = true;
 
 export function upvoteClick(button, downvotesMap) {
-  if (isPressed(button)) {
-    clicked(button, downvotesMap, DOWN, true);
-  } else {
-    clicked(button, downvotesMap, UP, false);
-  }
+  updateOrInsertLike(button, UP, downvotesMap)
 }
 
 export function downvoteClick(button, upvotesMap) {
-  if (isPressed(button)) {
-    clicked(button, upvotesMap, UP, true);
-  } else {
-    clicked(button, upvotesMap, DOWN, false);
-  }
+  updateOrInsertLike(button, DOWN, upvotesMap)
 }
 
-function clicked(button, opposites, type, pressed) {
-  let alreadyVoted = false;
-  if (pressed) {
-    unpress(button);
-  } else {
-    press(button);
-    alreadyVoted = isOppositePressed(button, opposites);
-    if (alreadyVoted) {
-      unpress(opposites.get(button.dataset.postId));
-    }
-  }
-  updateOrInsertLike(button.dataset.postId, type, alreadyVoted);
-}
-
-function updateOrInsertLike(postId, typeVote, alreadyVoted) {
+function updateOrInsertLike(button, typeVote, opposites) {
   var xhr = new XMLHttpRequest();
   xhr.open("POST", "/picsel/db/ajax_handling.php", true);
   xhr.setRequestHeader("Content-Type", "application/json");
@@ -40,7 +18,15 @@ function updateOrInsertLike(postId, typeVote, alreadyVoted) {
       var response = JSON.parse(xhr.responseText);
       console.log(response);
       if (response.success) {
-        //
+        if (button.classList.contains('liked')) {
+          unpress(button);
+        } else {
+          opp = opposites.get(button.dataset.postId);
+          if (opp.classList.contains('liked')) {
+            unpress(opp);
+          }
+          press(button);
+        }
       } else {
         console.error("Error: " + response.message);
       }
@@ -49,20 +35,11 @@ function updateOrInsertLike(postId, typeVote, alreadyVoted) {
   };
 
   var data = JSON.stringify({
-    post_id: postId,
-    type: typeVote,
-    /* already_voted: alreadyVoted, */
+    post_id: button.dataset.postId,
+    type: typeVote
   });
   console.log(data);
   xhr.send(data);
-}
-
-function isOppositePressed(button, opposites) {
-  return opposites.get(button.dataset.postId).classList.contains("liked");
-}
-
-function isPressed(button) {
-  return button.classList.contains("liked");
 }
 
 function unpress(button) {

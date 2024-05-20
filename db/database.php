@@ -140,7 +140,7 @@ class DatabaseHelper {
     }
     
     public function getPostVoteType($post_id) {
-        $stmt = $this->db->prepare("SELECT type FROM LIKED WHERE LIKED.user_id=? and LIKED.post_id=?");
+        $stmt = $this->db->prepare("SELECT `type` FROM LIKED WHERE LIKED.user_id=? and LIKED.post_id=?");
         $stmt->bind_param("ii", $_SESSION['user_id'], $post_id);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -153,18 +153,22 @@ class DatabaseHelper {
         return $result->fetch_assoc()['type'] ? "Up" : "Down";
     }
 
-    public function votePost($post_id, $type, $already_voted) {
-        if ($already_voted) {
-            $stmt = $this->db->prepare("UPDATE LIKED SET `type`=? WHERE LIKED.user_id=? AND LIKED.post_id=?");
-        } else {
-            $stmt = $this->db->prepare("INSERT INTO LIKED (`liked`, user_id, post_id) VALUES (?, ?, ?)");
+    public function votePost($post_id, $type) {
+        $prevVoteType = $this->getPostVoteType($post_id);
+        switch ($prevVoteType) {
+            case "None":
+                $stmt = $this->db->prepare("INSERT INTO LIKED (`post_id`, `user_id`, `type`) VALUES (?, ?, ?)");
+                $stmt->bind_param("iii", $post_id, $_SESSION['user_id'], $type);
+                if ($stmt->execute()) {
+                    return $this->updatePostVoteCount($post_id, $type, 1);
+                } else {
+                    return ['success' => false, 'message' => 'Error: ' . $stmt->error];
+                }
+            case "Up":
+                return $type ? $this->removeLiked($post_id, $type) : $this->updateLiked($post_id, $type);
+            case "Down":
+                return $type ? $this->updateLiked($post_id, $type) : $this->removeLiked($post_id, $type);
         }
-        $stmt->bind_param("iii", $type, $_SESSION['user_id'], $post_id);
-        $stmt->execute();
-        $stmt->store_result();
-        $affected_rows = $stmt->affected_rows;
-        $stmt->close();
-        return  $affected_rows + $this->updatePostVoteCount($post_id, $type, $already_voted);
     }
 
     
@@ -206,13 +210,32 @@ class DatabaseHelper {
         $stmt->store_result();
         return $stmt->num_rows() > 5;
     }
+
+    private function removeLiked($post_id, $type) {
+        $stmt = $this->db->prepare("DELETE FROM LIKED WHERE post_id=? AND user_id=?");
+        $stmt->bind_param("ii", $post_id, $_SESSION['user_id']);
+        if ($stmt->execute()) {
+            return $this->updatePostVoteCount($post_id, !$type, 1);
+        } else {
+            return ['success' => false, 'message' => 'Error: ' . $stmt->error];
+        }
+    }
+
+    private function updateLiked($post_id, $type) {
+        $stmt = $this->db->prepare("UPDATE LIKED SET `type`=? WHERE post_id=? AND user_id=?");
+        $stmt->bind_param("iii", $type, $post_id, $_SESSION['user_id']);
+        if ($stmt->execute()) {
+            return $this->updatePostVoteCount($post_id, $type, 2);
+        } else {
+            return ['success' => false, 'message' => 'Error: ' . $stmt->error];
+        }
+    }
     
-    public function updatePostVoteCount($post_id, $type, $already_voted) {
+
+    // If the post had received an upvote already and changes to a downvote, the likes counter goes down by 2 (removes
+    // the +1 point of the upvote, then removes another point for the downvote), and vice versa.
+    public function updatePostVoteCount($post_id, $type, $multiplier) {
         $old_likes = $this->getPostById($post_id)['likes'];
-    
-        // If the post had received an upvote already and changes to a downvote, the likes counter goes down by 2 (removes
-        // the +1 point of the upvote, then removes another point for the downvote), and vice versa.
-        $multiplier = ($already_voted ? 2 : 1);
         if ($type) {
             $new_likes = $old_likes + ($multiplier * $this::UP);
         } else {
