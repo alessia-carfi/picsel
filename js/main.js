@@ -42,24 +42,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   //Setup post interactions
   //Map the buttons to their respective posts, and add their respective eventListeners
-  let upvotes = document.getElementsByName("upvote")
-  let upvotesMap = new Map();
-  upvotes.forEach((b) => { 
-    upvotesMap.set(b.dataset.postId, b) ;
-  });
-
-  let downvotes = document.getElementsByName("downvote");
-  let downvotesMap = new Map();
-  downvotes.forEach((b) => { 
-    downvotesMap.set(b.dataset.postId, b);
-    b.addEventListener("click", () => {
-      interactions.downvoteClick(b, upvotesMap.get(b.dataset.postId));
-    });
-  });
-
-  upvotes.forEach((b) => {
-    b.addEventListener("click", () => {
-      interactions.upvoteClick(b, downvotesMap.get(b.dataset.postId));
-    });
-  })
+  // let upvotes = document.getElementsByName("upvote")
+  // let downvotes = document.getElementsByName("downvotes")
+  interactions.buttonSetUp()
 });

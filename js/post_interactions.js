@@ -1,11 +1,11 @@
 const DOWN = false;
 const UP = true;
 
-export function upvoteClick(button, opposite) {
+function upvoteClick(button, opposite) {
   updateOrInsertLike(button, UP, opposite)
 }
 
-export function downvoteClick(button, opposite) {
+function downvoteClick(button, opposite) {
   updateOrInsertLike(button, DOWN, opposite)
 }
 
@@ -59,4 +59,27 @@ function colorInnerSvg(button, color) {
   let doc = parser.parseFromString(buttonInner, "application/xml");
   let svg = doc.getElementsByClassName("svg-inline--fa")[0];
   svg.style.color = color;
+}
+
+export function buttonSetUp() {
+  let upvotes = document.getElementsByName("upvote")
+  let upvotesMap = new Map();
+  upvotes.forEach((b) => { 
+    upvotesMap.set(b.dataset.postId, b) ;
+  });
+
+  let downvotes = document.getElementsByName("downvote");
+  let downvotesMap = new Map();
+  downvotes.forEach((b) => { 
+    downvotesMap.set(b.dataset.postId, b);
+    b.addEventListener("click", () => {
+      downvoteClick(b, upvotesMap.get(b.dataset.postId));
+    });
+  });
+
+  upvotes.forEach((b) => {
+    b.addEventListener("click", () => {
+      upvoteClick(b, downvotesMap.get(b.dataset.postId));
+    });
+  })
 }
