@@ -16,10 +16,7 @@ function updateOrInsertLike(button, typeVote, opposite) {
   xhr.onreadystatechange = function () {
     if (xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
       var response = JSON.parse(xhr.responseText);
-      console.log(response);
       if (response.success) {
-        console.log(button.dataset.postId)
-        console.log(opposite.dataset.postId)
         if (button.classList.contains('liked')) {
           unpress(button);
         } else {
@@ -31,7 +28,6 @@ function updateOrInsertLike(button, typeVote, opposite) {
       } else {
         console.error("Error: " + response.message);
       }
-      console.log(xhr.responseText);
     }
   };
 
@@ -39,7 +35,6 @@ function updateOrInsertLike(button, typeVote, opposite) {
     post_id: button.dataset.postId,
     type: typeVote
   });
-  console.log(data);
   xhr.send(data);
 }
 

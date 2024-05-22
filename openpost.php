@@ -26,7 +26,7 @@
                 <?php foreach ($comments as $comment): ?>
                     <!-- TODO -->
                 <p class="commenter">
-                    <span class="username" name="username-comm" id="username-comm"><?php echo $dbh->getUserFromId($comment['user_id'])?></span>
+                    <span class="username" name="username-comm" id="username-comm"><?php echo $dbh->getUserFromId($comment['user_id'])['nickname']?></span>
                     <span name="time" id="time">55m</span>
                 </p>
                 <p><?php echo $comment['text']?></p>

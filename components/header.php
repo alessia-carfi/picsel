@@ -2,8 +2,8 @@
     <div class="profile" >
     <img src="assets/logo.svg" alt="" id="profileimageid"/>
     <p class="name">
-        <span id="name">Franchino</span>
-        <span id="tag">@franchino</span>
+        <span id="name"><?php echo ($templateParams['logged_user'])['name']; ?></span>
+        <span id="tag"><?php echo ($templateParams['logged_user'])['nickname']; ?></span>
     </p>
     </div>
     <div class="search">
