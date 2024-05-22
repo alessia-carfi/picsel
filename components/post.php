@@ -13,11 +13,11 @@
     <div class="post-interactions">
         <div class="interactions-plus-comments">
             <div class="interactions">
-                <button id="upvote" class="<?php echo $post['type'] == 1 ? 'liked' : '' ?>" name="upvote" data-post-id=<?php echo $post['post_id']?> aria-label="upvote post">
+                <button id="upvote" class="<?php echo $dbh->getPostVoteType($post['post_id']) == "Up" ? 'liked' : ''?>" name="upvote" data-post-id=<?php echo $post['post_id']?> aria-label="upvote post">
                     <span class="fa-solid fa-caret-up"></span>
                 </button>
                 <p><?php echo $post['likes']?></p>
-                <button id="downvote" class="<?php echo $post['type'] == 0 ? 'liked' : '' ?>" name="downvote" data-post-id=<?php echo $post['post_id']?> aria-label="downvote post">
+                <button id="downvote" class="<?php echo $dbh->getPostVoteType($post['post_id']) == "Down" ? 'liked' : ''?>" name="downvote" data-post-id=<?php echo $post['post_id']?> aria-label="downvote post">
                     <span class="fa-solid fa-caret-down"></span>
                 </button>
             </div>

@@ -199,9 +199,9 @@ class DatabaseHelper {
     }
 
     
-    public function getPostByIdAndLikes($post_id) {
-        $stmt = $this->db->prepare("SELECT POST.post_id, POST.game_id, POST.text, POST.image, POST.likes, POST.comments, POST.user_id, USR.nickname, LIKED.type from POST JOIN USR ON USR.user_id=POST.user_id LEFT JOIN LIKED ON LIKED.post_id=POST.post_id AND LIKED.user_id=? WHERE USR.user_id=?");
-        $stmt->bind_param("ii", $post_id, $_SESSION['user_id']);
+    public function getPostById($post_id) {
+        $stmt = $this->db->prepare("SELECT POST.post_id, POST.game_id, POST.text, POST.image, POST.likes, POST.comments, POST.user_id, USR.nickname from POST JOIN USR ON USR.user_id=POST.user_id WHERE USR.user_id=?");
+        $stmt->bind_param("i", $_SESSION['user_id']);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -262,7 +262,7 @@ class DatabaseHelper {
     // If the post had received an upvote already and changes to a downvote, the likes counter goes down by 2 (removes
     // the +1 point of the upvote, then removes another point for the downvote), and vice versa.
     public function updatePostVoteCount($post_id, $type, $multiplier) {
-        $old_likes = $this->getPostByIdAndLikes($post_id)['likes'];
+        $old_likes = $this->getPostById($post_id)['likes'];
         if ($type) {
             $new_likes = $old_likes + ($multiplier * $this::UP);
         } else {

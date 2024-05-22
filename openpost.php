@@ -18,7 +18,7 @@
     <main>
         <?php include_once 'bootstrap.php'; ?>
         <div class="post-and-comments">
-            <?php $post = $dbh->getPostByIdAndLikes($_GET['post_id']); ?>
+            <?php $post = $dbh->getPostById($_GET['post_id']); ?>
             <?php include __DIR__ . '/components/post.php';?>
             <div class="comment">
             <?php $comments = $dbh->getCommentsByPostId($post['post_id']); ?>
