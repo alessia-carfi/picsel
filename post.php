@@ -17,7 +17,7 @@
                     <span class="fa-solid fa-caret-up"></span>
                 </button>
                 <p><?php echo $post['likes']?></p>
-                <button id="downvote" class="<?php echo $post['type'] == 0 ? 'disliked' : '' ?>" name="downvote" data-post-id=<?php echo $post['post_id']?> aria-label="downvote post">
+                <button id="downvote" class="<?php echo $post['type'] == 0 ? 'liked' : '' ?>" name="downvote" data-post-id=<?php echo $post['post_id']?> aria-label="downvote post">
                     <span class="fa-solid fa-caret-down"></span>
                 </button>
             </div>

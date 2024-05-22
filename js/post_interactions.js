@@ -1,15 +1,15 @@
 const DOWN = false;
 const UP = true;
 
-export function upvoteClick(button, downvotesMap) {
-  updateOrInsertLike(button, UP, downvotesMap)
+export function upvoteClick(button, opposite) {
+  updateOrInsertLike(button, UP, opposite)
 }
 
-export function downvoteClick(button, upvotesMap) {
-  updateOrInsertLike(button, DOWN, upvotesMap)
+export function downvoteClick(button, opposite) {
+  updateOrInsertLike(button, DOWN, opposite)
 }
 
-function updateOrInsertLike(button, typeVote, opposites) {
+function updateOrInsertLike(button, typeVote, opposite) {
   var xhr = new XMLHttpRequest();
   xhr.open("POST", "/picsel/db/ajax_handling.php", true);
   xhr.setRequestHeader("Content-Type", "application/json");
@@ -18,12 +18,13 @@ function updateOrInsertLike(button, typeVote, opposites) {
       var response = JSON.parse(xhr.responseText);
       console.log(response);
       if (response.success) {
+        console.log(button.dataset.postId)
+        console.log(opposite.dataset.postId)
         if (button.classList.contains('liked')) {
           unpress(button);
         } else {
-          opp = opposites.get(button.dataset.postId);
-          if (opp.classList.contains('liked')) {
-            unpress(opp);
+          if (opposite.classList.contains('liked')) {
+            unpress(opposite);
           }
           press(button);
         }

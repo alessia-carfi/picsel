@@ -46,9 +46,6 @@ window.addEventListener("DOMContentLoaded", () => {
   let upvotesMap = new Map();
   upvotes.forEach((b) => { 
     upvotesMap.set(b.dataset.postId, b) ;
-    b.addEventListener("click", () => {
-      interactions.upvoteClick(b, downvotesMap);
-    });
   });
 
   let downvotes = document.getElementsByName("downvote");
@@ -56,7 +53,13 @@ window.addEventListener("DOMContentLoaded", () => {
   downvotes.forEach((b) => { 
     downvotesMap.set(b.dataset.postId, b);
     b.addEventListener("click", () => {
-      interactions.downvoteClick(b, upvotesMap);
+      interactions.downvoteClick(b, upvotesMap.get(b.dataset.postId));
     });
   });
+
+  upvotes.forEach((b) => {
+    b.addEventListener("click", () => {
+      interactions.upvoteClick(b, downvotesMap.get(b.dataset.postId));
+    });
+  })
 });
