@@ -14,12 +14,12 @@
   </head>
 
   <body>
-    <a class="go-back" href="/picsel/userfeed.php"><span class="fa-solid fa-arrow-left"></span></a>
+    <a class="go-back" href="/picsel/logged_user_feed.php"><span class="fa-solid fa-arrow-left"></span></a>
     <main>
         <?php include_once 'bootstrap.php'; ?>
         <div class="post-and-comments">
-            <?php $post = $dbh->getPostById($_GET['post_id']); ?>
-            <?php include 'post.php';?>
+            <?php $post = $dbh->getPostByIdAndLikes($_GET['post_id']); ?>
+            <?php include __DIR__ . '/components/post.php';?>
             <div class="comment">
             <?php $comments = $dbh->getCommentsByPostId($post['post_id']); ?>
             <?php if (count($comments) > 0): ?>
