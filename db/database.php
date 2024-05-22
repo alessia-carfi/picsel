@@ -130,6 +130,15 @@ class DatabaseHelper {
         
         return $result->fetch_assoc()['name'];
     }
+
+    public function getUserFromId($id) {
+        $stmt = $this->db->prepare("SELECT nickname from USR where user_id=?");
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        return $result->fetch_assoc()['nickname'];
+    }
     
     public function getSavedPostsFromUser($userid) {
         /*TODO*/

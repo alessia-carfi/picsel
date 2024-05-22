@@ -26,10 +26,10 @@
                 <?php foreach ($comments as $comment): ?>
                     <!-- TODO -->
                 <p class="commenter">
-                    <span class="username" name="username-comm" id="username-comm">Marcellino</span>
+                    <span class="username" name="username-comm" id="username-comm"><?php echo $dbh->getUserFromId($comment['user_id'])?></span>
                     <span name="time" id="time">55m</span>
                 </p>
-                <p>Bellaaaaaaaa :3</p>
+                <p><?php echo $comment['text']?></p>
                 <div class="comment-interactions">
                     <div class="interactions">
                         <label hidden for="upvote-comm">Upvote</label>
