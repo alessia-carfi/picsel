@@ -3,7 +3,7 @@
 
 <?php else:
         foreach ($templateParams["posts"] as $post) {
-            include 'post.php';
+            include __DIR__ . '/components/post.php';
         } 
     endif;
 ?>

@@ -8,7 +8,7 @@ if (isset($_POST['email'], $_POST['password'])) {
     $password = $_POST['password'];
     if ($dbh->login($email, $password)) {
         session_write_close();
-        header("Location: userfeed.php");
+        header("Location: logged_user_feed.php");
         exit();
     } else {
         header('Location: ./login.php?error=1');
