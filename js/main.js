@@ -42,7 +42,5 @@ window.addEventListener("DOMContentLoaded", () => {
 
   //Setup post interactions
   //Map the buttons to their respective posts, and add their respective eventListeners
-  // let upvotes = document.getElementsByName("upvote")
-  // let downvotes = document.getElementsByName("downvotes")
   interactions.buttonSetUp()
 });
