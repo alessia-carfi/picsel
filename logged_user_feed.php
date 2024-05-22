@@ -5,6 +5,7 @@ if (isLoggedIn()) {
     require_once ('./bootstrap.php');
     $templateParams['title'] = "Picsel - Home";
     $templateParams['posts'] = $dbh->getPostsByUserIdWithLiked($_SESSION['user_id']);
+    $templateParams['followed'] = $dbh->getFollowedUsers();
     
     require ("./template.php");
 } else {

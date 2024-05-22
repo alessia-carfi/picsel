@@ -16,13 +16,17 @@
                     <p class="fl-label">Follows</p>
                 </li>
                 <li>
-                    <a href="#fl-pr">
-                        <img src="assets/logo.svg" alt="" />
-                        <p class="fl-name">
-                            <span class="fl-mainname">Carmelo</span>
-                            <span class="small-text">@melooooo</span>
-                        </p>
-                    </a>
+                    <?php if (count($templateParams['followed']) > 0): ?>
+                        <?php foreach ($templateParams['followed'] as $followed): ?>
+                        <a href="#fl-pr">
+                            <img src="assets/logo.svg" alt="" />
+                            <p class="fl-name">
+                                <span class="fl-mainname"><?php echo $followed['name']?></span>
+                                <span class="small-text">@<?php echo $followed['nickname']?></span>
+                            </p>
+                        </a>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 </li>
                 <li>
                     <p class="border"></p>
