@@ -180,6 +180,15 @@ class DatabaseHelper {
         return $result->fetch_assoc()['type'] ? "Up" : "Down";
     }
 
+    public function isPostSaved($post_id) {
+        $stmt = $this->db->prepare("SELECT * FROM SAVED WHERE post_id=? AND user_id=?");
+        $stmt->bind_param("ii", $post_id, $_SESSION['user_id']);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->num_rows == 1;
+    }
+
     public function votePost($post_id, $type) {
         $prevVoteType = $this->getPostVoteType($post_id);
         switch ($prevVoteType) {
@@ -198,6 +207,25 @@ class DatabaseHelper {
         }
     }
 
+    public function savePost($post_id) {
+        $stmt = $this->db->prepare("INSERT INTO SAVED (post_id, user_id) VALUES (?, ?)");
+        $stmt->bind_param("ii", $post_id, $_SESSION['user_id']);
+        if ($stmt->execute()) {
+            return ["success" => true];
+        } else {
+            return ["success" => false, "message" => "Error: " . $stmt->error ];
+        }
+    }
+
+    public function unsavePost($post_id) {
+        $stmt = $this->db->prepare("DELETE FROM SAVED WHERE post_id=? AND user_id=?");
+        $stmt->bind_param("ii", $post_id, $_SESSION['user_id']);
+        if ($stmt->execute()) {
+            return ["success" => true];
+        } else {
+            return ["success" => false, "message" => "Error: " . $stmt->error ];
+        }
+    }
     
     public function getPostById($post_id) {
         $stmt = $this->db->prepare("SELECT POST.post_id, POST.game_id, POST.text, POST.image, POST.likes, POST.comments, POST.user_id, USR.nickname from POST JOIN USR ON USR.user_id=POST.user_id WHERE POST.post_id=?");

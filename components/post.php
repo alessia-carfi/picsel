@@ -30,7 +30,7 @@
                 <p>0</p>
             </a>
         </div>
-        <button id="save" aria-label="save post">
+        <button id="save" name="save" aria-label="save post" data-post-id=<?php echo $post['post_id']?>>
             <span class="fa-solid fa-floppy-disk"></span>
         </button>
     </div>
