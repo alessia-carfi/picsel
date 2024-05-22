@@ -1,6 +1,6 @@
 INSERT INTO USR (name, nickname, email, password, image)
 VALUES ('franco baglio', 'francognolo', 'franc@gmail.com', '1234', NULL),
-('FROM Software', '@fromsoftware', 'from@software.com', 'yes1nd33d', null);
+('FROM Software', 'fromsoftware', 'from@software.com', 'yes1nd33d', null);
 
 INSERT INTO GAME (name, description, user_id)
 VALUES ("Dark Souls 2", "Giocate l'1 e il 3 poi provate questo che è meglio", 2);

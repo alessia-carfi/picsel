@@ -5,7 +5,7 @@
                 <img src="assets/logo.svg" alt=""/>
                 <p class="name-mobile">
                     <span id="name"><?php echo ($templateParams['logged_user'])['name']; ?></span>
-                    <span id="tag"><?php echo ($templateParams['logged_user'])['nickname']; ?></span>
+                    <span id="tag">@<?php echo ($templateParams['logged_user'])['nickname']; ?></span>
                 </p>
             </div>
             <button id="close"><span class="fa-solid fa-xmark"></span></button>

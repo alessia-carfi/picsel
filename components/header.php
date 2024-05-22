@@ -3,7 +3,7 @@
     <img src="assets/logo.svg" alt="" id="profileimageid"/>
     <p class="name">
         <span id="name"><?php echo ($templateParams['logged_user'])['name']; ?></span>
-        <span id="tag"><?php echo ($templateParams['logged_user'])['nickname']; ?></span>
+        <span id="tag">@<?php echo ($templateParams['logged_user'])['nickname']; ?></span>
     </p>
     </div>
     <div class="search">
