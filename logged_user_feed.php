@@ -6,6 +6,7 @@ if (isLoggedIn()) {
     $templateParams['title'] = "Picsel - Home";
     $templateParams['posts'] = $dbh->getPostsByUserIdWithLiked($_SESSION['user_id']);
     $templateParams['followed'] = $dbh->getFollowedUsers();
+    $templateParams['subscriptions'] = $dbh->getFollowedGames();
     
     require ("./template.php");
 } else {

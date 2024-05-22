@@ -40,11 +40,16 @@
                 </li>
                 <li>
                     <a href="#sub-pr">
-                        <img src="assets/logo.svg" alt="">
-                        <p class="sub-name">
-                            <span class="sub-mainname">Pippo The Game</span>
-                            <span class="small-text">@ppthegame</span>
-                        </p>
+                    <?php if (count($templateParams['subscriptions']) > 0): ?>
+                        <?php foreach ($templateParams['subscriptions'] as $subbed): ?>
+                        <a href="#fl-pr">
+                            <img src="assets/logo.svg" alt="" />
+                            <p class="fl-name">
+                                <span class="fl-mainname"><?php echo $subbed['name']?></span>
+                            </p>
+                        </a>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                     </a>
                 </li>
             </ul>

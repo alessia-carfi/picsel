@@ -130,6 +130,15 @@ class DatabaseHelper {
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function getFollowedGames() {
+        $stmt = $this->db->prepare("SELECT GAME.name FROM FOLLOWS_GAME JOIN GAME
+                                    ON GAME.game_id=FOLLOWS_GAME.game_id WHERE FOLLOWS_GAME.user_id=?");
+        $stmt->bind_param("i", $_SESSION['user_id']);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
     
     public function getGameFromId($id) {
         $stmt = $this->db->prepare("SELECT name from GAME where game_id=?");
