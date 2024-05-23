@@ -1,0 +1,182 @@
+:root {
+    font-family: "Poppins", sans-serif;
+    --color-black: #0d0221;
+    --color-white: #ebebeb;
+    --color-gray: #cdc6da;
+    --color-blue: #6461a0;
+    --color-purple: #321d59;
+    --color-red: #d81159;
+}
+
+
+.fa-arrow-left:hover {
+    color: var(--color-red);
+    cursor: pointer;
+}
+
+.fa-arrow-left {
+    display: flex;
+    color: var(--color-white);
+    font-size: 30px;
+    width: 2rem;
+    height: 2rem;
+    margin: 1rem;
+}
+
+
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-black);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+    color: var(--color-white);
+}
+
+
+.small-text {
+    color: var(--color-gray);
+    font-weight: normal;
+    font-size: 14px;
+    margin: 0;
+}
+
+.arrow {
+    display: flex;
+}
+
+.profilewindow {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    min-height: 100vh;
+
+}
+
+
+.profile {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.profilename {
+    display: flex;
+    flex-direction: column;
+    padding-left: 1rem;
+    width: 100%;
+}
+
+.profilename>.pr-name {
+    font-size: 28px;
+}
+
+.profilename>.tagname {
+    font-weight: bold;
+    font-size: 24px;
+    color: var(--color-gray);
+}
+
+.profileinfo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.profileimage {
+    border-radius: 50%;
+}
+
+.description {
+    margin-top: 1rem;
+    font-size: 20px;
+    text-align: center;
+    align-self: center;
+}
+
+
+
+.followbutton {
+    color: var(--color-white);
+    background-color: var(--color-red);
+    border: 0px;
+    border-radius: 0.8rem;
+    font-size: 20px;
+    padding: 0.5rem 0.5rem;
+    cursor: pointer;
+    font-family: "Poppins", sans-serif;
+    align-self: center;
+}
+
+
+
+
+@media only screen and (min-width: 830px) {
+
+    .profile {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .description {
+        width: 40%;
+    }
+
+    .profileimage {
+        width: 8rem;
+        height: 6rem;
+    }
+
+    .profileinfo {
+        display: flex;
+        justify-content: center;
+    }
+    .arrow {
+        justify-content: end;
+    }
+    .elements{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media only screen and (max-width: 830px) {
+
+    
+    .arrow {
+        justify-content: start;
+    }
+
+    .profileimage {
+        width: 9rem;
+        height: 6rem;
+    }
+
+    .followcontainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+    }
+    .profile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .elements{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}
