@@ -1,6 +1,10 @@
 <header>
     <div class="profile" >
+    <?php if ($templateParams['logged_user']['image'] != NULL) :?>
+    <img src=<?php echo $templateParams['logged_user']['image']; ?> alt="" id="profileimageid"/>
+    <?php else:?>
     <img src="assets/logo.svg" alt="" id="profileimageid"/>
+    <?php endif;?>
     <p class="name">
         <span id="name"><?php echo ($templateParams['logged_user'])['name']; ?></span>
         <span id="tag">@<?php echo ($templateParams['logged_user'])['nickname']; ?></span>
