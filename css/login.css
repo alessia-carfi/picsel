@@ -55,7 +55,6 @@
 
 .emaillg,
 .passwordlg {
-  font-family: "Poppins", sans-serif;
   color: var(--color-white);
   display: flex;
   flex-direction: column;
@@ -78,7 +77,6 @@
   font-size: 20px;
   padding: 0.5rem 0.5rem;
   cursor: pointer;
-  font-family: "Poppins", sans-serif;
   align-self: flex-end;
 }
 

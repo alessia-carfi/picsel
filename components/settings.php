@@ -10,7 +10,7 @@
       rel="stylesheet" />
     <script defer src="../assets/fontawesome/js/solid.js"></script>
     <script defer src="../assets/fontawesome/js/fontawesome.js"></script>
-    <script type="module" src="../js/main.js"></script>
+    <!-- <script type="module" src="../js/main.js"></script> -->
   </head>
 
   <body>
@@ -20,21 +20,16 @@
     </header>
     <main>
       <h2>Profile</h2>
-        <ul class="settings-list">
-            <li>
-                <label for="profile-picture">Change profile picture: </label>
-                <input type="file" accept="image/png, image/jpeg" />
-            </li>
+        <form class="settings" id="settings-form" action="../update_profile.php" method="post" enctype="multipart/form-data">
+            <label for="profile-picture">Change profile picture: </label>
+            <input type="file" id="profile-picture" name="profile-picture" accept="image/png, image/jpeg" />
+        
+            <label for="nickname">Change username: </label>
+            <input type="text" id="nickname" name="nickname" autocomplete="off"/>
 
-            <li>
-                <label for="username">Change username: </label>
-                <input type="text" />
-            </li>
-            <li>
-                <label for="submit" hidden>Submit</label>
-                <input type="submit" />
-            </li>
-        </ul>
+            <label for="submit" hidden>Submit</label>
+            <input type="submit" id="submit" name="submit" value="Submit" class="submit"/>
+        </form>
         
     </main>
   </body>

@@ -242,7 +242,6 @@ class DatabaseHelper {
         return $post;
     }
 
-    
     public function getCommentsByPostId($post_id) {
         $stmt = $this->db->prepare("SELECT * FROM COMMENT WHERE post_id= ?");
         $stmt->bind_param("i", $post_id);
@@ -306,18 +305,43 @@ class DatabaseHelper {
         }
     }
 
-    public function setProfileImage($image, $user_id) {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['image']['error'])) {
-            if ($_FILES['image']['error'] == UPLOAD_ERR_OK) {
-                $img = file_get_contents($_FILES['image']['tmp_name']);
-                $stmt = $this->db->prepare("UPDATE USR SET image=? WHERE user_id=?");
-                $stmt->bind_param("bi", $img, $user_id);
-                $stmt->execute();
-                echo "Image changed!";
-            } else {
-                echo "Upload failed with error code " . $_FILES['image']['error'];
-            }
+    public function setProfileImage($image) {
+        $stmt = $this->db->prepare("UPDATE USR SET image=? WHERE user_id=?");
+        $stmt->bind_param("bi", $image, $_SESSION['user_id']);
+        $stmt->execute();
+        if ($stmt->execute()) {
+            return ['success' => true];
+        } else {
+            return ['success' => false, 'message' => 'Error: ' . $stmt->error];
         }
+    }
+
+    public function getProfileImage($user_id) {
+        $stmt = $this->db->prepare("SELECT image FROM USR WHERE user_id=?");
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        return $result->fetch_assoc()['image'];
+    }
+
+    public function setProfileNickname($nickname) {
+        $stmt = $this->db->prepare("UPDATE USR SET nickname=? WHERE user_id=?");
+        $stmt->bind_param("si", $nickname, $_SESSION['user_id']);
+        if ($stmt->execute()) {
+            return ['success' => true];
+        } else {
+            return ['success' => false, 'message' => 'Error: ' . $stmt->error];
+        }
+    }
+
+    public function getProfileNickname($user_id) {
+        $stmt = $this->db->prepare("SELECT nickname FROM USR WHERE user_id=?");
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        return $result->fetch_assoc()['nickname'];
     }
 }
 ?>

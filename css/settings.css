@@ -30,19 +30,33 @@ h2 {
   margin: 0 0 0 2rem;
 }
 
-.settings-list {
+.settings {
   display: flex;
   flex-direction: column;
-  list-style: none;
-  margin: 1rem, 2rem;
+  margin: 1rem 2rem;
 }
 
-.settings-list > li {
-  padding-bottom: 1rem;
-}
-
-.settings-list label {
+.settings label {
   font-size: 1.2rem;
   font-weight: regular;
   color: var(--color-white);
+  margin-top: 1rem;
+}
+
+.submit {
+  margin-top: 2rem;
+  padding: 0.5rem !important;
+  background-color: var(--color-red);
+  color: var(--color-white);
+  font-weight: bold;
+  border-radius: 0.7rem !important;
+  border: none !important;
+  cursor: pointer;
+  align-self: end;
+}
+
+.settings input {
+  padding: 1rem;
+  border: 1px solid var(--color-blue);
+  border-radius: 1rem;
 }
