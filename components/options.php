@@ -6,7 +6,7 @@
             <a href="" id="new"><span class="fa-solid fa-square-plus"></span><p>New</p></a>
         </li>
         <li>
-            <a href="" id="saved"><span class="fa-solid fa-floppy-disk"></span><p>Saved</p></a>
+            <a href="/picsel/saved.php" id="saved"><span class="fa-solid fa-floppy-disk"></span><p>Saved</p></a>
         </li>
         <li>
             <a href="" id="refresh"><i class="fa-solid fa-arrows-rotate"></i
