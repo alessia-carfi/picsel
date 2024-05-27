@@ -3,7 +3,7 @@ include("account_utils.php");
 sec_session_start();
 if (isLoggedIn()) {
     require_once ('./bootstrap.php');
-    $templateParams['title'] = "Picsel - Your Feed";
+    $templateParams['title'] = "Picsel - Home";
     $templateParams['posts'] = $dbh->getPostsByUserId($_SESSION['user_id']);
     $templateParams['followed'] = $dbh->getFollowedUsers();
     $templateParams['subscriptions'] = $dbh->getFollowedGames();

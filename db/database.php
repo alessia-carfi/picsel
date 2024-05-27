@@ -45,13 +45,13 @@ class DatabaseHelper {
         }
     }
 
-    public function checkEmail($email)
+    public function checkSignupEmail($email)
     {
         $stmt = $this->db->prepare("SELECT * FROM USR WHERE email=?");
         $stmt->bind_param("s", $email);
         if ($stmt->execute()) {
             $result = $stmt->get_result();
-            if ($result->num_rows == 1) {
+            if ($result->num_rows > 0) {
                 return ['success' => true, 'message' => 'In use'];
             } else {
                 return ['success' => true, 'message' => 'Not in use'];
@@ -254,6 +254,51 @@ class DatabaseHelper {
         }
         return $comments;
     }
+    public function setProfileImage($image) {
+        $stmt = $this->db->prepare("UPDATE USR SET image=? WHERE user_id=?");
+        $stmt->bind_param("bi", $image, $_SESSION['user_id']);
+        $stmt->execute();
+        if ($stmt->execute()) {
+            return ['success' => true];
+        } else {
+            return ['success' => false, 'message' => 'Error: ' . $stmt->error];
+        }
+    }
+
+    public function getProfileImage($user_id) {
+        $stmt = $this->db->prepare("SELECT image FROM USR WHERE user_id=?");
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        return $result->fetch_assoc()['image'];
+    }
+
+    public function setProfileNickname($nickname) {
+        $stmt = $this->db->prepare("UPDATE USR SET nickname=? WHERE user_id=?");
+        $stmt->bind_param("si", $nickname, $_SESSION['user_id']);
+        if ($stmt->execute()) {
+            return ['success' => true];
+        } else {
+            return ['success' => false, 'message' => 'Error: ' . $stmt->error];
+        }
+    }
+
+    public function getProfileNickname($user_id) {
+        $stmt = $this->db->prepare("SELECT nickname FROM USR WHERE user_id=?");
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        return $result->fetch_assoc()['nickname'];
+    }
+
+    /* TODO */
+    public function getPostsByFollowedGamesAndUsers($limit) {
+        $query = "SELECT POST.post_id, POST.game_id, POST.text, POST.image, POST.likes, POST.comments, POST.user_id, USR.nickname
+        FROM POST LEFT JOIN USR ON POST.user_id=USR.user_id WHERE (";
+        $stmt = $this->db->prepare("");
+    }
 
     private function checkbrute($user_id) {
         $now = time();
@@ -288,7 +333,7 @@ class DatabaseHelper {
 
     // If the post had received an upvote already and changes to a downvote, the likes counter goes down by 2 (removes
     // the +1 point of the upvote, then removes another point for the downvote), and vice versa.
-    public function updatePostVoteCount($post_id, $type, $multiplier) {
+    private function updatePostVoteCount($post_id, $type, $multiplier) {
         $old_likes = $this->getPostById($post_id)['likes'];
         if ($type) {
             $new_likes = $old_likes + ($multiplier * $this::UP);
@@ -303,68 +348,6 @@ class DatabaseHelper {
         } else {
             return ['success' => false, 'message' => 'Error: ' . $stmt->error];
         }
-    }
-
-    public function setProfileImage($image) {
-        $stmt = $this->db->prepare("UPDATE USR SET image=? WHERE user_id=?");
-        $stmt->bind_param("si", $image, $_SESSION['user_id']);
-        $stmt->execute();
-        if ($stmt->execute()) {
-            return ['success' => true];
-        } else {
-            return ['success' => false, 'message' => 'Error: ' . $stmt->error];
-        }
-    }
-
-    public function getProfileImage($user_id) {
-        $stmt = $this->db->prepare("SELECT image FROM USR WHERE user_id=?");
-        $stmt->bind_param("i", $user_id);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        if ($result) {
-            echo $result->fetch_assoc()['image'];
-        } else {
-            echo "No image found.";
-        }
-    }
-
-    public function setProfileNickname($nickname) {
-        $stmt = $this->db->prepare("UPDATE USR SET nickname=? WHERE user_id=?");
-        $stmt->bind_param("si", $nickname, $_SESSION['user_id']);
-        if ($stmt->execute()) {
-            return ['success' => true];
-        } else {
-            return ['success' => false, 'message' => 'Error: ' . $stmt->error];
-        }
-    }
-
-    public function getProfileNickname($user_id) {
-        $stmt = $this->db->prepare("SELECT nickname FROM USR WHERE user_id=?");
-        $stmt->bind_param("i", $user_id);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        
-        return $result->fetch_assoc()['nickname'];
-    }
-
-    public function setProfileName($name) {
-        $stmt = $this->db->prepare("UPDATE USR SET name=? WHERE user_id=?");
-        $stmt->bind_param("si", $name, $_SESSION['user_id']);
-        if ($stmt->execute()) {
-            return ['success' => true];
-        } else {
-            return ['success' => false, 'message' => 'Error: ' . $stmt->error];
-        }
-    }
-
-    public function getProfileName($user_id) {
-        $stmt = $this->db->prepare("SELECT name FROM USR WHERE user_id=?");
-        $stmt->bind_param("i", $user_id);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        
-        return $result->fetch_assoc()['name'];
     }
 }
 ?>
