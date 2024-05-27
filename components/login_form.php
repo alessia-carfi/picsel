@@ -18,11 +18,12 @@ if(isset($_GET['error'])) {
 <body>
     <div class="login">
         <p class="logintext">Login</p>
-        <form class="loginform" action="./login.php" method="post" name="login_form">
+        <form class="loginform" id="loginform" action="./login.php" method="post" name="login_form">
             <label hidden for="emailid" class="emaillabel">E-mail</label>
             <input class="emaillg" name="email" id="emailid" type="text" placeholder="E-mail" />
             <label hidden for="passid" class="passwordlabel">Password</label>
             <input class="passwordlg" name="password" id="passid" type="password" placeholder="Password" />
+            <span class="passworderrorlg" id="passworderrorid">Password doesn't match</span>
             <label hidden for="loginbuttonid">Submit</label>
             <input type="submit" class="loginbutton" id="loginbuttonid" value="Submit" />
         </form>
@@ -31,6 +32,7 @@ if(isset($_GET['error'])) {
             <a href="signup.php" class="signintext">Sign up</a>
         </p>
     </div>
+    <script type="text/javascript" src="./js/login.js"></script>
 </body>
 
 </html>

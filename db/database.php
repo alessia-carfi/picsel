@@ -45,13 +45,13 @@ class DatabaseHelper {
         }
     }
 
-    public function checkSignupEmail($email)
+    public function checkEmail($email)
     {
         $stmt = $this->db->prepare("SELECT * FROM USR WHERE email=?");
         $stmt->bind_param("s", $email);
         if ($stmt->execute()) {
             $result = $stmt->get_result();
-            if ($result->num_rows > 0) {
+            if ($result->num_rows == 1) {
                 return ['success' => true, 'message' => 'In use'];
             } else {
                 return ['success' => true, 'message' => 'Not in use'];
