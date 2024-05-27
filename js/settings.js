@@ -1,20 +1,20 @@
-const form = null;
-const username = null;
-const profilePic = null;
-
 window.addEventListener("DOMContentLoaded", () => {
-  form = document.getElementById("settings-form");
-  username = document.getElementById("nickname");
-  profilePic = document.getElementById("profile-picture");
+  let form = document.getElementById("settings-form");
 
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
+  form.addEventListener("submit", () => {
+    let username = document.getElementById("nickname");
+    let profilePic = document.getElementById("profile-picture").files[0];
+    let name = document.getElementById("name");
 
-    if (username.value.trim() === "" && profilePic.files.length === 0) {
-      alert("Please enter a new username or select a new profile picture.");
+    if (
+      username.value.trim() === "" &&
+      profilePic.files.length === 0 &&
+      name.value.trim() === ""
+    ) {
+      alert(
+        "Please enter a new name or username or select a new profile picture."
+      );
       return;
     }
-
-    form.submit();
   });
 });

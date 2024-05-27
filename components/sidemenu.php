@@ -2,7 +2,11 @@
     <div class="sidemenu" id="sidemenuid">
         <div class="top-sidemenu"  id="top-sidemenu" style="display: none">
             <div class=profile-mobile>
-                <img src="assets/logo.svg" alt=""/>
+                <?php if ($templateParams['logged_user']['image'] != NULL) :?>
+                <img src='data:image/PNG;base64,<?php echo base64_encode($templateParams['logged_user']['image']); ?>' alt="" id="profileimageid"/>
+                <?php else:?>
+                <img src="assets/logo.svg" alt="" id="profileimageid"/>
+                <?php endif;?>
                 <p class="name-mobile">
                     <span id="name"><?php echo ($templateParams['logged_user'])['name']; ?></span>
                     <span id="tag">@<?php echo ($templateParams['logged_user'])['nickname']; ?></span>

@@ -20,12 +20,17 @@ header {
   justify-content: start;
   padding: 1rem 1rem;
   cursor: pointer;
+  border-radius: 100%;
+  align-items: center;
 }
 
 .profile > img {
   width: 3rem;
-  padding-right: 1rem;
-  justify-content: start;
+  height: 3rem;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+  border-radius: 100%;
+  margin-right: 1rem;
 }
 
 .logo {

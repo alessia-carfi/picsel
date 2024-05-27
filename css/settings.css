@@ -47,7 +47,7 @@ h2 {
   margin-top: 2rem;
   padding: 0.5rem !important;
   background-color: var(--color-red);
-  color: var(--color-white);
+  color: var(--color-white) !important;
   font-weight: bold;
   border-radius: 0.7rem !important;
   border: none !important;
@@ -59,4 +59,5 @@ h2 {
   padding: 1rem;
   border: 1px solid var(--color-blue);
   border-radius: 1rem;
+  color: var(--color-black);
 }

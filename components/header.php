@@ -1,7 +1,7 @@
 <header>
     <div class="profile" >
     <?php if ($templateParams['logged_user']['image'] != NULL) :?>
-    <img src=<?php echo $templateParams['logged_user']['image']; ?> alt="" id="profileimageid"/>
+    <img src='data:image/PNG;base64,<?php echo base64_encode($templateParams['logged_user']['image']); ?>' alt="" id="profileimageid"/>
     <?php else:?>
     <img src="assets/logo.svg" alt="" id="profileimageid"/>
     <?php endif;?>
