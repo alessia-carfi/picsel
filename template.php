@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="./css/header.css" />
     <link rel="stylesheet" type="text/css" href="./css/post.css" />
     <link rel="stylesheet" type="text/css" href="./css/sidemenu.css" />
+    <link rel="stylesheet" type="text/css" href="./css/inbox.css" />
     <link
       href="https://fonts.googleapis.com/css?family=Poppins"
       rel="stylesheet" />
