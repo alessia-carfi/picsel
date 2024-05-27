@@ -7,6 +7,8 @@ let emailerror = document.getElementById("emailerrorid");
 
 let loginform = document.getElementById("loginform");
 
+hideErrorOnClick();
+
 window.addEventListener("DOMContentLoaded", () => {
     loginform.addEventListener("submit", async (e) => {
         e.preventDefault();
@@ -15,6 +17,7 @@ window.addEventListener("DOMContentLoaded", () => {
             loginform.submit();
             alert("Login successful!");
         }
+        hideErrorOnClick();
     });
 });
 
@@ -68,4 +71,15 @@ function hideerror() {
     passworderror.style.visibility = "hidden";
     email.style.border = "1px solid var(--color-white)";
     passworderror.style.border = "1px solid var(--color-white)";
+}
+
+function hideErrorOnClick(){
+    email.addEventListener("click", () => {
+        email.style.border = "1px solid var(--color-blue)";
+        passworderror.style.visibility = "hidden";
+    });
+    password.addEventListener("click", () => {
+        password.style.border = "1px solid var(--color-blue)";
+        passworderror.style.visibility = "hidden";
+    });
 }
