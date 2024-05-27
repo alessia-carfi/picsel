@@ -171,8 +171,8 @@ class DatabaseHelper {
     public function getSavedPosts() {
         $stmt = $this->db->prepare("SELECT POST.post_id, POST.game_id, POST.text, 
                                            POST.image, POST.likes, POST.comments, POST.user_id, USR.nickname 
-                                           FROM POST JOIN USR ON POST.user_id=USR.user_id
-                                           JOIN SAVED WHERE POST.user_id=SAVED.user_id AND SAVED.user_id=? 
+                                           FROM (POST JOIN USR ON POST.user_id=USR.user_id)
+                                           RIGHT JOIN SAVED ON POST.post_id=SAVED.post_id AND SAVED.user_id=? 
                                            GROUP BY POST.post_id");
         $stmt->bind_param("i", $_SESSION['user_id']);
         $stmt->execute();
