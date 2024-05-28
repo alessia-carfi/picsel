@@ -1,4 +1,4 @@
-<div class="post">
+<article class="post">
     <div class="poster">
         <img src="<?php echo $post['image']; ?>" alt="" name="profileimg" id="profileimg" />
         <p class="user-tag">
@@ -34,4 +34,4 @@
             <span class="fa-solid fa-floppy-disk"></span>
         </button>
     </div>
-</div>
+</article>
