@@ -3,7 +3,7 @@
         <p id="other">Other options</p>
         <ul>
         <li>
-            <a href="" id="new"><span class="fa-solid fa-square-plus"></span><p>New</p></a>
+            <a href="/picsel/createpost.php" id="new"><span class="fa-solid fa-square-plus"></span><p>New</p></a>
         </li>
         <li>
             <a href="/picsel/saved.php" id="saved"><span class="fa-solid fa-floppy-disk"></span><p>Saved</p></a>
