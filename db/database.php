@@ -338,6 +338,16 @@ class DatabaseHelper {
         $stmt = $this->db->prepare("");
     }
 
+    public function createComment($text, $post_id) {
+        $stmt = $this->db->prepare("INSERT INTO COMMENT (post_id, user_id, text) VALUES (?, ?, ?)");
+        $stmt->bind_param("iis", $post_id, $_SESSION['user_id'], $text);
+        if ($stmt->execute()) {
+            return ['success' => true];
+        } else {
+            return ['success' => false, 'message' => 'Error: ' . $stmt->error];
+        }
+    }
+
     private function checkbrute($user_id) {
         $now = time();
         $valid_attempts = $now - (2 * 60 * 60); //Attempts in the past 2 hours
