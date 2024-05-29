@@ -5,7 +5,7 @@
         $data = json_decode(file_get_contents('php://input'), true);
         $email = $data['email'];
 
-        $response = $dbh -> checkEmail($email);
+        $response = $dbh -> checkSignupEmail($email);
 
         echo json_encode($response);
     }

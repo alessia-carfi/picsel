@@ -64,12 +64,12 @@ async function checkUsername() {
             resolve();
             return;
         }
-        var xhr = new XMLHttpRequest();
+        let xhr = new XMLHttpRequest();
         xhr.open("POST", "/picsel/db/signupusernameajax.php", true);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.onreadystatechange = function () {
             if (xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
-                var response = JSON.parse(xhr.responseText);
+                let response = JSON.parse(xhr.responseText);
                 if (response.success) {
                     if (response.message === "In use") {
                         error.username.textContent = "Username already in use";
@@ -84,7 +84,7 @@ async function checkUsername() {
             }
         };
 
-        var data = JSON.stringify({
+        let data = JSON.stringify({
             username: user.username.value,
         });
         xhr.send(data);
@@ -99,12 +99,12 @@ async function checkEmail() {
             resolve();
             return;
         }
-        var xhr = new XMLHttpRequest();
+        let xhr = new XMLHttpRequest();
         xhr.open("POST", "/picsel/db/signupemailajax.php", true);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.onreadystatechange = function () {
             if (xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
-                var response = JSON.parse(xhr.responseText);
+                let response = JSON.parse(xhr.responseText);
                 if (response.success) {
                     if (response.message === "In use") {
                         error.email.textContent = "Email already in use";
@@ -120,7 +120,7 @@ async function checkEmail() {
             }
         };
 
-        var data = JSON.stringify({
+        let data = JSON.stringify({
             email: user.email.value,
         });
         xhr.send(data);
