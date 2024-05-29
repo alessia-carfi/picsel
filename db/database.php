@@ -293,6 +293,7 @@ class DatabaseHelper {
         $stmt = $this->db->prepare("UPDATE USR SET nickname=? WHERE user_id=?");
         $stmt->bind_param("si", $nickname, $_SESSION['user_id']);
         if ($stmt->execute()) {
+            $_SESSION['username'] = $nickname;
             return ['success' => true];
         } else {
             return ['success' => false, 'message' => 'Error: ' . $stmt->error];
