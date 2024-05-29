@@ -20,7 +20,7 @@
   <body>
     <header>
         <h1>Settings</h1>
-        <a class="go-back" href="/picsel/logged_user_feed.php" aria-label="Go back"><span class="fa-solid fa-arrow-left"></span></a>
+        <a class="go-back" href="/picsel/home.php" aria-label="Go back"><span class="fa-solid fa-arrow-left"></span></a>
     </header>
     <main>
       <h2>Profile</h2>
