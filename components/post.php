@@ -26,8 +26,7 @@
                 <button id="view-comments" aria-label="view comments">
                     <span class="fa-solid fa-comments"></span>
                 </button>
-                <!-- TODO -->
-                <p>0</p>
+                <p><?php echo $post['comments'];?></p>
             </a>
         </div>
         <button id="save" class="<?php echo $dbh->isPostSaved($post['post_id']) ? 'liked' : ''?>" name="save" aria-label="save post" data-post-id=<?php echo $post['post_id']?>>

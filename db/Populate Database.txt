@@ -6,14 +6,11 @@ INSERT INTO GAME (name, description, user_id)
 VALUES ("Dark Souls 2", "Giocate l'1 e il 3 poi provate questo che è meglio", 2);
 
 INSERT INTO POST (text, image, likes, comments, user_id, game_id)
-VALUES ("Ho vintoooooo", NULL, 0, 1, 1, 1),
+VALUES ("Ho vintoooooo", NULL, 0, 2, 1, 1),
 ("Che figata sto gioco", NULL, 0, 0, 1, 1);
 
 INSERT INTO TAG
 VALUES ("Survival"), ("Soulslike"), ("Hack and Slash"), ("Fighting Game"), ("Action"), ("RPG"), ("Metroidvania");
-
-INSERT INTO LIKED (post_id, user_id, type)
-VALUES (1, 1, 1);
 
 INSERT INTO COMMENT (`text`, post_id, user_id)
 VALUES ("BRAVOOO", 1, 2),

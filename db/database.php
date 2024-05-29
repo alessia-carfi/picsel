@@ -180,10 +180,6 @@ class DatabaseHelper {
         
         return $result->fetch_all(MYSQLI_ASSOC);
     }
-
-    public function insertPost() {
-        /*TODO*/
-    }
     
     public function getPostVoteType($post_id) {
         $stmt = $this->db->prepare("SELECT `type` FROM LIKED WHERE LIKED.user_id=? and LIKED.post_id=?");
@@ -341,6 +337,18 @@ class DatabaseHelper {
     public function createComment($text, $post_id) {
         $stmt = $this->db->prepare("INSERT INTO COMMENT (post_id, user_id, text) VALUES (?, ?, ?)");
         $stmt->bind_param("iis", $post_id, $_SESSION['user_id'], $text);
+        if ($stmt->execute()) {
+            return $this->updateCommentCount($post_id);
+        } else {
+            return ['success' => false, 'message' => 'Error: ' . $stmt->error];
+        }
+    }
+
+    private function updateCommentCount($post_id) {
+        $stmt = $this->db->prepare("UPDATE POST SET comments=? WHERE POST.post_id=?");
+        $old_comms = $this->getPostById($post_id)['comments'];
+        $new_comms = $old_comms + 1;
+        $stmt->bind_param("ii", $new_comms, $post_id);
         if ($stmt->execute()) {
             return ['success' => true];
         } else {
