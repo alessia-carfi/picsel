@@ -1,14 +1,19 @@
 <ul class="inbox">
-    <!-- li generato col php in base alle noifiche -->
+    <?php if(count($templateParams['notifs']) == 0): ?>
+    <p>You've 100%'ed your notifications!</p>
+    <?php else:
+    foreach ($templateParams['notifs'] as $notif) { ?>
     <li>
-        <a class="notification-link" href="#">
+        <div class="notification-div">
             <img src="assets/logo.svg" alt="" />
-            <p class="text"><span>@tizio123</span>liked your post</p>
-        </a>
+            <p class="text"><span>@<?php echo $notif['name']?></span><?php echo $notif['text']?></p>
+        </div>
         <div>
             <button id="delete-notification" class="delete" aria-label="delete">
                 <div class="container"><span class="fa-solid fa-trash-can"></span></div>
             </button>
         </div>
     </li>
+    <?php }
+    endif;?>   
 </ul>
