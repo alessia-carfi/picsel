@@ -14,7 +14,7 @@
   </head>
 
   <body>
-    <a class="go-back" href="/picsel/logged_user_feed.php"><span class="fa-solid fa-arrow-left"></span></a>
+    <a class="go-back" href="/picsel/home.php"><span class="fa-solid fa-arrow-left"></span></a>
     <main>
         <?php include_once 'bootstrap.php'; ?>
         <div class="post-and-comments">

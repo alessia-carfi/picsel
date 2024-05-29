@@ -329,6 +329,12 @@ class DatabaseHelper {
     }
 
     /* TODO */
+    public function addNotification($id, $text) {
+        $stmt = $this->db->prepare("INSERT INTO `NOTIFICATION` (`name`, `text`, `user_id`) VALUES (?, ?, ?)");
+        
+    }
+
+    /* TODO */
     public function getPostsByFollowedGamesAndUsers($limit) {
         $query = "SELECT POST.post_id, POST.game_id, POST.text, POST.image, POST.likes, POST.comments, POST.user_id, USR.nickname
         FROM POST LEFT JOIN USR ON POST.user_id=USR.user_id WHERE (";
