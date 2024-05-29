@@ -226,7 +226,7 @@ class DatabaseHelper {
         $stmt = $this->db->prepare("INSERT INTO SAVED (post_id, user_id) VALUES (?, ?)");
         $stmt->bind_param("ii", $post_id, $_SESSION['user_id']);
         if ($stmt->execute()) {
-            return ["success" => true];
+            return $this->addNotification($this->getPostById($post_id)['user_id'], "saved your post.");
         } else {
             return ["success" => false, "message" => "Error: " . $stmt->error ];
         }
@@ -328,12 +328,7 @@ class DatabaseHelper {
         return $result->fetch_assoc()['name'];
     }
 
-    /* TODO */
-    public function addNotification($id, $text) {
-        $stmt = $this->db->prepare("INSERT INTO `NOTIFICATION` (`name`, `text`, `user_id`) VALUES (?, ?, ?)");
-        
-    }
-
+    
     public function removeNotification($id) {
         $stmt = $this->db->prepare("DELETE FROM `NOTIFICATION` WHERE notification_id=?");
         $stmt->bind_param("i", $id);
@@ -343,14 +338,14 @@ class DatabaseHelper {
             return ['success' => false, 'message' => 'Error: ' . $stmt->error];
         }
     }
-
+    
     /* TODO */
     public function getPostsByFollowedGamesAndUsers($limit) {
         $query = "SELECT POST.post_id, POST.game_id, POST.text, POST.image, POST.likes, POST.comments, POST.user_id, USR.nickname
         FROM POST LEFT JOIN USR ON POST.user_id=USR.user_id WHERE (";
         $stmt = $this->db->prepare("");
     }
-
+    
     public function createComment($text, $post_id) {
         $stmt = $this->db->prepare("INSERT INTO COMMENT (post_id, user_id, text) VALUES (?, ?, ?)");
         $stmt->bind_param("iis", $post_id, $_SESSION['user_id'], $text);
@@ -360,19 +355,28 @@ class DatabaseHelper {
             return ['success' => false, 'message' => 'Error: ' . $stmt->error];
         }
     }
-
+    
     private function updateCommentCount($post_id) {
         $stmt = $this->db->prepare("UPDATE POST SET comments=? WHERE POST.post_id=?");
         $old_comms = $this->getPostById($post_id)['comments'];
         $new_comms = $old_comms + 1;
         $stmt->bind_param("ii", $new_comms, $post_id);
         if ($stmt->execute()) {
+            return $this->addNotification($this->getPostById($post_id)['user_id'], "commented on your post.");
+        } else {
+            return ['success' => false, 'message' => 'Error: ' . $stmt->error];
+        }
+    }
+    
+    private function addNotification($user_id, $text) {
+        $stmt = $this->db->prepare("INSERT INTO `NOTIFICATION` (`name`, `text`, `user_id`) VALUES (?, ?, ?)");
+        $stmt->bind_param("ssi", $_SESSION['username'], $text, $user_id);
+        if ($stmt->execute()) {
             return ['success' => true];
         } else {
             return ['success' => false, 'message' => 'Error: ' . $stmt->error];
         }
     }
-
     private function checkbrute($user_id) {
         $now = time();
         $valid_attempts = $now - (2 * 60 * 60); //Attempts in the past 2 hours
@@ -417,7 +421,11 @@ class DatabaseHelper {
         $stmt = $this->db->prepare("UPDATE POST SET likes=? WHERE POST.post_id=?");
         $stmt->bind_param("ii", $new_likes, $post_id);
         if ($stmt->execute()) {
-            return ['success' => true];
+            if($type) {
+                return $this->addNotification($this->getPostById($post_id)['user_id'], "liked your post.");
+            } else { 
+                return ['success' => true];
+            }
         } else {
             return ['success' => false, 'message' => 'Error: ' . $stmt->error];
         }
