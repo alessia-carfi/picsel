@@ -1,37 +1,33 @@
 const DOWN = false;
 const UP = true;
 
-buttonSetUp()
+let upvotes = document.getElementsByName("upvote")
+let upvotesMap = new Map()
+upvotes.forEach((b) => { 
+  upvotesMap.set(b.dataset.postId, b) 
+})
 
-function buttonSetUp() {
-  let upvotes = document.getElementsByName("upvote")
-  let upvotesMap = new Map()
-  upvotes.forEach((b) => { 
-    upvotesMap.set(b.dataset.postId, b) 
-  })
-
-  let downvotes = document.getElementsByName("downvote");
-  let downvotesMap = new Map();
-  downvotes.forEach((b) => { 
-    downvotesMap.set(b.dataset.postId, b);
-    b.addEventListener("click", () => {
-      downvoteClick(b, upvotesMap.get(b.dataset.postId));
-    });
+let downvotes = document.getElementsByName("downvote");
+let downvotesMap = new Map();
+downvotes.forEach((b) => { 
+  downvotesMap.set(b.dataset.postId, b);
+  b.addEventListener("click", () => {
+    downvoteClick(b, upvotesMap.get(b.dataset.postId));
   });
+});
 
-  upvotes.forEach((b) => {
-    b.addEventListener("click", () => {
-      upvoteClick(b, downvotesMap.get(b.dataset.postId));
-    });
-  })
+upvotes.forEach((b) => {
+  b.addEventListener("click", () => {
+    upvoteClick(b, downvotesMap.get(b.dataset.postId));
+  });
+})
 
-  let saves = document.getElementsByName("save")
-  saves.forEach((s) => {
-    s.addEventListener("click", () => {
-      saveClick(s);
-    })
+let saves = document.getElementsByName("save")
+saves.forEach((s) => {
+  s.addEventListener("click", () => {
+    saveClick(s);
   })
-}
+})
 
 function saveClick(button) {
   if (button.classList.contains("liked")) {

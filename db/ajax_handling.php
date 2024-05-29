@@ -19,6 +19,10 @@
                 $post_id = $data['post_id'];
                 $response = $dbh->unsavePost($post_id);
                 break;
+            case "removeNotification":
+                $id = $data['id'];
+                $response = $dbh->removeNotification($id);
+                break;
         }
         echo json_encode($response);
     }

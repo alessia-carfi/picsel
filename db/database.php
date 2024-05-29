@@ -334,6 +334,16 @@ class DatabaseHelper {
         
     }
 
+    public function removeNotification($id) {
+        $stmt = $this->db->prepare("DELETE FROM `NOTIFICATION` WHERE notification_id=?");
+        $stmt->bind_param("i", $id);
+        if ($stmt->execute()) {
+            return ["success" => true];
+        } else {
+            return ['success' => false, 'message' => 'Error: ' . $stmt->error];
+        }
+    }
+
     /* TODO */
     public function getPostsByFollowedGamesAndUsers($limit) {
         $query = "SELECT POST.post_id, POST.game_id, POST.text, POST.image, POST.likes, POST.comments, POST.user_id, USR.nickname
