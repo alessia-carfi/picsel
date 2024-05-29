@@ -123,7 +123,7 @@ class DatabaseHelper {
     }
 
     public function getFollowedUsers() {
-        $stmt = $this->db->prepare("SELECT USR.name, USR.nickname, USR.image FROM USR JOIN FOLLOWS_USER 
+        $stmt = $this->db->prepare("SELECT USR.name, USR.nickname, USR.image, USR.user_id FROM USR JOIN FOLLOWS_USER 
                                     ON USR.user_id=FOLLOWS_USER.Fol_user_id WHERE FOLLOWS_USER.user_id=?");
         $stmt->bind_param("i", $_SESSION['user_id']);
         $stmt->execute();

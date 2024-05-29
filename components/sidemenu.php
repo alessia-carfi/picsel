@@ -22,7 +22,7 @@
                 <li>
                     <?php if (count($templateParams['followed']) > 0): ?>
                         <?php foreach ($templateParams['followed'] as $followed): ?>
-                        <a href="#fl-pr">
+                        <a href="./components/user_profile.php?user_id=<?php echo $followed['user_id']; ?>">
                             <img src="assets/logo.svg" alt="" />
                             <p class="fl-name">
                                 <span class="fl-mainname"><?php echo $followed['name']?></span>

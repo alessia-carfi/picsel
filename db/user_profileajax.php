@@ -1,12 +1,11 @@
 <?php
     require_once __DIR__ . '/../bootstrap.php';
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $data = json_decode(file_get_contents('php://input'), true);
-        $email = $data['email'];
+        $id = $_GET['user_id'];
 
-        $response = $dbh -> checkSignupEmail($email);
-
+        $response = $dbh->getUserFromId($id);
         echo json_encode($response);
     }
 ?>

@@ -5,10 +5,10 @@
     <?php else:?>
     <img src="assets/logo.svg" alt="" id="profileimageid"/>
     <?php endif;?>
-    <p class="name">
+    <a class="name" href="./components/user_profile.php?user_id=<?php echo $templateParams['logged_user']['user_id']; ?>-myprofile">
         <span id="name"><?php echo ($templateParams['logged_user'])['name']; ?></span>
         <span id="tag">@<?php echo ($templateParams['logged_user'])['nickname']; ?></span>
-    </p>
+    </a>
     </div>
     <div class="search">
     <span class="fa-solid fa-magnifying-glass"></span>
