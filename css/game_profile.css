@@ -1,0 +1,127 @@
+header {
+  display: flex;
+  align-items: center;
+  padding: 2rem;
+  font-size: bold;
+}
+
+header > a > .fa-arrow-left {
+  width: 2rem;
+  height: 2rem;
+  color: var(--color-white);
+  cursor: pointer;
+}
+
+.profilewindow {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.profilename {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  font-weight: bold;
+}
+
+.tagname {
+  color: var(--color-gray);
+}
+
+.profile {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.profileimage {
+  width: 4.2rem;
+  margin-right: 2rem;
+  border-radius: 50%;
+}
+
+.profileinfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 2rem 2rem 2rem;
+}
+
+.description {
+  text-align: center;
+  font-size: 1rem;
+}
+
+.tags {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0;
+  padding: 0;
+  overflow-x: scroll;
+}
+
+.tags > li {
+  list-style: none;
+  margin-right: 1rem;
+  padding: 0.5rem;
+  background-color: var(--color-blue);
+  border-radius: 0.5rem;
+  color: var(--color-white);
+}
+
+.tags > li > p {
+  padding: 0;
+  margin: 0;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.subscribebutton {
+  background-color: var(--color-red);
+  /* col js se premuto: 
+    background-color: var(--color-blue); */
+  border: 0px;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  color: var(--color-white);
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+@media only screen and (min-width: 650px) {
+  header {
+    justify-content: end;
+  }
+
+  .description,
+  .tags {
+    width: 25rem;
+  }
+
+  .profilename {
+    font-size: 1.8rem;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  header {
+    justify-content: start;
+  }
+
+  .profilename {
+    font-size: 1.5rem;
+  }
+
+  .description,
+  .tags {
+    max-width: 22rem;
+  }
+}

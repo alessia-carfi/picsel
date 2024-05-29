@@ -10,7 +10,6 @@
       rel="stylesheet" />
     <script defer src="./assets/fontawesome/js/solid.js"></script>
     <script defer src="./assets/fontawesome/js/fontawesome.js"></script>
-    <script type="module" src="./js/main.js"></script>
   </head>
 
   <body>
@@ -20,29 +19,30 @@
         <div class="post-and-comments">
             <?php $post = $dbh->getPostById($_GET['post_id']); ?>
             <?php include __DIR__ . '/components/post.php';?>
-            <div class="comment">
-            <?php $comments = $dbh->getCommentsByPostId($post['post_id']); ?>
-            <?php if (count($comments) > 0): ?>
+            <div class="comments">
+              <form class="create-comment" action="./db/create_comment.php" method="post">
+                <label hidden for="comment-text">Write a comment</label>
+                <textarea class="comment-textarea" name="comment-text" id="comment-text" placeholder="Write a comment..."></textarea>
+                <input type="hidden" name="post_id" value="<?php echo $post['post_id']; ?>" />
+                <label hidden for="submit-comment">Submit</label>
+                <input class="submit-comment" type="submit" name="submit-comment" id="submit-comment" value="Submit"/>
+              </form>
+              <hr />
+              <?php $comments = $dbh->getCommentsByPostId($post['post_id']); ?>
+              <?php if (count($comments) > 0): ?>
+                <ul class="comments-list">
                 <?php foreach ($comments as $comment): ?>
-                    <!-- TODO -->
-                <p class="commenter">
-                    <span class="username" name="username-comm" id="username-comm"><?php echo $dbh->getUserFromId($comment['user_id'])['nickname']?></span>
-                    <span name="time" id="time">55m</span>
-                </p>
-                <p><?php echo $comment['text']?></p>
-                <div class="comment-interactions">
-                    <div class="interactions">
-                        <label hidden for="upvote-comm">Upvote</label>
-                        <span class="fa-solid fa-caret-up" name="upvote-comm" id="upvote-comm"></span>
-                        <p>10</p>
-                        <label hidden for="downvote-comm">Downvote</label>
-                        <span class="fa-solid fa-caret-down" name="downvote" id="downvote"></span>
-                    </div>
-                    <span class="fa-solid fa-reply" id="reply" name="reply"></span>
-                </div>
+                  <li class="comment">
+                    <p class="commenter">
+                        <span class="username" name="username-comm" id="username-comm"><?php echo $dbh->getUserFromId($comment['user_id'])['name']?></span>
+                    </p>
+                    <p class="text"><?php echo $comment['text']?></p>
+                  </li>
+                  <hr />
                 <?php endforeach; ?>
-            <?php else: ?>
-            <p>No comments yet.</p>
+                </ul>
+              <?php else: ?>
+                <p>No comments yet.</p>
             <?php endif; ?>
             </div>
         </div>

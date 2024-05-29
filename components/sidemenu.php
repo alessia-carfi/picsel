@@ -33,7 +33,7 @@
                     <?php endif; ?>
                 </li>
                 <li>
-                    <p class="border"></p>
+                    <hr class="border" />
                 </li>
             </ul>
         </div>
