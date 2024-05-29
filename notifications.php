@@ -9,7 +9,7 @@ if (isLoggedIn()) {
     $templateParams['subscriptions'] = $dbh->getFollowedGames();
     $templateParams['logged_user'] = $dbh->getUserFromId($_SESSION['user_id']);
     
-    require ("./template.php");
+    require ("./notifs_full_page.php");
 } else {
     echo 'Please log in to access content';
 }

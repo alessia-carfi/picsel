@@ -6,7 +6,7 @@
         <a href="" id="explore"><span class="fa-solid fa-map"></span><p>Explore</p></a>
     </li>
     <li>
-        <a href="" id="inbox"><span class="fa-solid fa-inbox"></span><p>Inbox</p></a>
+        <a href="/picsel/notifications.php" id="inbox"><span class="fa-solid fa-inbox"></span><p>Inbox</p></a>
     </li>
     </ul>
 </nav>
