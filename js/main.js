@@ -1,6 +1,5 @@
 import * as sidemenu from "./sidemenu.js";
 import * as opt from "./options.js";
-import * as interactions from "./post_interactions.js";
 
 let menu = null;
 let image = null;
@@ -39,8 +38,4 @@ window.addEventListener("DOMContentLoaded", () => {
   burger.addEventListener("click", () => opt.openOptions(options, shadow));
   window.addEventListener("resize", () => responsiveMenu(menu));
   window.addEventListener("resize", () => responsiveMenu(options));
-
-  //Setup post interactions
-  //Map the buttons to their respective posts, and add their respective eventListeners
-  interactions.buttonSetUp()
 });

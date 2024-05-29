@@ -1,12 +1,14 @@
 const DOWN = false;
 const UP = true;
 
-export function buttonSetUp() {
+buttonSetUp()
+
+function buttonSetUp() {
   let upvotes = document.getElementsByName("upvote")
-  let upvotesMap = new Map();
+  let upvotesMap = new Map()
   upvotes.forEach((b) => { 
-    upvotesMap.set(b.dataset.postId, b) ;
-  });
+    upvotesMap.set(b.dataset.postId, b) 
+  })
 
   let downvotes = document.getElementsByName("downvote");
   let downvotesMap = new Map();
