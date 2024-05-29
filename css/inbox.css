@@ -16,20 +16,15 @@
   background-color: var(--color-purple);
   border-radius: 2rem;
   margin-top: 1rem;
-  /* col js:
-  se notifica non vista:
-  border: 2px solid var(--color-red);
-   */
 }
 
-.inbox > li > div {
+.inbox > li > .notification-div {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: start;
   text-decoration: none;
   margin: 1rem;
-  cursor: pointer;
 }
 
 .text {
@@ -42,7 +37,7 @@
   font-weight: bold;
 }
 
-.inbox > li > div > img {
+.inbox > li > .notification-div > img {
   width: 4rem;
   height: 4rem;
   object-fit: cover;
