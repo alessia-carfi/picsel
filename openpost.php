@@ -10,6 +10,7 @@
       rel="stylesheet" />
     <script defer src="./assets/fontawesome/js/solid.js"></script>
     <script defer src="./assets/fontawesome/js/fontawesome.js"></script>
+    <script defer src="./js/post_interactions.js"></script>
   </head>
 
   <body>
