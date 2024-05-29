@@ -4,10 +4,10 @@
     <?php else:
     foreach ($templateParams['notifs'] as $notif) { ?>
     <li>
-        <a class="notification-link" href="#">
+        <div class="notification-div">
             <img src="assets/logo.svg" alt="" />
             <p class="text"><span>@<?php echo $notif['name']?></span><?php echo $notif['text']?></p>
-        </a>
+        </div>
         <div>
             <button id="delete-notification" class="delete" aria-label="delete">
                 <div class="container"><span class="fa-solid fa-trash-can"></span></div>

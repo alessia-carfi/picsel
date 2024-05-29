@@ -22,7 +22,7 @@
    */
 }
 
-.inbox > li > a {
+.inbox > li > div {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -42,7 +42,7 @@
   font-weight: bold;
 }
 
-.inbox > li > a > img {
+.inbox > li > div > img {
   width: 4rem;
   height: 4rem;
   object-fit: cover;
