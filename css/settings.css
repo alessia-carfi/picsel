@@ -1,9 +1,18 @@
 header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: start;
   padding: 2rem;
-  font-size: bold;
+  font-weight: bold;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 5;
+  background-color: var(--color-black);
+}
+
+main {
+  padding: 2rem;
 }
 
 header > a > .fa-arrow-left {
@@ -11,20 +20,17 @@ header > a > .fa-arrow-left {
   height: 2rem;
   color: var(--color-white);
   cursor: pointer;
+  margin-right: 2rem;
 }
 
 h1 {
   color: var(--color-white);
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: bold;
 }
 
-main {
-  align-items: start;
-}
-
 h2 {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: bold;
   color: var(--color-red);
   margin: 0 0 0 2rem;
@@ -33,7 +39,8 @@ h2 {
 .settings {
   display: flex;
   flex-direction: column;
-  margin: 1rem 2rem;
+  align-items: center;
+  justify-content: center;
 }
 
 .settings label {
@@ -43,10 +50,19 @@ h2 {
   margin-top: 1rem;
 }
 
+.settings > input {
+  background-color: var(--color-purple);
+  border: 1px solid var(--color-white);
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+  margin-bottom: 1.5rem;
+  color: var(--color-white);
+  font-size: 22px;
+}
+
 .submit {
-  margin-top: 2rem;
   padding: 0.5rem !important;
-  background-color: var(--color-red);
+  background-color: var(--color-red) !important;
   color: var(--color-white) !important;
   font-weight: bold;
   border-radius: 0.7rem !important;
@@ -55,9 +71,43 @@ h2 {
   align-self: end;
 }
 
-.settings input {
-  padding: 1rem;
-  border: 1px solid var(--color-blue);
-  border-radius: 1rem;
-  color: var(--color-black);
+.settings > input::placeholder {
+  color: var(--color-gray);
+}
+
+.settings > label {
+  align-self: start;
+  margin-bottom: 0.5rem;
+}
+
+.logout {
+  color: var(--color-white);
+  background-color: var(--color-red);
+  margin: 3rem 0 1rem 0;
+  border: 0px;
+  border-radius: 0.8rem;
+  font-size: 20px;
+  padding: 0.5rem 0.5rem;
+  cursor: pointer;
+  align-self: center;
+}
+
+@media only screen and (min-width: 650px) {
+  .settings > input:not(.submit) {
+    width: 25rem;
+  }
+
+  main {
+    margin-top: 8rem;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .settings > input:not(.submit) {
+    width: 18rem;
+  }
+
+  main {
+    margin-top: 8rem;
+  }
 }

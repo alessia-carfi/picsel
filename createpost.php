@@ -13,7 +13,7 @@
 
 <body>
     <header class="posttext">
-        <a class="goback" href="/picsel/logged_user_feed.php" aria-label="Go back"><span class="fa-solid fa-arrow-left"></span></a>
+        <a class="goback" href="/picsel/home.php" aria-label="Go back"><span class="fa-solid fa-arrow-left"></span></a>
         <h1 class="postp">Create Post</h1>
     </header>
     <main class="createpost">

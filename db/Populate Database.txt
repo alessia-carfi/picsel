@@ -16,8 +16,8 @@ INSERT INTO COMMENT (`text`, post_id, user_id)
 VALUES ("BRAVOOO", 1, 2),
 ("Io ho finito prima", 1, 2);
 
-INSERT INTO follows_user (user_id, Fol_user_id) 
+INSERT INTO FOLLOWS_USER (user_id, Fol_user_id) 
 VALUES (1, 2), (2, 1);
 
-INSERT INTO follows_game 
+INSERT INTO FOLLOWS_GAME 
 VALUES (1, 1), (1, 2);
