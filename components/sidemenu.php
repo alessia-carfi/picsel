@@ -1,17 +1,17 @@
 <div class="shadow" id="shadowid">
     <div class="sidemenu" id="sidemenuid">
         <div class="top-sidemenu"  id="top-sidemenu" style="display: none">
-            <div class=profile-mobile>
+            <a class=profile-mobile href="./components/user_profile.php?user_id=<?php echo $templateParams['logged_user']['user_id']; ?>">
                 <?php if ($templateParams['logged_user']['image'] != NULL) :?>
                 <img src='data:image/PNG;base64,<?php echo base64_encode($templateParams['logged_user']['image']); ?>' alt="" id="profileimageid"/>
                 <?php else:?>
                 <img src="assets/logo.svg" alt="" id="profileimageid"/>
                 <?php endif;?>
-                <a class="name-mobile" href="./components/user_profile.php?user_id=<?php echo $templateParams['logged_user']['user_id']; ?>">
+                <div class="name-mobile">
                     <span id="name"><?php echo ($templateParams['logged_user'])['name']; ?></span>
                     <span id="tag">@<?php echo ($templateParams['logged_user'])['nickname']; ?></span>
+                </div>
                 </a>
-            </div>
             <button id="close"><span class="fa-solid fa-xmark"></span></button>
         </div>
         <ul class="follows-list">
