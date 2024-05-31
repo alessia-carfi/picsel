@@ -131,6 +131,44 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function followingUser($id) {
+        $isfollowed = $this->isUserFollowed($id);
+        switch ($isfollowed) {
+            case false:
+                return $this->followUser($id);
+            case true:
+                return $this->unfollowUser($id);
+        }
+    }
+
+    public function isUserFollowed($id){
+        $stmt = $this->db->prepare("SELECT * FROM FOLLOWS_USER WHERE user_id=? AND Fol_user_id=?");
+        $stmt->bind_param("ii", $_SESSION['user_id'], $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->num_rows == 1;
+    }
+
+    public function followUser($id) {
+        $stmt = $this->db->prepare("INSERT INTO FOLLOWS_USER (user_id, Fol_user_id) VALUES (?, ?)");
+        $stmt->bind_param("ii", $_SESSION['user_id'], $id);
+        if ($stmt->execute()) {
+            return ["success" => true];
+        } else {
+            return ["success" => false, "message" => "Error: " . $stmt->error ];
+        }
+    }
+
+    public function unfollowUser($id) {
+        $stmt = $this->db->prepare("DELETE FROM FOLLOWS_USER WHERE user_id=? AND Fol_user_id=?");
+        $stmt->bind_param("ii", $_SESSION['user_id'], $id);
+        if ($stmt->execute()) {
+            return ["success" => true];
+        } else {
+            return ["success" => false, "message" => "Error: " . $stmt->error ];
+        }
+    }
+
     public function getNotifications() {
         $stmt = $this->db->prepare("SELECT * FROM `NOTIFICATION` WHERE user_id=?");
         $stmt->bind_param("i", $_SESSION['user_id']);
@@ -141,7 +179,7 @@ class DatabaseHelper {
     }
 
     public function getFollowedGames() {
-        $stmt = $this->db->prepare("SELECT GAME.name FROM FOLLOWS_GAME JOIN GAME
+        $stmt = $this->db->prepare("SELECT GAME.name, GAME.game_id FROM FOLLOWS_GAME JOIN GAME
                                     ON GAME.game_id=FOLLOWS_GAME.game_id WHERE FOLLOWS_GAME.user_id=?");
         $stmt->bind_param("i", $_SESSION['user_id']);
         $stmt->execute();
@@ -149,6 +187,7 @@ class DatabaseHelper {
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
     
     public function getGameFromId($id) {
         $stmt = $this->db->prepare("SELECT name from GAME where game_id=?");

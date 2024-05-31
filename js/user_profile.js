@@ -1,29 +1,50 @@
 let followbtn = document.getElementById('followbuttonid');
-let prname = document.getElementById('pr-nameid');
-let prusername = document.getElementById('tagnameid');
 
+let urlParams = new URLSearchParams(window.location.search);
+let userId = urlParams.get('user_id');
 
-window.addEventListener("DOMContentLoaded", async() => {
-    pickUser();
+followbtn.addEventListener("click", () => {
+    followClick(followbtn);
 });
 
 
-function pickUser() {
-    let urlParams = new URLSearchParams(window.location.search);
-    let userId = urlParams.get('user_id');
-    let myprofile = urlParams.toString().split('-')[1];
-    if (myprofile === 'myprofile') {
-        followbtn.style.display = 'none';
-    }
+function followClick(button) {
+    updateOrInsertFollow(button);
+}
 
+
+function updateOrInsertFollow(button) {
     let xhr = new XMLHttpRequest();
-    xhr.open('GET', '/picsel/db/user_profileajax.php?user_id=' + userId, true);
-    xhr.onload = function() {
-        if (this.status == 200) {
-            let user = JSON.parse(this.responseText);
-            prname.textContent = user.name;
-            prusername.textContent ="@"+user.nickname;
+    xhr.open("POST", "/picsel/db/follow_ajax.php", true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
+            let response = JSON.parse(xhr.responseText);
+            if (response.success) {
+                if (button.classList.contains('followed')) {
+                    unfollow(button);
+                } else {
+                    follow(button);
+                }
+            } else {
+                console.error("Error: " + response.message);
+            }
         }
-    }
-    xhr.send();
+    };
+
+    let data = JSON.stringify({
+        method: "follow",
+        id: userId
+    });
+    xhr.send(data);
+}
+
+function follow(button) {
+    button.classList.remove("notfollowed");
+    button.classList.add("followed");
+}
+
+function unfollow(button) {
+    button.classList.remove("followed");
+    button.classList.add("notfollowed");
 }

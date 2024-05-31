@@ -7,10 +7,10 @@
                 <?php else:?>
                 <img src="assets/logo.svg" alt="" id="profileimageid"/>
                 <?php endif;?>
-                <p class="name-mobile">
+                <a class="name-mobile" href="./components/user_profile.php?user_id=<?php echo $templateParams['logged_user']['user_id']; ?>">
                     <span id="name"><?php echo ($templateParams['logged_user'])['name']; ?></span>
                     <span id="tag">@<?php echo ($templateParams['logged_user'])['nickname']; ?></span>
-                </p>
+                </a>
             </div>
             <button id="close"><span class="fa-solid fa-xmark"></span></button>
         </div>

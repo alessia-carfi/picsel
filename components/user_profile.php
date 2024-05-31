@@ -1,3 +1,9 @@
+<?php
+require_once('./../bootstrap.php');
+$id = $_GET['user_id'];
+$followed = $dbh->getUserFromId($id);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,14 +29,18 @@
             <div class="profile">
                 <img class="profileimage" src="../assets/logo.svg" alt="" />
                 <p class="profilename">
-                    <span class="pr-name" id="pr-nameid"></span>
-                    <span class="tagname" id ="tagnameid"></span>
+                    <span class="pr-name" id="pr-nameid"><?php echo $followed['name'] ?></span>
+                    <span class="tagname" id="tagnameid">@<?php echo $followed['nickname'] ?></span>
                 </p>
             </div>
-            <p class="description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget nunc euismod, ultricies nunc id, tincidunt nunc. Nulla facilisi.
-            </p>
-            <button aria-label="follow" class="followbutton" id="followbuttonid">Follow</button>
+            <?php
+            if ($id != $_SESSION['user_id']):
+            ?>
+            <button aria-label="follow" class="followbutton <?php echo $dbh->isUserFollowed($id) ? 'followed' : 'notfollowed' ?>" id="followbuttonid">
+                <span class="followspan">Follow</span>
+                <span class="unfollowspan">Unfollow</span>
+            </button>
+            <?php endif; ?>
         </div>
     </div>
     <main>

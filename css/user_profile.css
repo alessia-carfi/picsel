@@ -5,7 +5,7 @@ header {
   font-size: bold;
 }
 
-header > a > .fa-arrow-left {
+header>a>.fa-arrow-left {
   width: 2rem;
   height: 2rem;
   color: var(--color-white);
@@ -58,7 +58,6 @@ header > a > .fa-arrow-left {
 }
 
 .followbutton {
-  background-color: var(--color-red);
   /* col js se premuto: 
   background-color: var(--color-blue); */
   border: 0px;
@@ -69,6 +68,24 @@ header > a > .fa-arrow-left {
   font-weight: bold;
   margin-top: 1rem;
 }
+
+.followed > .followspan{
+  display: none;
+}
+
+.followed{
+  background-color: var(--color-blue);
+}
+
+.notfollowed > .unfollowspan{
+  display: none;
+}
+
+.notfollowed{
+  background-color: var(--color-red);
+}
+
+
 
 @media only screen and (min-width: 650px) {
   header {

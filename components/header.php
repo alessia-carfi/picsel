@@ -5,7 +5,7 @@
     <?php else:?>
     <img src="assets/logo.svg" alt="" id="profileimageid"/>
     <?php endif;?>
-    <a class="name" href="./components/user_profile.php?user_id=<?php echo $templateParams['logged_user']['user_id']; ?>-myprofile">
+    <a class="name" href="./components/user_profile.php?user_id=<?php echo $templateParams['logged_user']['user_id']; ?>">
         <span id="name"><?php echo ($templateParams['logged_user'])['name']; ?></span>
         <span id="tag">@<?php echo ($templateParams['logged_user'])['nickname']; ?></span>
     </a>
