@@ -26,7 +26,7 @@
       <h2>Profile</h2>
         <form class="settings" id="settings-form" action="../db/update_profile.php" method="post" enctype="multipart/form-data">
             <label for="profile-picture">Change profile picture: </label>
-            <input type="file" id="profile-picture" name="profile-picture" accept="image/png, image/jpeg" />
+            <input type="file" id="profile-picture" name="profile-picture" accept="image/*" />
         
             <label for="name">Change name: </label>
             <input type="text" id="name" name="name" autocomplete="off" value="<?php echo $dbh -> getProfileName($_SESSION['user_id']); ?>"/>
