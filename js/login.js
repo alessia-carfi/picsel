@@ -15,7 +15,6 @@ window.addEventListener("DOMContentLoaded", () => {
         let hasError = await loginerror();
         if (!hasError) {
             loginform.submit();
-            alert("Login successful!");
         }
         hideErrorOnClick();
     });
