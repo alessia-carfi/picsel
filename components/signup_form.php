@@ -5,7 +5,7 @@ if (isset($_GET['error'])) {
 ?>
 
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 
 <head>
     <title> Picsel - Sign Up </title>

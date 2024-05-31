@@ -284,7 +284,7 @@ class DatabaseHelper {
     }
     public function setProfileImage($image) {
         $stmt = $this->db->prepare("UPDATE USR SET image=? WHERE user_id=?");
-        $stmt->bind_param("bi", $image, $_SESSION['user_id']);
+        $stmt->bind_param("si", $image, $_SESSION['user_id']);
         $stmt->execute();
         if ($stmt->execute()) {
             return ['success' => true];
@@ -399,6 +399,19 @@ class DatabaseHelper {
             return ['success' => false, 'message' => 'Error: ' . $stmt->error];
         }
     }
+
+    public function getAllTags() {
+        $stmt = $this->db->prepare("SELECT * FROM TAG");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        $tags = array();
+        while ($tag = mysqli_fetch_assoc($result)) {
+            $tags[] = $tag;
+        }
+        return $tags;
+    }
+
     private function checkbrute($user_id) {
         $now = time();
         $valid_attempts = $now - (2 * 60 * 60); //Attempts in the past 2 hours

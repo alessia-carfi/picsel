@@ -4,34 +4,38 @@
 <head>
     <title>Picsel - Create Post </title>
     <meta charset="UTF-8" />
-    <link href="css/createpost.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="./css/style.css" />
+    <link rel="stylesheet" type="text/css" href="./css/createpost.css" />
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
     <script defer src="./assets/fontawesome/js/solid.js"></script>
     <script defer src="./assets/fontawesome/js/fontawesome.js"></script>
 </head>
 
 <body>
-    <div class="createpost">
-        <p class="posttext">
+    <header class="posttext">
         <a class="goback" href="/picsel/logged_user_feed.php" aria-label="Go back"><span class="fa-solid fa-arrow-left"></span></a>
-            <span class="postp">Create Post</span>
-        </p>
+        <h1 class="postp">Create Post</h1>
+    </header>
+    <main class="createpost">
+        <?php include_once 'bootstrap.php'; ?>
         <form class="postform">
-            <label hidden for="postitleid">Title</label>
-            <input class="posttitle" id="postitleid" type="text" placeholder="Title" />
-            <div class="postimage">
-                <label hidden for="posturlid">Image</label>
-                <input class="posturl" id="posturlid" type="text" placeholder="URL" />
-                <i class="fa-regular fa-image"></i>
-                <label hidden for="imageselectid">Imageselect</label>
-                <input class="imageselect" id="imageselectid" type="file" accept="image/png, image/jpeg" />
-            </div>
-            <label hidden for="postcontentid">Text</label>
-            <textarea class="postcontentcl" id="postcontentid" placeholder="Text"></textarea>
-            <label hidden for="postbuttonid">Submit</label>
-            <input type="submit" class="postbutton" id="postbuttonid" value="Submit" />
+        <label class="selectlabel" for="games">Choose the Game:</label>
+        <select class="selectgame" name="games" id="selectgame">
+            <?php $options = $dbh -> getFollowedGames(); ?>
+            <?php foreach ($options as $option): ?>
+                <option value="<?php echo $option['name']; ?>"><?php echo $option['name']; ?></option>
+            <?php endforeach; ?>
+        </select>
+            <label hidden for="postitle">Post title</label>
+            <input class="posttitle" name="postitle" id="postitleid" type="text" placeholder="Title" />
+            <label hidden for="postcontent">Post content</label>
+            <textarea class="postcontentcl" name="postcontent" id="postcontentid" placeholder="Text"></textarea>
+            <label hidden for="imageselect">Select image</label>
+            <input class="imageselect" name="imageselect" id="imageselectid" type="file" accept="image/*" />
+            <label hidden for="postbutton">Submit</label>
+            <input type="submit" class="postbutton" name="postbutton" id="postbuttonid" value="Submit" />
         </form>
-    </div>
+    </main>
 </body>
 
 </html>
