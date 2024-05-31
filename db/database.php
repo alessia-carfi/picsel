@@ -115,10 +115,9 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
     
-    
+
     public function getExplorePosts($limit) {
-        // Questa è per i consigliati, che propongono post che riguardano
-        // giochi con tag uguali ai giochi che segui
+        /* Gets posts from games with the same tags as your followed games */
         $stmt = $this->db->prepare("SELECT POST.post_id, POST.game_id, POST.text, POST.image, POST.likes, POST.comments, POST.user_id, USR.nickname 
                                     FROM POST LEFT JOIN USR ON USR.user_id=POST.user_id
                                     WHERE POST.game_id=
