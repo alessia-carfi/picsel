@@ -2,7 +2,7 @@
 <html lang="it">
 
 <head>
-    <title> Create Post </title>
+    <title>Picsel - Create Post </title>
     <meta charset="UTF-8" />
     <link href="css/createpost.css" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
