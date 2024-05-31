@@ -144,27 +144,27 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function followingUser($id) {
-        $isfollowed = $this->isUserFollowed($id);
+    public function followingUser($user_id) {
+        $isfollowed = $this->isUserFollowed($user_id);
         switch ($isfollowed) {
             case false:
-                return $this->followUser($id);
+                return $this->followUser($user_id);
             case true:
-                return $this->unfollowUser($id);
+                return $this->unfollowUser($user_id);
         }
     }
 
-    public function isUserFollowed($id){
+    public function isUserFollowed($user_id){
         $stmt = $this->db->prepare("SELECT * FROM FOLLOWS_USER WHERE user_id=? AND Fol_user_id=?");
-        $stmt->bind_param("ii", $_SESSION['user_id'], $id);
+        $stmt->bind_param("ii", $_SESSION['user_id'], $user_id);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->num_rows == 1;
     }
 
-    public function followUser($id) {
+    public function followUser($user_id) {
         $stmt = $this->db->prepare("INSERT INTO FOLLOWS_USER (user_id, Fol_user_id) VALUES (?, ?)");
-        $stmt->bind_param("ii", $_SESSION['user_id'], $id);
+        $stmt->bind_param("ii", $_SESSION['user_id'], $user_id);
         if ($stmt->execute()) {
             return ["success" => true];
         } else {
@@ -172,9 +172,47 @@ class DatabaseHelper {
         }
     }
 
-    public function unfollowUser($id) {
+    public function unfollowUser($user_id) {
         $stmt = $this->db->prepare("DELETE FROM FOLLOWS_USER WHERE user_id=? AND Fol_user_id=?");
-        $stmt->bind_param("ii", $_SESSION['user_id'], $id);
+        $stmt->bind_param("ii", $_SESSION['user_id'], $user_id);
+        if ($stmt->execute()) {
+            return ["success" => true];
+        } else {
+            return ["success" => false, "message" => "Error: " . $stmt->error ];
+        }
+    }
+
+    public function followingGame($game_id) {
+        $isfollowed = $this->isUserSubscribed($game_id);
+        switch ($isfollowed) {
+            case false:
+                return $this->followGame($game_id);
+            case true:
+                return $this->unfollowGame($game_id);
+        }
+    }
+
+    public function isUserSubscribed($game_id){
+        $stmt = $this->db->prepare("SELECT * FROM FOLLOWS_GAME WHERE user_id=? AND game_id=?");
+        $stmt->bind_param("ii", $_SESSION['user_id'], $game_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->num_rows == 1;
+    }
+
+    public function followGame($game_id) {
+        $stmt = $this->db->prepare("INSERT INTO FOLLOWS_GAME (game_id, user_id) VALUES (?, ?)");
+        $stmt->bind_param("ii", $game_id,  $_SESSION['user_id']);
+        if ($stmt->execute()) {
+            return ["success" => true];
+        } else {
+            return ["success" => false, "message" => "Error: " . $stmt->error ];
+        }
+    }
+
+    public function unfollowGame($game_id) {
+        $stmt = $this->db->prepare("DELETE FROM FOLLOWS_GAME WHERE user_id=? AND game_id=?");
+        $stmt->bind_param("ii", $_SESSION['user_id'], $game_id);
         if ($stmt->execute()) {
             return ["success" => true];
         } else {
@@ -209,6 +247,15 @@ class DatabaseHelper {
         $result = $stmt->get_result();
         
         return $result->fetch_assoc()['name'];
+    }
+
+    public function getGameFromIdNew($id) {
+        $stmt = $this->db->prepare("SELECT * from GAME where game_id=?");
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        return $result->fetch_all(MYSQLI_ASSOC)[0];
     }
 
     public function getUserFromId($id) {
@@ -437,6 +484,14 @@ class DatabaseHelper {
         } else {
             return ['success' => false, 'message' => 'Error: ' . $stmt->error];
         }
+    }
+
+    public function getAllTagsGame($game_id){
+        $stmt = $this->db->prepare("SELECT * FROM HAS_TAG WHERE game_id=?");
+        $stmt->bind_param("i", $game_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 
     public function getAllTags() {

@@ -85,8 +85,6 @@ header > a > .fa-arrow-left {
 
 .subscribebutton {
   background-color: var(--color-red);
-  /* col js se premuto: 
-    background-color: var(--color-blue); */
   border: 0px;
   border-radius: 0.5rem;
   padding: 0.5rem 1rem;
@@ -94,6 +92,22 @@ header > a > .fa-arrow-left {
   cursor: pointer;
   font-weight: bold;
   font-size: 1rem;
+}
+
+.subscribed > .subscribespan {
+  display: none;
+}
+
+.subscribed {
+  background-color: var(--color-blue);
+}
+
+.notsubscribed > .unsubscribespan {
+  display: none;
+}
+
+.notsubscribed {
+  background-color: var(--color-red);
 }
 
 @media only screen and (min-width: 650px) {

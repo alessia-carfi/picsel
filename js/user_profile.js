@@ -33,7 +33,6 @@ function updateOrInsertFollow(button) {
     };
 
     let data = JSON.stringify({
-        method: "follow",
         id: userId
     });
     xhr.send(data);

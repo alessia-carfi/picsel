@@ -3,17 +3,9 @@
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $data = json_decode(file_get_contents('php://input'), true);
-        $method = $data['method'];
         $id = $data['id'];
-        $response = [];
-        switch ($method) {
-            case "follow":
-                $response = $dbh -> followingUser($id);
-                break;
-            case "unfollow":
-                $response = $dbh->unfollowUser($id);
-                break;
-        }
+        $response = $response = $dbh -> followingUser($id);
+       
         echo json_encode($response);
     }
     
