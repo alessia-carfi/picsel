@@ -338,12 +338,21 @@ class DatabaseHelper {
             return ['success' => false, 'message' => 'Error: ' . $stmt->error];
         }
     }
-    
-    /* TODO */
-    public function getPostsByFollowedGamesAndUsers($limit) {
-        $query = "SELECT POST.post_id, POST.game_id, POST.text, POST.image, POST.likes, POST.comments, POST.user_id, USR.nickname
-        FROM POST LEFT JOIN USR ON POST.user_id=USR.user_id WHERE (";
-        $stmt = $this->db->prepare("");
+
+    public function getHomePosts($limit) {
+        $stmt = $this->db->prepare("SELECT POST.post_id, POST.game_id, POST.text, POST.image, POST.likes, POST.comments, POST.user_id, USR.nickname 
+                                    FROM POST LEFT JOIN USR ON USR.user_id=POST.user_id 
+                                    WHERE 
+                                        POST.game_id=(SELECT game_id FROM FOLLOWS_GAME WHERE user_id=?) 
+                                        OR 
+                                        POST.user_id=(SELECT Fol_user_id from follows_user WHERE user_id=?)
+                                    ORDER BY RAND()
+                                    LIMIT ?");
+        $stmt->bind_param("iii", $_SESSION['user_id'], $_SESSION['user_id'], $limit);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
     
     public function createComment($text, $post_id) {
