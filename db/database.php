@@ -115,11 +115,25 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
     
-    
-    public function getSuggestedPosts($userid) {
+    /* TODO */
+    public function getExplorePosts($limit) {
         // Questa è per i consigliati, che propongono post che riguardano
         // giochi con tag uguali ai giochi che segui
-        $stmt = $this->db->prepare("JOIN ");
+        $stmt = $this->db->prepare("SELECT POST.post_id, POST.game_id, POST.text, POST.image, POST.likes, POST.comments, POST.user_id, USR.nickname 
+                                    FROM POST LEFT JOIN USR ON USR.user_id=POST.user_id
+                                    WHERE POST.game_id=
+                                    (SELECT game_id FROM HAS_TAG WHERE name=
+                                        (SELECT name FROM HAS_TAG WHERE game_id=
+                                            (SELECT game_id FROM FOLLOWS_GAME WHERE user_id=?)
+                                        )
+                                    )
+                                    ORDER BY RAND()
+                                    LIMIT ?");
+        $stmt->bind_param("ii", $_SESSION['user_id'], $limit);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 
     public function getFollowedUsers() {
