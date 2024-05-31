@@ -19,8 +19,8 @@
   ?>
   <body>
     <header>
-        <h1>Settings</h1>
-        <a class="go-back" href="/picsel/home.php" aria-label="Go back"><span class="fa-solid fa-arrow-left"></span></a>
+      <a class="go-back" href="/picsel/home.php" aria-label="Go back"><span class="fa-solid fa-arrow-left"></span></a>
+      <h1>Settings</h1>
     </header>
     <main>
       <h2>Profile</h2>
@@ -37,6 +37,8 @@
             <label for="submit" hidden>Submit</label>
             <input type="submit" id="submit" name="submit" value="Submit" class="submit"/>
         </form>
+
+        <a class="logout" href="../logout.php">Logout</a>
     </main>
   </body>
 </html>

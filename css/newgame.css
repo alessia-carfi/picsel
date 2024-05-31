@@ -59,13 +59,12 @@ h1 {
   border: 1px solid var(--color-white);
   border-radius: 1rem;
   padding: 1rem 2rem;
-  font-size: 22px;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .gameform input,
 .description {
-  font-size: 1rem;
+  font-size: 22px;
 }
 
 .gameform input::placeholder,
@@ -76,7 +75,6 @@ h1 {
 .description {
   height: 10rem;
   border: 1px solid var(--color-gray);
-  margin-bottom: 1rem;
   background-color: var(--color-purple);
   color: var(--color-white);
   resize: none;
@@ -101,19 +99,10 @@ h1 {
   align-items: center;
   justify-content: left;
   margin-bottom: 1rem;
-}
-
-.gameform > input:not(.gamebutton) {
-  max-width: 25rem;
-  min-width: 18rem;
-  height: 2rem;
+  font-size: 20px;
 }
 
 @media only screen and (min-width: 650px) {
-  header {
-    padding-left: 20%;
-  }
-
   .tagslist {
     display: grid;
     grid-template-columns: 2fr 2fr 2fr;
@@ -139,10 +128,6 @@ h1 {
 }
 
 @media only screen and (max-width: 650px) {
-  header {
-    padding-left: 10%;
-  }
-
   .tagslist {
     display: flex;
     flex-direction: column;
