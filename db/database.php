@@ -115,7 +115,7 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
     
-    /* TODO */
+    
     public function getExplorePosts($limit) {
         // Questa è per i consigliati, che propongono post che riguardano
         // giochi con tag uguali ai giochi che segui
