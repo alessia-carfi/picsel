@@ -1,0 +1,169 @@
+header {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  padding: 2rem;
+  font-weight: bold;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 5;
+  background-color: var(--color-black);
+}
+
+main {
+  padding: 2rem;
+}
+
+header > a > .fa-arrow-left {
+  width: 2rem;
+  height: 2rem;
+  color: var(--color-white);
+  cursor: pointer;
+  margin-right: 2rem;
+}
+
+h1 {
+  color: var(--color-white);
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.tagstitle {
+  color: var(--color-white);
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+.gameform {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.gamebutton {
+  padding: 0.5rem !important;
+  background-color: var(--color-red) !important;
+  color: var(--color-white) !important;
+  font-weight: bold;
+  border-radius: 0.7rem !important;
+  border: none !important;
+  cursor: pointer;
+  align-self: end;
+}
+
+.gameform > input,
+.description {
+  background-color: var(--color-purple);
+  border: 1px solid var(--color-white);
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+  font-size: 22px;
+  margin-bottom: 1rem;
+}
+
+.gameform input,
+.description {
+  font-size: 1rem;
+}
+
+.gameform input::placeholder,
+.description::placeholder {
+  color: var(--color-gray);
+}
+
+.description {
+  height: 10rem;
+  border: 1px solid var(--color-gray);
+  margin-bottom: 1rem;
+  background-color: var(--color-purple);
+  color: var(--color-white);
+  resize: none;
+}
+
+.tagslist {
+  list-style: none;
+  padding: 0;
+}
+
+.tagsfield {
+  border: 0;
+}
+
+.tagsfield input {
+  margin-right: 1rem;
+}
+
+.tagslist > li {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: left;
+  margin-bottom: 1rem;
+}
+
+.gameform > input:not(.gamebutton) {
+  max-width: 25rem;
+  min-width: 18rem;
+  height: 2rem;
+}
+
+@media only screen and (min-width: 650px) {
+  header {
+    padding-left: 20%;
+  }
+
+  .tagslist {
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr;
+    grid-gap: 1rem;
+  }
+
+  main {
+    margin-top: 8rem;
+  }
+
+  .tagstitle {
+    font-size: 1.3rem;
+  }
+
+  .gamebutton {
+    margin-right: 2rem;
+  }
+
+  .description,
+  .gameform > input:not(.gamebutton) {
+    width: 25rem;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  header {
+    padding-left: 10%;
+  }
+
+  .tagslist {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+  }
+
+  main {
+    margin-top: 8rem;
+  }
+
+  .tagstitle {
+    font-size: 1.3rem;
+    margin-bottom: 0;
+  }
+
+  .gamebutton {
+    margin-right: 3rem;
+  }
+
+  .description,
+  .gameform > input:not(.gamebutton) {
+    width: 18rem;
+  }
+}

@@ -9,8 +9,7 @@
             <a href="/picsel/saved.php" id="saved"><span class="fa-solid fa-floppy-disk"></span><p>Saved</p></a>
         </li>
         <li>
-            <a href="" id="refresh"><i class="fa-solid fa-arrows-rotate"></i
-            ><p> Refresh</p></a>
+            <a href="/picsel/create_newgame.php" id="newgame"><span class="fa-solid fa-gamepad"></span><p>New Game</p></a>
         </li>
         <li>
             <a href="/picsel/components/settings.php" id="settings"><span class="fa-solid fa-gear"></span><p>Settings</p></a>

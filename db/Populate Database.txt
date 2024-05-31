@@ -10,7 +10,7 @@ VALUES ("Ho vintoooooo", NULL, 0, 2, 1, 1),
 ("Che figata sto gioco", NULL, 0, 0, 1, 1);
 
 INSERT INTO TAG
-VALUES ("Survival"), ("Soulslike"), ("Hack and Slash"), ("Fighting Game"), ("Action"), ("RPG"), ("Metroidvania");
+VALUES ("Action"), ("Sports"), ("Simulation"), ("Platformer"), ("RPG"), ("First-person"), ("Adventure"), ("Fighting"), ("Racing"), ("Shooter"), ("Puzzle"), ("Casual"), ("Strategy"), ("Stealth"), ("Party"), ("Survival"), ("Battle Royale"), ("Multiplayer"), ("Crossplatform"), ("Mobile"), ("PC"), ("PlayStation"), ("Xbox"), ("Nintendo Switch"), ("Third-person"), ("Sandbox"), ("Horror");
 
 INSERT INTO COMMENT (`text`, post_id, user_id)
 VALUES ("BRAVOOO", 1, 2),
