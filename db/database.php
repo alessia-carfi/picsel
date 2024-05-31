@@ -442,9 +442,9 @@ class DatabaseHelper {
         $stmt = $this->db->prepare("SELECT POST.post_id, POST.game_id, POST.text, POST.image, POST.likes, POST.comments, POST.user_id, USR.nickname 
                                     FROM POST LEFT JOIN USR ON USR.user_id=POST.user_id 
                                     WHERE 
-                                        POST.game_id=(SELECT game_id FROM FOLLOWS_GAME WHERE user_id=?) 
+                                        POST.game_id in(SELECT game_id FROM FOLLOWS_GAME WHERE user_id=?) 
                                         OR 
-                                        POST.user_id=(SELECT Fol_user_id from FOLLOWS_USER WHERE user_id=?)
+                                        POST.user_id in (SELECT Fol_user_id from FOLLOWS_USER WHERE user_id=?)
                                     ORDER BY RAND()
                                     LIMIT ?");
         $stmt->bind_param("iii", $_SESSION['user_id'], $_SESSION['user_id'], $limit);

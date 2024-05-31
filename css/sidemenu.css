@@ -12,6 +12,7 @@
 .fl-label,
 .sub-label {
   color: var(--color-gray);
+  margin-top: 0;
 }
 
 .fl-mainname,
@@ -34,8 +35,8 @@
   margin: 0;
 }
 
-.follows > img,
-.subscriptions > img {
+.follows-list img,
+.sub-list img {
   width: 2rem;
   height: 2rem;
   border-radius: 50%;
@@ -59,19 +60,11 @@
     margin-left: 1rem;
   }
 
-  .follows a {
-    display: flex;
-    color: var(--color-white);
-  }
-
   .follows-list > li > a,
   .sub-list > li > a {
+    color: var(--color-white);
     display: flex;
     align-items: center;
-  }
-
-  .subscriptions {
-    color: var(--color-gray);
   }
 
   .border {
@@ -79,11 +72,27 @@
   }
 
   .sub-label {
-    margin-top: 2rem;
+    margin-top: 1rem;
+  }
+
+  .follows-list > li,
+  .sub-list > li {
+    margin-bottom: 1rem;
+  }
+
+  hr {
+    display: none;
   }
 }
 
 @media only screen and (max-width: 830px) {
+  hr {
+    border: 1px solid var(--color-purple);
+    border-radius: 5px;
+    width: 80%;
+    margin: 1rem 1rem 0 1rem;
+  }
+
   .fl-name,
   .sub-name {
     display: flex;
@@ -108,13 +117,18 @@
     align-items: center;
   }
 
-  .subscriptions,
-  .follows {
-    margin-left: 1rem;
+  .sub-list,
+  .follows-list {
+    margin: 2rem 0 0 1rem;
     display: flex;
     flex-direction: column;
     position: relative;
     align-items: start;
+  }
+
+  .sub-list > li:not(:first-child),
+  .follows-list > li:not(:first-child) {
+    margin-bottom: 1rem;
   }
 
   .name-mobile {
@@ -141,6 +155,7 @@
     cursor: pointer;
     align-items: center;
     border-radius: 100%;
+    margin-top: 0.5rem;
   }
 
   button#close {

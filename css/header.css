@@ -144,8 +144,8 @@ nav a {
     align-items: center;
   }
 
-  .search:active {
-    border: var(--color-red);
+  .search:focus {
+    border: 1px solid var(--color-blue);
   }
 
   .search > input {
