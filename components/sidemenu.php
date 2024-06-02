@@ -50,7 +50,7 @@
                         <?php else: ?>
                         <img src="assets/logo.svg" alt="" />
                         <?php endif; ?>
-                        <pclass="fl-name">
+                        <p class="fl-name">
                             <span class="fl-mainname"><?php echo $subbed['name']?></span>
                         </p>
                     </a>
