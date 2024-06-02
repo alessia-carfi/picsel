@@ -4,7 +4,7 @@ const UP = true;
 let likeCounts = document.getElementsByName("like-count")
 let countsMap = new Map()
 likeCounts.forEach((c) => {
-  countsMap.set(c, c.dataset.postId)
+  countsMap.set(c.dataset.postId, c)
 })
 
 let upvotes = document.getElementsByName("upvote")
@@ -112,9 +112,8 @@ function saveOrUnsavePost(button, method) {
 
 function updateLikeCounter(counter, amount) {
   let old = parseInt(counter.innerHTML)
-  console.log(old)
   let updated = old + amount
-  counter.innerHTML = updated
+  counter.innerHTML = updated.toString()
 }
 
 function unpress(button) {
