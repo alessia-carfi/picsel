@@ -439,7 +439,7 @@ class DatabaseHelper {
     }
 
     public function getHomePosts($limit) {
-        $stmt = $this->db->prepare("SELECT POST.post_id, POST.game_id, POST.text, POST.image, POST.likes, POST.comments, POST.user_id, USR.nickname 
+        $stmt = $this->db->prepare("SELECT POST.post_id, POST.game_id, POST.text, POST.image, POST.likes, POST.comments, POST.user_id, USR.nickname, USR.image as usrimage 
                                     FROM POST LEFT JOIN USR ON USR.user_id=POST.user_id 
                                     WHERE 
                                         POST.game_id in(SELECT game_id FROM FOLLOWS_GAME WHERE user_id=?) 

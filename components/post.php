@@ -1,6 +1,10 @@
 <article class="post">
     <div class="poster">
-        <img src="<?php echo $post['image']; ?>" alt="" name="profileimg" id="profileimg" />
+        <?php if ($post['usrimage'] == null): ?>
+        <img src="../assets/logo.svg" alt="" id="postimg" name="postimg" />
+        <?php else: ?>
+        <img src='data:image/PNG;base64,<?php echo base64_encode($post['usrimage']); ?>' alt="" name="profileimg" id="profileimg" />
+        <?php endif;?>
         <p class="user-tag">
             <span class="username" name="username-post" id="username-post"><?php echo $post['nickname']; ?></span>
             <span name="tag" id="tag">@<?php echo $dbh->getGameFromId($post['game_id']); ?></span>
@@ -8,7 +12,7 @@
     </div>
     <p><?php echo $post['text']; ?></p>
     <?php if ($post['image'] != null): ?>
-    <img src="prova.png" alt="" id="postimg" name="postimg" />
+    <img src='data:image/PNG;base64,<?php echo base64_encode($post['image']); ?>' alt="" id="postimg" name="postimg" />
     <?php endif;?>
     <div class="post-interactions">
         <div class="interactions-plus-comments">
