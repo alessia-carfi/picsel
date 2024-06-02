@@ -13,12 +13,12 @@
 
 <body>
     <header class="gametext">
-        <a class="goback" href="/picsel/home.php" aria-label="Go back"><span class="fa-solid fa-arrow-left"></span></a>
+        <a title="Go back" class="goback" href="/picsel/home.php" aria-label="Go back"><span class="fa-solid fa-arrow-left"></span></a>
         <h1 class="title">New Game</h1>
     </header>
     <main>
         <form class="gameform">
-            <label hidden for="gametitle">Title</label>
+            <label hidden for="gametitleid">Title</label>
             <input class="gametitle" id="gametitleid" type="text" placeholder="Game name" />
             <label hidden for="description">Description</label>
             <textarea class="description" id="description" name="description" placeholder="Description"></textarea>
