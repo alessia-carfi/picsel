@@ -8,10 +8,12 @@ $followed = $dbh->getUserFromId($id);
 <html lang="en">
 
 <head>
-    <title> Profile </title>
+    <title>Picsel - Profile</title>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../css/style.css" />
     <link rel="stylesheet" type="text/css" href="../css/user_profile.css" />
+    <link rel="stylesheet" type="text/css" href="../css/post.css" />
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
     <script defer src="../assets/fontawesome/js/solid.js"></script>
     <script defer src="../assets/fontawesome/js/regular.js"></script>
@@ -48,7 +50,10 @@ $followed = $dbh->getUserFromId($id);
         </div>
     </div>
     <main>
-        <!-- TODO: generare i post di questo user -->
+        <?php
+        $templateParams['posts'] = $dbh->getPostsByGameId($id);
+        include __DIR__ . "/../generate_posts.php";
+        ?>
     </main>
     <script type="text/javascript" src="/picsel/js/user_profile.js"></script>
 </body>
