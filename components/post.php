@@ -6,10 +6,10 @@
         <img src='data:image/PNG;base64,<?php echo base64_encode($post['usrimage']); ?>' alt="" name="profileimg" id="profileimg" />
         <?php endif;?>
         <p class="user-tag">
-            <a href="/picsel/components/user_profile.php?user_id=<?php echo $post['user_id']; ?>">
+            <a title="User profile" href="/picsel/components/user_profile.php?user_id=<?php echo $post['user_id']; ?>">
                 <span class="username" name="username-post" id="username-post"><?php echo $post['nickname']; ?></span>
             </a>
-            <a id="gamelink" data-game-id=<?php echo $post['game_id']; ?> href="/picsel/components/game_profile.php?game_id=<?php echo $post['game_id']; ?>">
+            <a title="Go to game" id="gamelink" data-minor fixsgame-id=<?php echo $post['game_id']; ?> href="/picsel/components/game_profile.php?game_id=<?php echo $post['game_id']; ?>">
                 <span name="tag" id="tag">@<?php echo $dbh->getGameFromId($post['game_id'])['name']; ?></span>
             </a>
         </p>
@@ -30,7 +30,7 @@
                 </button>
             </div>
 
-            <a href="/picsel/openpost.php?post_id=<?php echo $post['post_id']; ?>" class="comments-icons">
+            <a title="View comments" href="/picsel/openpost.php?post_id=<?php echo $post['post_id']; ?>" class="comments-icons">
                 <button id="view-comments" aria-label="view comments">
                     <span class="fa-solid fa-comments"></span>
                 </button>

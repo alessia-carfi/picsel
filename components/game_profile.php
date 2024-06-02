@@ -23,7 +23,7 @@ $subscribed = $dbh->getGameFromId($game_id);
 
 <body>
     <header>
-        <a class="go-back" href="/picsel/home.php" aria-label="Go back"><span class="fa-solid fa-arrow-left"></span></a>
+        <a title="Go back" class="go-back" href="/picsel/home.php" aria-label="Go back"><span class="fa-solid fa-arrow-left"></span></a>
     </header>
     <div class="profilewindow">
         <div class="profileinfo">
@@ -47,7 +47,7 @@ $subscribed = $dbh->getGameFromId($game_id);
                     </li>
                 <?php endforeach; ?>
             </ul>
-            <button aria-label="subscribe" class="subscribebutton <?php echo $dbh->isUserSubscribed($game_id) ? 'subscribed' : 'notsubscribed' ?>" id="subscribebuttonid">
+            <button aria-label="subscribe" class="<?php echo $dbh->isUserSubscribed($game_id) ? 'subscribed' : 'notsubscribed' ?>" id="subscribebuttonid">
                 <span class="subscribespan">Subscribe</span>
                 <span class="unsubscribespan">Unsubscribe</span>
             </button>

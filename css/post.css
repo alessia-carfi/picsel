@@ -1,11 +1,31 @@
+.header-post {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  padding: 2rem;
+  font-weight: bold;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: var(--color-black);
+}
+
+.header-post > a > .fa-arrow-left {
+  width: 2rem;
+  height: 2rem;
+  color: var(--color-white);
+  cursor: pointer;
+  margin-right: 2rem;
+}
+
 .post {
   background-color: var(--color-purple);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 1rem;
   border-radius: 2rem;
   padding: 1rem;
+  margin: 2rem 2rem 0 2rem;
 }
 
 .poster {
@@ -101,8 +121,6 @@ p {
   align-items: start;
   justify-content: start;
   padding: 2rem 1rem;
-  overflow-y: scroll;
-  overflow-x: hidden;
 }
 
 .comments-list {
@@ -112,6 +130,8 @@ p {
   padding-left: 0;
   width: 100%;
   margin-top: 0;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .comment > p {
@@ -134,7 +154,7 @@ a {
   color: var(--color-white);
 }
 
-button {
+.post button {
   display: contents;
 }
 
@@ -142,9 +162,10 @@ button {
   display: flex;
   align-items: center;
   justify-self: center;
+  margin-top: 6rem;
 }
 
-.fa-arrow-left {
+.post .fa-arrow-left {
   width: 2rem;
   height: 2rem;
   padding: 1rem;
@@ -219,7 +240,6 @@ button {
   .post {
     min-width: 30rem;
     max-width: 30rem;
-    margin: 2rem;
   }
 
   .fa-caret-down,
@@ -231,14 +251,13 @@ button {
     flex-direction: row;
   }
 
-  .go-back {
-    justify-content: end;
+  .comments {
+    max-height: 35rem;
   }
 }
 
 @media only screen and (max-width: 650px) {
   .post {
-    margin: 2rem;
     width: 80%;
   }
 
@@ -246,11 +265,7 @@ button {
     flex-direction: column;
   }
 
-  .go-back {
-    justify-content: start;
-  }
-
   .comments {
-    margin: 0 2rem;
+    margin: 2rem 2rem 0 2rem;
   }
 }

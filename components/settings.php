@@ -20,7 +20,7 @@
   ?>
   <body>
     <header>
-      <a class="go-back" href="/picsel/home.php" aria-label="Go back"><span class="fa-solid fa-arrow-left"></span></a>
+      <a title="Go back" class="go-back" href="/picsel/home.php" aria-label="Go back"><span class="fa-solid fa-arrow-left"></span></a>
       <h1>Settings</h1>
     </header>
     <main>
@@ -39,7 +39,7 @@
             <input type="submit" id="submit" name="submit" value="Submit" class="submit"/>
         </form>
 
-        <a class="logout" href="../logout.php">Logout</a>
+        <a title="Logout" class="logout" href="../logout.php">Logout</a>
     </main>
   </body>
 </html>

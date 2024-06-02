@@ -1,8 +1,18 @@
 header {
   display: flex;
   align-items: center;
+  justify-content: start;
   padding: 2rem;
-  font-size: bold;
+  font-weight: bold;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 5;
+  background-color: var(--color-black);
+}
+
+main {
+  padding: 2rem;
 }
 
 header > a > .fa-arrow-left {
@@ -10,6 +20,7 @@ header > a > .fa-arrow-left {
   height: 2rem;
   color: var(--color-white);
   cursor: pointer;
+  margin-right: 2rem;
 }
 
 .profilewindow {
@@ -17,6 +28,7 @@ header > a > .fa-arrow-left {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 9rem;
 }
 
 .profilename {
@@ -83,8 +95,7 @@ header > a > .fa-arrow-left {
   font-weight: bold;
 }
 
-.subscribebutton {
-  background-color: var(--color-red);
+button#subscribebuttonid {
   border: 0px;
   border-radius: 0.5rem;
   padding: 0.5rem 1rem;
@@ -111,10 +122,6 @@ header > a > .fa-arrow-left {
 }
 
 @media only screen and (min-width: 650px) {
-  header {
-    justify-content: end;
-  }
-
   .description,
   .tags {
     width: 25rem;
@@ -126,10 +133,6 @@ header > a > .fa-arrow-left {
 }
 
 @media only screen and (max-width: 650px) {
-  header {
-    justify-content: start;
-  }
-
   .profilename {
     font-size: 1.5rem;
   }

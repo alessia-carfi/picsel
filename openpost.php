@@ -15,7 +15,9 @@
   </head>
 
   <body>
-    <a class="go-back" href="/picsel/home.php"><span class="fa-solid fa-arrow-left"></span></a>
+    <header class="header-post">
+      <a title="Go back" class="go-back" href="/picsel/home.php"><span class="fa-solid fa-arrow-left"></span></a>
+    </header>
     <main>
         <?php include_once 'bootstrap.php'; ?>
         <div class="post-and-comments">

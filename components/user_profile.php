@@ -24,7 +24,7 @@ $followed = $dbh->getUserFromId($id);
 
 <body>
     <header>
-        <a class="go-back" href="/picsel/home.php" aria-label="Go back"><span class="fa-solid fa-arrow-left"></span></a>
+        <a title="Go back" class="go-back" href="/picsel/home.php" aria-label="Go back"><span class="fa-solid fa-arrow-left"></span></a>
     </header>
     <div class="profilewindow">
         <div class="profileinfo">

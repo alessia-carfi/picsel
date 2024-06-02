@@ -30,7 +30,7 @@ if(isset($_GET['error'])) {
         </form>
         <p class="donthaveaccount">
             <span class="textaccount">Don't you have an account? </span>
-            <a href="signup.php" class="signintext">Sign up</a>
+            <a title="Sign up" href="signup.php" class="signintext">Sign up</a>
         </p>
     </div>
     <script type="text/javascript" src="./js/login.js"></script>

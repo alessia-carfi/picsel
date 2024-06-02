@@ -1,7 +1,7 @@
 <div class="shadow" id="shadowid">
     <div class="sidemenu" id="sidemenuid">
         <div class="top-sidemenu"  id="top-sidemenu" style="display: none">
-            <a class=profile-mobile href="./components/user_profile.php?user_id=<?php echo $templateParams['logged_user']['user_id']; ?>">
+            <a title="Your profile" class=profile-mobile href="./components/user_profile.php?user_id=<?php echo $templateParams['logged_user']['user_id']; ?>">
                 <?php if ($templateParams['logged_user']['image'] != NULL) :?>
                 <img src='data:image/PNG;base64,<?php echo base64_encode($templateParams['logged_user']['image']); ?>' alt="" id="profileimageid"/>
                 <?php else:?>
@@ -21,7 +21,7 @@
             <?php if (count($templateParams['followed']) > 0): ?>
                 <?php foreach ($templateParams['followed'] as $followed): ?>
                 <li>
-                    <a href="./components/user_profile.php?user_id=<?php echo $followed['user_id']; ?>">
+                    <a title="<?php echo $followed['name']; ?>" href="./components/user_profile.php?user_id=<?php echo $followed['user_id']; ?>">
                         <?php if ($followed['image'] != NULL):?>
                         <img src='data:image/PNG;base64,<?php echo base64_encode($followed['image']); ?>' alt="" />
                         <?php else: ?>
@@ -44,7 +44,7 @@
             <?php if (count($templateParams['subscriptions']) > 0): ?>
                 <?php foreach ($templateParams['subscriptions'] as $subbed): ?>
                 <li>
-                    <a href="./components/game_profile.php?game_id=<?php echo $subbed['game_id']; ?>">
+                    <a title="<?php echo $subbed['name']; ?>" href="./components/game_profile.php?game_id=<?php echo $subbed['game_id']; ?>">
                         <?php if ($subbed['image'] != NULL):?>
                         <img src='data:image/PNG;base64,<?php echo base64_encode($subbed['image']); ?>' alt="" />
                         <?php else: ?>
