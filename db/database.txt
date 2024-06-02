@@ -14,6 +14,7 @@ create table GAME (
      game_id int auto_increment not null,
      name varchar(255) not null,
      description varchar(255) not null,
+     image longblob,
      user_id int not null,
      constraint IDGAME_ID primary key (game_id));
 

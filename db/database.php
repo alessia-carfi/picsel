@@ -230,7 +230,7 @@ class DatabaseHelper {
     }
 
     public function getFollowedGames() {
-        $stmt = $this->db->prepare("SELECT GAME.name, GAME.game_id FROM FOLLOWS_GAME JOIN GAME
+        $stmt = $this->db->prepare("SELECT * FROM FOLLOWS_GAME JOIN GAME
                                     ON GAME.game_id=FOLLOWS_GAME.game_id WHERE FOLLOWS_GAME.user_id=?");
         $stmt->bind_param("i", $_SESSION['user_id']);
         $stmt->execute();
@@ -239,17 +239,7 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    
     public function getGameFromId($id) {
-        $stmt = $this->db->prepare("SELECT name from GAME where game_id=?");
-        $stmt->bind_param("i", $id);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        
-        return $result->fetch_assoc()['name'];
-    }
-
-    public function getGameFromIdNew($id) {
         $stmt = $this->db->prepare("SELECT * from GAME where game_id=?");
         $stmt->bind_param("i", $id);
         $stmt->execute();

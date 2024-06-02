@@ -22,7 +22,11 @@
                 <?php foreach ($templateParams['followed'] as $followed): ?>
                 <li>
                     <a href="./components/user_profile.php?user_id=<?php echo $followed['user_id']; ?>">
+                        <?php if ($followed['image'] != NULL):?>
+                        <img src='data:image/PNG;base64,<?php echo base64_encode($followed['image']); ?>' alt="" />
+                        <?php else: ?>
                         <img src="assets/logo.svg" alt="" />
+                        <?php endif;?>
                         <p class="fl-name">
                             <span class="fl-mainname"><?php echo $followed['name']?></span>
                             <span class="small-text">@<?php echo $followed['nickname']?></span>
@@ -41,8 +45,12 @@
                 <?php foreach ($templateParams['subscriptions'] as $subbed): ?>
                 <li>
                     <a href="./components/game_profile.php?game_id=<?php echo $subbed['game_id']; ?>">
+                        <?php if ($subbed['image'] != NULL):?>
+                        <img src='data:image/PNG;base64,<?php echo base64_encode($subbed['image']); ?>' alt="" />
+                        <?php else: ?>
                         <img src="assets/logo.svg" alt="" />
-                        <p class="fl-name">
+                        <?php endif; ?>
+                        <pclass="fl-name">
                             <span class="fl-mainname"><?php echo $subbed['name']?></span>
                         </p>
                     </a>

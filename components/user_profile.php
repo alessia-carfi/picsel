@@ -27,7 +27,11 @@ $followed = $dbh->getUserFromId($id);
     <div class="profilewindow">
         <div class="profileinfo">
             <div class="profile">
+                <?php if ($followed['image'] != NULL): ?>
+                <img class="profileimage" src='data:image/PNG;base64,<?php echo base64_encode($followed['image']); ?>' alt="" />   
+                <?php else:?>
                 <img class="profileimage" src="../assets/logo.svg" alt="" />
+                <?php endif;?>
                 <p class="profilename">
                     <span class="pr-name" id="pr-nameid"><?php echo $followed['name'] ?></span>
                     <span class="tagname" id="tagnameid">@<?php echo $followed['nickname'] ?></span>

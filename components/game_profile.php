@@ -1,7 +1,7 @@
 <?php
 require_once('./../bootstrap.php');
 $game_id = $_GET['game_id'];
-$subscribed = $dbh->getGameFromIdNew($game_id);
+$subscribed = $dbh->getGameFromId($game_id);
 ?>
 
 
