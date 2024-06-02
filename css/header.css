@@ -59,6 +59,10 @@ nav a {
   align-items: center;
 }
 
+.search > button {
+  display: contents;
+}
+
 @media only screen and (min-width: 830px) {
   .options a,
   nav a {
@@ -156,10 +160,6 @@ nav a {
 
   .search > input::placeholder {
     color: var(--color-gray);
-  }
-
-  .search > button {
-    display: contents;
   }
 
   .buttons {
