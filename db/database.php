@@ -185,12 +185,9 @@ class DatabaseHelper {
     }
 
     public function followingUser($user_id) {
-        $isfollowed = $this->isUserFollowed($user_id);
-        if ($isfollowed) {
-            return $this->unfollowUser($user_id);
-        } else {
-            return $this->followUser($user_id);
-        }
+        return $this->isUserFollowed($user_id) ?
+                $this->unfollowUser($user_id) :
+                $this->followUser($user_id);
     }
 
     public function isUserFollowed($user_id){
