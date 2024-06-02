@@ -1,12 +1,17 @@
 const DOWN = false;
 const UP = true;
 
+let likeCounts = document.getElementsByName("like-count")
+let countsMap = new Map()
+likeCounts.forEach((c) => {
+  countsMap.set(c, c.dataset.postId)
+})
+
 let upvotes = document.getElementsByName("upvote")
 let upvotesMap = new Map()
 upvotes.forEach((b) => { 
   upvotesMap.set(b.dataset.postId, b) 
 })
-
 let downvotes = document.getElementsByName("downvote");
 let downvotesMap = new Map();
 downvotes.forEach((b) => { 
@@ -15,7 +20,6 @@ downvotes.forEach((b) => {
     downvoteClick(b, upvotesMap.get(b.dataset.postId));
   });
 });
-
 upvotes.forEach((b) => {
   b.addEventListener("click", () => {
     upvoteClick(b, downvotesMap.get(b.dataset.postId));
@@ -61,6 +65,7 @@ function updateOrInsertLike(button, typeVote, opposite) {
           }
           press(button);
         }
+        updateLikeCounter(countsMap.get(button.dataset.postId), response.amount)
       } else {
         console.error("Error: " + response.message);
       }
@@ -75,6 +80,7 @@ function updateOrInsertLike(button, typeVote, opposite) {
   xhr.send(data);
 }
 
+
 function saveOrUnsavePost(button, method) {
   let xhr = new XMLHttpRequest();
   xhr.open("POST", "/picsel/db/ajax_handling.php", true);
@@ -88,18 +94,27 @@ function saveOrUnsavePost(button, method) {
         } else {
           press(button)
         }
+        updateLikeCounter(countsMap.get(button.dataset.postId), response.amount6)
       } else {
         console.error("Error: " + response.message);
       }
     }
   };
 
+  
   let data = JSON.stringify({
     method: method,
     post_id: button.dataset.postId
   });
   xhr.send(data);
   
+}
+
+function updateLikeCounter(counter, amount) {
+  let old = parseInt(counter.innerHTML)
+  console.log(old)
+  let updated = old + amount
+  counter.innerHTML = updated
 }
 
 function unpress(button) {

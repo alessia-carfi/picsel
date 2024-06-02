@@ -589,18 +589,23 @@ class DatabaseHelper {
     private function updatePostVoteCount($post_id, $type, $multiplier) {
         $old_likes = $this->getPostById($post_id)['likes'];
         if ($type) {
-            $new_likes = $old_likes + ($multiplier * $this::UP);
+            $amount = $multiplier * $this::UP;
         } else {
-            $new_likes = $old_likes + ($multiplier * $this::DOWN);
+            $amount = $multiplier * $this::DOWN;
         }
-    
+
+        $new_likes = $old_likes + $amount;
         $stmt = $this->db->prepare("UPDATE POST SET likes=? WHERE POST.post_id=?");
         $stmt->bind_param("ii", $new_likes, $post_id);
         if ($stmt->execute()) {
             if($type) {
-                return $this->addNotification($this->getPostById($post_id)['user_id'], "liked your post.");
+                if($this->addNotification($this->getPostById($post_id)['user_id'], "liked your post.") == ['success' => true]) {
+                    return ['success' => true, 'amount' => $amount];
+                } else {
+                    return ['success' => false, 'message' => 'Error: failed to send notification'];
+                }
             } else { 
-                return ['success' => true];
+                return ['success' => true, 'amount' => $amount];
             }
         } else {
             return ['success' => false, 'message' => 'Error: ' . $stmt->error];
