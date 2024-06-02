@@ -7,7 +7,7 @@
         <?php endif;?>
         <p class="user-tag">
             <span class="username" name="username-post" id="username-post"><?php echo $post['nickname']; ?></span>
-            <span name="tag" id="tag">@<?php echo $dbh->getGameFromId($post['game_id']); ?></span>
+            <span name="tag" id="tag">@<?php echo $dbh->getGameFromId($post['game_id'])['name']; ?></span>
         </p>
     </div>
     <p><?php echo $post['text']; ?></p>
