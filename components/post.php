@@ -30,7 +30,7 @@
                 </button>
             </div>
 
-            <a href="openpost.php?post_id=<?php echo $post['post_id']; ?>" class="comments-icons">
+            <a href="/picsel/openpost.php?post_id=<?php echo $post['post_id']; ?>" class="comments-icons">
                 <button id="view-comments" aria-label="view comments">
                     <span class="fa-solid fa-comments"></span>
                 </button>
