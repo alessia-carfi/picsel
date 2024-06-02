@@ -1,7 +1,7 @@
 <article class="post">
     <div class="poster">
         <?php if ($post['usrimage'] == NULL): ?>
-        <img src="../assets/logo.svg" alt="" id="postimg" name="postimg" />
+        <img src="../assets/logo.svg" alt="" name="profileimg" id="profileimg" />
         <?php else: ?>
         <img src='data:image/PNG;base64,<?php echo base64_encode($post['usrimage']); ?>' alt="" name="profileimg" id="profileimg" />
         <?php endif;?>
