@@ -84,7 +84,22 @@ class DatabaseHelper {
         }
         $stmt = $this->db->prepare("INSERT INTO USR (name, nickname, email, `password`) VALUES (?, ?, ?, ?)");
         $stmt->bind_param("ssss", $name, $username, $email, $password);
-        $stmt->execute();
+        return $stmt->execute();
+    }
+
+    public function addNewGame($name, $desc, $user_id, $image, $tags) {
+        $stmt = $this->db->prepare("INSERT INTO GAME (`name`, `description`, `user_id`, `image`) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("ssis", $name, $desc, $user_id, $image);
+        if ($stmt->execute()) {
+            $game_id = $this->db->insert_id;
+            foreach ($tags as $tag) {
+                $stmt = $this->db->prepare("INSERT INTO HAS_TAG (`name`, game_id) VALUES (?, ?)");
+                $stmt->bind_param("si", $tag, $game_id);
+                if(!$stmt->execute()) {
+                    return false;
+                }
+            }
+        }
         return true;
     }
     

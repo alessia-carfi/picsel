@@ -17,21 +17,20 @@
         <h1 class="title">New Game</h1>
     </header>
     <main>
-        <form class="gameform" method="post">
+        <form class="gameform" action="/picsel/db/new_game_check.php" method="post" enctype="multipart/form-data">
             <label hidden for="gametitleid">Title</label>
-            <input class="gametitle" id="gametitleid" type="text" placeholder="Game name" />
+            <input class="gametitle" name="gametitle" id="gametitleid" type="text" placeholder="Game name" />
             <label hidden for="description">Description</label>
             <textarea class="description" id="description" name="description" placeholder="Description"></textarea>
-            <label hidden for="image">Image</label>
-            <input class="image" id="image" type="file" accept="image/*" placeholder="Choose image"/>
+            <label hidden for="gameimage">Image</label>
+            <input class="image" name="gameimage" id="gameimage" type="file" accept="image/*" placeholder="Choose image"/>
             <label class="tagstitle">Choose tags for this game:</label>
             <fieldset class="tagsfield">
                 <ul class="tagslist">
                     <?php foreach ($templateParams["tags"] as $tag): ?>
-                        <!-- probabilmente sbagliato -->
                     <li>
                         <label for="<?php echo $tag['name']; ?>"><?php echo $tag['name']; ?></label>
-                        <input type="checkbox" id="<?php echo $tag['name']; ?>" name="<?php echo $tag['name']; ?>" value="<?php echo $tag['name']; ?>" />
+                        <input type="checkbox" id="<?php echo $tag['name']; ?>" name="tags[]" value="<?php echo $tag['name']; ?>" />
                     </li>
                     <?php endforeach; ?>
                 </ul>
