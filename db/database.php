@@ -499,7 +499,7 @@ class DatabaseHelper {
     }
 
     public function getPostsFromSearch($searchText) {
-        $stmt = $this->db->prepare("SELECT POST.post_id, POST.game_id, POST.text, POST.image, POST.likes, POST.comments, POST.user_id, USR.nickname FROM POST JOIN USR ON USR.user_id=POST.user_id JOIN GAME ON GAME.game_id=POST.game_id WHERE POST.text LIKE ? OR USR.nickname LIKE ? OR GAME.name LIKE ? OR USR.name LIKE ?");
+        $stmt = $this->db->prepare("SELECT POST.post_id, POST.game_id, POST.text, POST.image, POST.likes, POST.comments, POST.user_id, USR.nickname, USR.image as usrimage FROM POST JOIN USR ON USR.user_id=POST.user_id JOIN GAME ON GAME.game_id=POST.game_id WHERE POST.text LIKE ? OR USR.nickname LIKE ? OR GAME.name LIKE ? OR USR.name LIKE ?");
 
         if ($searchText[0] != '%') $searchText = '%' . $searchText;
         if ($searchText[strlen($searchText) - 1] != '%') $searchText = $searchText . '%';
