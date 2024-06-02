@@ -88,17 +88,8 @@ class DatabaseHelper {
         return true;
     }
     
-    public function getRandomPosts($n) {
-        $stmt = $this->db->prepare("SELECT text, image, tag_id, nickname FROM post, user ORDER BY RAND() LIMIT ?");
-        $stmt->bind_param('i', $n);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        
-        return $result->fetch_all(MYSQLI_ASSOC);
-    }
-
     public function getPostsByUserId($from_userid) {
-        $stmt = $this->db->prepare("SELECT POST.post_id, POST.game_id, POST.text, POST.image, POST.likes, POST.comments, POST.user_id, USR.nickname from POST JOIN USR ON USR.user_id=POST.user_id WHERE USR.user_id=?");
+        $stmt = $this->db->prepare("SELECT POST.post_id, POST.game_id, POST.text, POST.image, POST.likes, POST.comments, POST.user_id, USR.nickname, USR.image as usrimage  from POST JOIN USR ON USR.user_id=POST.user_id WHERE USR.user_id=?");
         $stmt->bind_param('i', $from_userid);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -118,7 +109,7 @@ class DatabaseHelper {
 
     public function getExplorePosts($limit) {
         /* Gets posts from games with the same tags as your followed games */
-        $stmt = $this->db->prepare("SELECT POST.post_id, POST.game_id, POST.text, POST.image, POST.likes, POST.comments, POST.user_id, USR.nickname 
+        $stmt = $this->db->prepare("SELECT POST.post_id, POST.game_id, POST.text, POST.image, POST.likes, POST.comments, POST.user_id, USR.nickname, USR.image as usrimage 
                                     FROM POST LEFT JOIN USR ON USR.user_id=POST.user_id
                                     WHERE POST.game_id=
                                     (SELECT game_id FROM HAS_TAG WHERE name=
@@ -259,7 +250,7 @@ class DatabaseHelper {
     
     public function getSavedPosts() {
         $stmt = $this->db->prepare("SELECT POST.post_id, POST.game_id, POST.text, 
-                                           POST.image, POST.likes, POST.comments, POST.user_id, USR.nickname 
+                                           POST.image, POST.likes, POST.comments, POST.user_id, USR.nickname, USR.image as usrimage 
                                            FROM (POST JOIN USR ON POST.user_id=USR.user_id)
                                            RIGHT JOIN SAVED ON POST.post_id=SAVED.post_id AND SAVED.user_id=? 
                                            GROUP BY POST.post_id");
@@ -332,7 +323,7 @@ class DatabaseHelper {
     }
     
     public function getPostById($post_id) {
-        $stmt = $this->db->prepare("SELECT POST.post_id, POST.game_id, POST.text, POST.image, POST.likes, POST.comments, POST.user_id, USR.nickname from POST JOIN USR ON USR.user_id=POST.user_id WHERE POST.post_id=?");
+        $stmt = $this->db->prepare("SELECT POST.post_id, POST.game_id, POST.text, POST.image, POST.likes, POST.comments, POST.user_id, USR.nickname, USR.image as usrimage  from POST JOIN USR ON USR.user_id=POST.user_id WHERE POST.post_id=?");
         $stmt->bind_param("i", $post_id);
         $stmt->execute();
         $result = $stmt->get_result();
