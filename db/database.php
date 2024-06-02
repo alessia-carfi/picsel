@@ -127,6 +127,17 @@ class DatabaseHelper {
         
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function getPostsByGameId($game_id) {
+        $stmt = $this->db->prepare("SELECT  POST.post_id, POST.game_id, POST.text, POST.image, POST.likes, POST.comments, POST.user_id, USR.nickname, USR.image as usrimage 
+                                    FROM POST LEFT JOIN USR ON USR.user_id=POST.user_id
+                                    WHERE POST.game_id=?");
+        $stmt->bind_param('i', $game_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
     
 
     public function getExplorePosts($limit) {

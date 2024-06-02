@@ -13,6 +13,7 @@ $subscribed = $dbh->getGameFromId($game_id);
     <meta charset="UTF-8" />
     <link rel="stylesheet" type="text/css" href="../css/style.css" />
     <link rel="stylesheet" type="text/css" href="../css/game_profile.css" />
+    <link rel="stylesheet" type="text/css" href="../css/post.css" />
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
     <script defer src="../assets/fontawesome/js/solid.js"></script>
     <script defer src="../assets/fontawesome/js/regular.js"></script>
@@ -52,7 +53,10 @@ $subscribed = $dbh->getGameFromId($game_id);
         </div>
     </div>
     <main>
-        <!-- TODO: generare i post di questo game -->
+        <?php
+        $templateParams['posts'] = $dbh->getPostsByGameId($game_id);
+        include __DIR__ . "/../generate_posts.php";
+        ?>
     </main>
     <script type="text/javascript" src="/picsel/js/game_profile.js"></script>
 </body>
