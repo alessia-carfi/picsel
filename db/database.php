@@ -144,9 +144,9 @@ class DatabaseHelper {
         /* Gets posts from games with the same tags as your followed games */
         $stmt = $this->db->prepare("SELECT POST.post_id, POST.game_id, POST.text, POST.image, POST.likes, POST.comments, POST.user_id, USR.nickname, USR.image as usrimage 
                                     FROM POST LEFT JOIN USR ON USR.user_id=POST.user_id
-                                    WHERE POST.game_id=
-                                    (SELECT game_id FROM HAS_TAG WHERE name=
-                                        (SELECT name FROM HAS_TAG WHERE game_id=
+                                    WHERE POST.game_id IN
+                                    (SELECT game_id FROM HAS_TAG WHERE name IN
+                                        (SELECT name FROM HAS_TAG WHERE game_id IN
                                             (SELECT game_id FROM FOLLOWS_GAME WHERE user_id=?)
                                         )
                                     )
@@ -156,7 +156,23 @@ class DatabaseHelper {
         $stmt->execute();
         $result = $stmt->get_result();
 
+        if ($result->num_rows == 0) {
+            return $this->getRandomPosts($limit);
+        }
+
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getRandomPosts($limit) {
+        $stmt = $this->db->prepare("SELECT POST.post_id, POST.game_id, POST.text, POST.image, POST.likes, POST.comments, POST.user_id, USR.nickname, USR.image as usrimage 
+                                    FROM POST LEFT JOIN USR ON USR.user_id=POST.user_id
+                                    ORDER BY RAND()
+                                    LIMIT ?");
+        $stmt->bind_param("i", $limit);
+        $stmt->execute();
+        $result = $stmt->get_result(); 
+
+        return $result->fetch_all(MYSQLI_ASSOC);              
     }
 
     public function getFollowedUsers() {
@@ -256,6 +272,14 @@ class DatabaseHelper {
         $stmt = $this->db->prepare("SELECT * FROM FOLLOWS_GAME JOIN GAME
                                     ON GAME.game_id=FOLLOWS_GAME.game_id WHERE FOLLOWS_GAME.user_id=?");
         $stmt->bind_param("i", $_SESSION['user_id']);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getAllGames() {
+        $stmt = $this->db->prepare("SELECT * FROM GAME");
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -455,9 +479,9 @@ class DatabaseHelper {
         $stmt = $this->db->prepare("SELECT POST.post_id, POST.game_id, POST.text, POST.image, POST.likes, POST.comments, POST.user_id, USR.nickname, USR.image as usrimage 
                                     FROM POST LEFT JOIN USR ON USR.user_id=POST.user_id 
                                     WHERE 
-                                        POST.game_id in(SELECT game_id FROM FOLLOWS_GAME WHERE user_id=?) 
+                                        POST.game_id IN (SELECT game_id FROM FOLLOWS_GAME WHERE user_id=?) 
                                         OR 
-                                        POST.user_id in (SELECT Fol_user_id from FOLLOWS_USER WHERE user_id=?)
+                                        POST.user_id IN (SELECT Fol_user_id from FOLLOWS_USER WHERE user_id=?)
                                     ORDER BY RAND()
                                     LIMIT ?");
         $stmt->bind_param("iii", $_SESSION['user_id'], $_SESSION['user_id'], $limit);

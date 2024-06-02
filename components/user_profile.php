@@ -51,7 +51,7 @@ $followed = $dbh->getUserFromId($id);
     </div>
     <main>
         <?php
-        $templateParams['posts'] = $dbh->getPostsByGameId($id);
+        $templateParams['posts'] = $dbh->getPostsByUserId($id);
         include __DIR__ . "/../generate_posts.php";
         ?>
     </main>

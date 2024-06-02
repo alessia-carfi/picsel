@@ -22,7 +22,7 @@
         <form class="postform" action="/picsel/db/create_post_check.php" method="post" enctype="multipart/form-data">
             <label class="selectlabel" for="selectgame">Choose the Game:</label>
             <select class="selectgame" name="games" id="selectgame">
-                <?php $options = $dbh -> getFollowedGames(); ?>
+                <?php $options = $dbh -> getAllGames(); ?>
                 <?php foreach ($options as $option): ?>
                     <option value="<?php echo $option['game_id']; ?>"><?php echo $option['name']; ?></option>
                 <?php endforeach; ?>
