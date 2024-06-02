@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 
 <head>
     <title>Picsel - Create Post </title>
@@ -19,13 +19,13 @@
     <main class="createpost">
         <?php include_once 'bootstrap.php'; ?>
         <form class="postform">
-        <label class="selectlabel" for="games">Choose the Game:</label>
-        <select class="selectgame" name="games" id="selectgame">
-            <?php $options = $dbh -> getFollowedGames(); ?>
-            <?php foreach ($options as $option): ?>
-                <option value="<?php echo $option['name']; ?>"><?php echo $option['name']; ?></option>
-            <?php endforeach; ?>
-        </select>
+            <label class="selectlabel" for="games">Choose the Game:</label>
+            <select class="selectgame" name="games" id="selectgame">
+                <?php $options = $dbh -> getFollowedGames(); ?>
+                <?php foreach ($options as $option): ?>
+                    <option value="<?php echo $option['name']; ?>"><?php echo $option['name']; ?></option>
+                <?php endforeach; ?>
+            </select>
             <label hidden for="postitle">Post title</label>
             <input class="posttitle" name="postitle" id="postitleid" type="text" placeholder="Title" />
             <label hidden for="postcontent">Post content</label>

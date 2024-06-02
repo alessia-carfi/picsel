@@ -17,7 +17,7 @@
         <h1 class="title">New Game</h1>
     </header>
     <main>
-        <form class="gameform">
+        <form class="gameform" method="post">
             <label hidden for="gametitleid">Title</label>
             <input class="gametitle" id="gametitleid" type="text" placeholder="Game name" />
             <label hidden for="description">Description</label>
