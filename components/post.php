@@ -6,8 +6,12 @@
         <img src='data:image/PNG;base64,<?php echo base64_encode($post['usrimage']); ?>' alt="" name="profileimg" id="profileimg" />
         <?php endif;?>
         <p class="user-tag">
-            <span class="username" name="username-post" id="username-post"><?php echo $post['nickname']; ?></span>
-            <span name="tag" id="tag">@<?php echo $dbh->getGameFromId($post['game_id'])['name']; ?></span>
+            <a href="./components/user_profile.php?user_id=<?php echo $post['user_id']; ?>">
+                <span class="username" name="username-post" id="username-post"><?php echo $post['nickname']; ?></span>
+            </a>
+            <a id="gamelink" data-game-id=<?php echo $post['game_id']; ?> href="./components/game_profile.php?game_id=<?php echo $post['game_id']; ?>">
+                <span name="tag" id="tag">@<?php echo $dbh->getGameFromId($post['game_id'])['name']; ?></span>
+            </a>
         </p>
     </div>
     <p><?php echo $post['text']; ?></p>
