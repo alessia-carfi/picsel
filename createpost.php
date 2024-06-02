@@ -13,27 +13,25 @@
 
 <body>
     <header class="posttext">
-        <a class="goback" href="/picsel/home.php" aria-label="Go back"><span class="fa-solid fa-arrow-left"></span></a>
+        <a title="Go back" class="goback" href="/picsel/home.php" aria-label="Go back"><span class="fa-solid fa-arrow-left"></span></a>
         <h1 class="postp">Create Post</h1>
     </header>
     <main class="createpost">
         <?php include_once 'bootstrap.php'; ?>
-        <form class="postform">
-            <label class="selectlabel" for="games">Choose the Game:</label>
+        <form class="postform" action="/picsel/db/create_post_check.php" method="post" enctype="multipart/form-data">
+            <label class="selectlabel" for="selectgame">Choose the Game:</label>
             <select class="selectgame" name="games" id="selectgame">
                 <?php $options = $dbh -> getFollowedGames(); ?>
                 <?php foreach ($options as $option): ?>
-                    <option value="<?php echo $option['name']; ?>"><?php echo $option['name']; ?></option>
+                    <option value="<?php echo $option['game_id']; ?>"><?php echo $option['name']; ?></option>
                 <?php endforeach; ?>
             </select>
-            <label hidden for="postitle">Post title</label>
-            <input class="posttitle" name="postitle" id="postitleid" type="text" placeholder="Title" />
             <label hidden for="postcontent">Post content</label>
-            <textarea class="postcontentcl" name="postcontent" id="postcontentid" placeholder="Text"></textarea>
+            <textarea class="postcontentcl" name="postcontent" id="postcontent" placeholder="Text"></textarea>
             <label hidden for="imageselect">Select image</label>
-            <input class="imageselect" name="imageselect" id="imageselectid" type="file" accept="image/*" />
+            <input class="imageselect" name="imageselect" id="imageselect" type="file" accept="image/*" />
             <label hidden for="postbutton">Submit</label>
-            <input type="submit" class="postbutton" name="postbutton" id="postbuttonid" value="Submit" />
+            <input type="submit" class="postbutton" name="postbutton" id="postbutton" value="Submit" />
         </form>
     </main>
 </body>

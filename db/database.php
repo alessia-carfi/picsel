@@ -87,6 +87,13 @@ class DatabaseHelper {
         return $stmt->execute();
     }
 
+    public function addNewPost($text, $image, $game_id) {
+        $stmt = $this->db->prepare("INSERT INTO `POST` (`text`, `image`, likes, comments, user_id, game_id)
+                                    VALUES (?, ?, 0, 0, ?, ?)");
+        $stmt->bind_param("ssii", $text, $image, $_SESSION['user_id'], $game_id);
+        return $stmt->execute();
+    }
+
     public function addNewGame($name, $desc, $user_id, $image, $tags) {
         $stmt = $this->db->prepare("INSERT INTO GAME (`name`, `description`, `user_id`, `image`) VALUES (?, ?, ?, ?)");
         $stmt->bind_param("ssis", $name, $desc, $user_id, $image);
@@ -152,11 +159,10 @@ class DatabaseHelper {
 
     public function followingUser($user_id) {
         $isfollowed = $this->isUserFollowed($user_id);
-        switch ($isfollowed) {
-            case false:
-                return $this->followUser($user_id);
-            case true:
-                return $this->unfollowUser($user_id);
+        if ($isfollowed) {
+            return $this->unfollowUser($user_id);
+        } else {
+            return $this->followUser($user_id);
         }
     }
 

@@ -58,7 +58,6 @@ h1 {
   align-self: center;
 }
 
-.posttitle,
 .postcontentcl,
 .imageselect,
 .selectgame {
@@ -81,7 +80,6 @@ h1 {
   margin-bottom: 0.5rem;
 }
 
-.posttitle::placeholder,
 .imageselect::placeholder,
 .postcontentcl::placeholder {
   color: var(--color-gray);
@@ -104,7 +102,6 @@ h1 {
 }
 
 @media only screen and (min-width: 830px) {
-  .posttitle,
   .imageselect {
     width: 25rem;
     height: 2rem;
@@ -120,7 +117,6 @@ h1 {
 }
 
 @media only screen and (max-width: 830px) {
-  .posttitle,
   .imageselect {
     width: 18rem;
     height: 2rem;
