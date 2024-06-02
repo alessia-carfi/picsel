@@ -202,7 +202,7 @@ class DatabaseHelper {
         $stmt = $this->db->prepare("INSERT INTO FOLLOWS_USER (user_id, Fol_user_id) VALUES (?, ?)");
         $stmt->bind_param("ii", $_SESSION['user_id'], $user_id);
         if ($stmt->execute()) {
-            return ["success" => true];
+            return $this->addNotification($user_id, "started following you.");
         } else {
             return ["success" => false, "message" => "Error: " . $stmt->error ];
         }
