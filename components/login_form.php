@@ -33,7 +33,7 @@ if(isset($_GET['error'])) {
             <a title="Sign up" href="signup.php" class="signintext">Sign up</a>
         </p>
     </div>
-    <script type="text/javascript" src="./js/login.js"></script>
+    <script type="module" src="./js/login.js"></script>
 </body>
 
 </html>

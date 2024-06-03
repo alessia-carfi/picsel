@@ -16,6 +16,7 @@ if (isset($_GET['error'])) {
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
     <script defer src="./assets/fontawesome/js/solid.js"></script>
     <script defer src="./assets/fontawesome/js/fontawesome.js"></script>
+    <script type="module" src="./js/signup.js"></script>
 </head>
 
 <body>
@@ -41,7 +42,6 @@ if (isset($_GET['error'])) {
             <input type="submit" class="button" id="button" value="Submit" />
         </form>
     </div>
-    <script type="text/javascript" src="./js/signup.js"></script>
 </body>
 
 </html>

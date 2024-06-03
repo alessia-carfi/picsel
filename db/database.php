@@ -15,22 +15,25 @@ class DatabaseHelper {
     }
 
     public function login($email, $password) {
-        $stmt = $this->db->prepare("SELECT * FROM USR WHERE email=? AND `password`=? LIMIT 1;");
-        $stmt->bind_param("ss", $email, $password);
+        $stmt = $this->db->prepare("SELECT * FROM USR WHERE email=? LIMIT 1;");
+        $stmt->bind_param("s", $email);
         $stmt->execute();
         $stmt->store_result();
-        $stmt->bind_result($user_id, $name, $nickname, $db_email, $db_password, $image);
+        $stmt->bind_result($user_id, $name, $nickname, $db_email, $db_password, $salt, $image);
         $stmt->fetch();
+        $password = hash('sha512', $password.$salt);
         
         if ($stmt->num_rows() == 1) {
             if ($this->checkbrute($user_id)) {
                 //User has been trying to bruteforce access; user's account is deactivate.
                 return false;
             } else {
-                if ($db_password = $password) {
+                if ($db_password == $password) {
                     //Login successful
                     $user_browser = $_SERVER['HTTP_USER_AGENT'];
+                    $user_id = preg_replace("/[^0-9]+/", "", $user_id);
                     $_SESSION['user_id'] = $user_id;
+                    $nickname = preg_replace("/[^a-zA-Z0-9_\-]+/", "", $nickname);
                     $_SESSION['username'] = $nickname;
                     $_SESSION['login_string'] = hash('sha512', $password.$user_browser);
                     return true;
@@ -38,6 +41,7 @@ class DatabaseHelper {
                     //Save login attempt to check for bruteforce later 
                     $now = time();
                     $this->db->query("INSERT INTO login_attempts (user_id, `time`) VALUES ('$user_id', '$now')");
+                    return false;
                 }
             }
         } else {
@@ -82,8 +86,10 @@ class DatabaseHelper {
         if ($password !== $confirmpassword) {
             return false;
         }
-        $stmt = $this->db->prepare("INSERT INTO USR (name, nickname, email, `password`) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("ssss", $name, $username, $email, $password);
+        $random_salt = hash('sha512', uniqid(mt_rand(1, mt_getrandmax()), true));
+        $password = hash('sha512', $password.$random_salt);
+        $stmt = $this->db->prepare("INSERT INTO USR (name, nickname, email, `password`, salt) VALUES (?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssss", $name, $username, $email, $password, $random_salt);
         return $stmt->execute();
     }
 

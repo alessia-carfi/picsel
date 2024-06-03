@@ -66,6 +66,7 @@ create table USR (
      nickname varchar(255) not null,
      email varchar(255) not null,
      password varchar(255) not null,
+     salt varchar(128) not null,
      image longblob,
      constraint IDUSER_ID primary key (user_id));
 
