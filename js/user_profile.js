@@ -3,9 +3,11 @@ let followbtn = document.getElementById('followbuttonid');
 let urlParams = new URLSearchParams(window.location.search);
 let userId = urlParams.get('user_id');
 
-followbtn.addEventListener("click", () => {
-    followClick(followbtn);
-});
+if (followbtn !== null) {
+    followbtn.addEventListener("click", () => {
+        followClick(followbtn);
+    });
+}
 
 
 function followClick(button) {
