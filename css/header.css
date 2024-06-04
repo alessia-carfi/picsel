@@ -24,6 +24,11 @@ header {
   align-items: center;
 }
 
+.profilebutton{
+  display: contents;
+}
+
+
 .profile > img {
   width: 3rem;
   height: 3rem;
