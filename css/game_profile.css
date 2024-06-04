@@ -52,6 +52,7 @@ header > a > .fa-arrow-left {
 
 .profileimage {
   width: 4.2rem;
+  height: 4.2rem;
   margin-right: 2rem;
   border-radius: 50%;
 }
