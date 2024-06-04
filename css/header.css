@@ -80,7 +80,8 @@ nav a {
     padding: 0;
     justify-content: end;
     font-size: 16px;
-    font-weight: bold;
+    color: var(--color-white);
+    text-align: left;
   }
 
   .svg-inline--fa {
@@ -92,12 +93,11 @@ nav a {
   }
 
   span#name {
-    color: var(--color-white);
+    font-weight: bold;
     margin-bottom: 0;
   }
 
   span#tag {
-    color: var(--color-gray);
     margin-top: 0;
   }
 

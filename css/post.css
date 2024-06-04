@@ -28,6 +28,10 @@
   margin: 2rem 2rem 0 2rem;
 }
 
+.like-count {
+  font-weight: bold;
+}
+
 .poster {
   display: flex;
   text-align: left;

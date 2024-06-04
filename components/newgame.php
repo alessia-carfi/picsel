@@ -25,8 +25,8 @@
             <textarea class="description" id="description" name="description" placeholder="Description"></textarea>
             <label hidden for="gameimage">Image</label>
             <input class="image" name="gameimage" id="gameimage" type="file" accept="image/*" placeholder="Choose image"/>
-            <label class="tagstitle">Choose tags for this game:</label>
             <fieldset class="tagsfield">
+                <legend class="tagstitle">Choose tags for this game:</legend>
                 <ul class="tagslist">
                     <?php foreach ($templateParams["tags"] as $tag): ?>
                     <li>

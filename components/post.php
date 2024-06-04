@@ -24,7 +24,7 @@
                 <button id="upvote" class="<?php echo $dbh->getPostVoteType($post['post_id']) == "Up" ? 'liked' : ''?>" name="upvote" data-post-id=<?php echo $post['post_id']?> aria-label="upvote post">
                     <span class="fa-solid fa-caret-up"></span>
                 </button>
-                <p name="like-count" data-post-id=<?php echo $post['post_id']?>><?php echo $post['likes']?></p>
+                <p class="like-count" name="like-count" data-post-id=<?php echo $post['post_id']?>><?php echo $post['likes']?></p>
                 <button id="downvote" class="<?php echo $dbh->getPostVoteType($post['post_id']) == "Down" ? 'liked' : ''?>" name="downvote" data-post-id=<?php echo $post['post_id']?> aria-label="downvote post">
                     <span class="fa-solid fa-caret-down"></span>
                 </button>

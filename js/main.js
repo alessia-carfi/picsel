@@ -9,7 +9,6 @@ let shadow = null;
 let topmenu = null;
 let options = null;
 let burger = null;
-let profile = null;
 let profilebutton = null;
 let search = null;
 let searchMobile = null;
@@ -22,10 +21,9 @@ function responsiveMenu(menu) {
   }
 }
 
-
-function responsiveProfile(profile){
-  if(window.matchMedia("(max-width: 830px)").matches){
-    profile.onclick = '';
+function responsiveProfile(profile) {
+  if (window.matchMedia("(max-width: 830px)").matches) {
+    profile.onclick = "";
   }
 }
 
@@ -37,7 +35,6 @@ window.addEventListener("DOMContentLoaded", () => {
   topmenu = document.getElementById("top-sidemenu");
   options = document.getElementById("optionsid");
   burger = document.getElementById("burger");
-  profile = document.getElementById("profileid");
   profilebutton = document.getElementById("profilebuttonid");
   search = document.getElementById("searchid");
   searchMobile = document.getElementById("search-mobile");
@@ -57,7 +54,7 @@ window.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("resize", () => responsiveMenu(options));
   window.addEventListener("resize", () => responsiveProfile(profilebutton));
   searchMobile.addEventListener("click", () =>
-    searchbar.openSearch(search, profile, searchMobile)
+    searchbar.openSearch(search, profilebutton, searchMobile)
   );
   search.addEventListener("submit", () => {
     let text = document.getElementById("search-text");

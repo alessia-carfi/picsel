@@ -11,7 +11,7 @@
                     <span id="name"><?php echo ($templateParams['logged_user'])['name']; ?></span>
                     <span id="tag">@<?php echo ($templateParams['logged_user'])['nickname']; ?></span>
                 </div>
-                </a>
+            </a>
             <button id="close"><span class="fa-solid fa-xmark"></span></button>
         </div>
         <ul class="follows-list">

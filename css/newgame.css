@@ -33,6 +33,7 @@ h1 {
   color: var(--color-white);
   font-weight: bold;
   margin-top: 1rem;
+  text-align: center;
 }
 
 .gameform {

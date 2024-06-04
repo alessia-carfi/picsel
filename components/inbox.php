@@ -5,10 +5,7 @@
     foreach ($templateParams['notifs'] as $notif) { ?>
     <li>
         <div class="notification-div">
-            <img src="assets/logo.svg" alt="" />
             <p class="text"><span>@<?php echo $notif['name']?></span><?php echo $notif['text']?></p>
-        </div>
-        <div>
             <button id="delete-notification" name="delete-notification" data-id="<?php echo $notif['notification_id'];?>" class="delete" aria-label="delete">
                 <div class="container"><span class="fa-solid fa-trash-can"></span></div>
             </button>
