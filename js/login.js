@@ -27,7 +27,7 @@ async function loginerror() {
 }
 
 async function checkLogin() {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "/picsel/db/loginajax.php", true);
     xhr.setRequestHeader("Content-Type", "application/json");

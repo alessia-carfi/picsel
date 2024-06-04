@@ -61,7 +61,7 @@ function checkName() {
 }
 
 async function checkUsername() {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     if (user.username.value === "") {
       error.username.textContent = "Username not valid";
       showerror(user.username, error.username);
@@ -96,7 +96,7 @@ async function checkUsername() {
 }
 
 async function checkEmail() {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     if (
       !user.email.value.match(
         /^[A-Za-z\._\-0-9]*[@][A-Za-z]*[\.][a-z]{2,4}$/
