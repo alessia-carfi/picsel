@@ -18,6 +18,7 @@ $followed = $dbh->getUserFromId($id);
     <script defer src="../assets/fontawesome/js/solid.js"></script>
     <script defer src="../assets/fontawesome/js/regular.js"></script>
     <script defer src="../assets/fontawesome/js/fontawesome.js"></script>
+    <script defer src="/picsel/js/post_interactions.js"></script>
 </head>
 
 
