@@ -29,9 +29,9 @@ $subscribed = $dbh->getGameFromId($game_id);
         <div class="profileinfo">
             <div class="profile">
                 <?php if ($subscribed['image'] != NULL): ?>
-                <img class="profileimage" src='data:image/PNG;base64,<?php echo base64_encode($subscribed['image']); ?>' alt="" />   
+                <img class="profileimage" alt="" src='data:image/PNG;base64,<?php echo base64_encode($subscribed['image']); ?>' />   
                 <?php else:?>
-                <img class="profileimage" src="../assets/logo.svg" alt="" />
+                <img class="profileimage" alt="" src="../assets/logo.svg" />
                 <?php endif;?>
                 <p class="profilename">
                     <?php echo $subscribed['name'] ?>

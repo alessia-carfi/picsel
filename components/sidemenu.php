@@ -3,7 +3,7 @@
         <div class="top-sidemenu"  id="top-sidemenu" style="display: none">
             <a title="Your profile" class=profile-mobile href="./components/user_profile.php?user_id=<?php echo $templateParams['logged_user']['user_id']; ?>">
                 <?php if ($templateParams['logged_user']['image'] != NULL) :?>
-                <img src='data:image/PNG;base64,<?php echo base64_encode($templateParams['logged_user']['image']); ?>' alt="" id="profileimageid"/>
+                <img alt="" src='data:image/PNG;base64,<?php echo base64_encode($templateParams['logged_user']['image']); ?>' id="profileimageid"/>
                 <?php else:?>
                 <img src="assets/logo.svg" alt="" id="profileimageid"/>
                 <?php endif;?>
@@ -23,9 +23,9 @@
                 <li>
                     <a title="<?php echo $followed['name']; ?>" href="./components/user_profile.php?user_id=<?php echo $followed['user_id']; ?>">
                         <?php if ($followed['image'] != NULL):?>
-                        <img src='data:image/PNG;base64,<?php echo base64_encode($followed['image']); ?>' alt="" />
+                        <img alt="" src='data:image/PNG;base64,<?php echo base64_encode($followed['image']); ?>' />
                         <?php else: ?>
-                        <img src="assets/logo.svg" alt="" />
+                        <img alt="" src="assets/logo.svg" />
                         <?php endif;?>
                         <p class="fl-name">
                             <span class="fl-mainname"><?php echo $followed['name']?></span>
@@ -46,9 +46,9 @@
                 <li>
                     <a title="<?php echo $subbed['name']; ?>" href="./components/game_profile.php?game_id=<?php echo $subbed['game_id']; ?>">
                         <?php if ($subbed['image'] != NULL):?>
-                        <img src='data:image/PNG;base64,<?php echo base64_encode($subbed['image']); ?>' alt="" />
+                        <img alt="" src='data:image/PNG;base64,<?php echo base64_encode($subbed['image']); ?>' />
                         <?php else: ?>
-                        <img src="assets/logo.svg" alt="" />
+                        <img alt="" src="assets/logo.svg" />
                         <?php endif; ?>
                         <p class="fl-name">
                             <span class="fl-mainname"><?php echo $subbed['name']?></span>

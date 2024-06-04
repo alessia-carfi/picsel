@@ -2,7 +2,7 @@
     <button class="profilebutton" id="profilebuttonid" aria-label="my profile" id="profileid" onclick="location.href='./components/user_profile.php?user_id=<?php echo $templateParams['logged_user']['user_id']; ?>'">
         <div class="profile">
             <?php if ($templateParams['logged_user']['image'] != NULL) : ?>
-                <img src='data:image/PNG;base64,<?php echo base64_encode($templateParams['logged_user']['image']); ?>' alt="" id="profileimageid" />
+                <img alt="" src='data:image/PNG;base64,<?php echo base64_encode($templateParams['logged_user']['image']); ?>' id="profileimageid" />
             <?php else : ?>
                 <img src="assets/logo.svg" alt="" id="profileimageid" />
             <?php endif; ?>

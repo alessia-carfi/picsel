@@ -30,9 +30,9 @@ $followed = $dbh->getUserFromId($id);
         <div class="profileinfo">
             <div class="profile">
                 <?php if ($followed['image'] != NULL): ?>
-                <img class="profileimage" src='data:image/PNG;base64,<?php echo base64_encode($followed['image']); ?>' alt="" />   
+                <img alt="" class="profileimage" src='data:image/PNG;base64,<?php echo base64_encode($followed['image']); ?>' />   
                 <?php else:?>
-                <img class="profileimage" src="../assets/logo.svg" alt="" />
+                <img alt="" class="profileimage" src="../assets/logo.svg" />
                 <?php endif;?>
                 <p class="profilename">
                     <span class="pr-name" id="pr-nameid"><?php echo $followed['name'] ?></span>
