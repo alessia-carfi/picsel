@@ -92,6 +92,24 @@ header > a > .fa-arrow-left {
   background-color: var(--color-red);
 }
 
+.infos {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+.infos > li:not(:last-child) {
+  margin-right: 2rem;
+}
+
+.infos span {
+  font-weight: bold;
+}
+
 @media only screen and (min-width: 650px) {
   .description {
     width: 25rem;
@@ -103,6 +121,11 @@ header > a > .fa-arrow-left {
 
   .tagname {
     font-size: 1.5rem;
+  }
+
+  .infos {
+    display: flex;
+    flex-direction: row;
   }
 }
 
@@ -117,5 +140,12 @@ header > a > .fa-arrow-left {
 
   .description {
     max-width: 22rem;
+  }
+
+  .infos p {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 }

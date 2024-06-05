@@ -38,6 +38,14 @@ $subscribed = $dbh->getGameFromId($game_id);
                     <?php echo $subscribed['name'] ?>
                 </p>
             </div>
+            <ul class="infos">
+                <li>
+                    <p>Post: <span><?php echo $dbh -> getNumberOfPostsFromGame($game_id) ?></span></p>
+                </li>
+                <li>
+                    <p>Subscribers: <span><?php echo $dbh -> getNumberOfSubscribers($game_id) ?></span></p>
+                </li>
+            </ul>
             <p class="description">
                 <?php echo $subscribed['description'] ?>
             </p>

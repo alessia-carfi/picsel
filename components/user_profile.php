@@ -40,6 +40,20 @@ $followed = $dbh->getUserFromId($id);
                     <span class="tagname" id="tagnameid">@<?php echo $followed['nickname'] ?></span>
                 </p>
             </div>
+            <ul class="infos">
+                <li>
+                    <p>Posts: <span><?php echo $dbh -> getNumberOfPostsFromUser($id) ?></span></p>
+                </li>
+                <li>
+                    <p>Followers: <span><?php echo $dbh -> getNumberOfFollowers($id) ?></span></p>
+                </li>
+                <li>
+                <p>Following: <span><?php echo $dbh -> getNumberOfFollowedUser($id) ?></span></p>
+                </li>
+                <li>
+                    <p>Subs: <span><?php echo $dbh -> getNumberOfSubs($id) ?></span></p>
+                </li>
+            </ul>
             <?php
             if ($id != $_SESSION['user_id']):
             ?>

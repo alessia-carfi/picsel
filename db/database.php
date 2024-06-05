@@ -519,6 +519,60 @@ class DatabaseHelper {
         
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function getNumberOfPostsFromGame($game_id) {
+        $stmt = $this->db->prepare("SELECT COUNT(*) as count FROM POST WHERE game_id=?");
+        $stmt->bind_param("i", $game_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        return $result->fetch_assoc()['count'];
+    }
+
+    public function getNumberOfPostsFromUser($user_id) {
+        $stmt = $this->db->prepare("SELECT COUNT(*) as count FROM POST WHERE user_id=?");
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        return $result->fetch_assoc()['count'];
+    }
+
+    public function getNumberOfSubscribers($game_id) {
+        $stmt = $this->db->prepare("SELECT COUNT(*) as count FROM FOLLOWS_GAME WHERE game_id=?");
+        $stmt->bind_param("i", $game_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        return $result->fetch_assoc()['count'];
+    }
+
+    public function getNumberOfFollowers($user_id) {
+        $stmt = $this->db->prepare("SELECT COUNT(*) as count FROM FOLLOWS_USER WHERE user_id=?");
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        return $result->fetch_assoc()['count'];
+    }
+
+    public function getNumberOfFollowedUser($user_id) {
+        $stmt = $this->db->prepare("SELECT COUNT(*) as count FROM FOLLOWS_USER WHERE Fol_user_id=?");
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        return $result->fetch_assoc()['count'];
+    }
+
+    public function getNumberOfSubs($user_id) {
+        $stmt = $this->db->prepare("SELECT COUNT(*) as count FROM FOLLOWS_GAME WHERE user_id=?");
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        return $result->fetch_assoc()['count'];
+    }
     
     private function updateCommentCount($post_id) {
         $stmt = $this->db->prepare("UPDATE POST SET comments=? WHERE POST.post_id=?");
