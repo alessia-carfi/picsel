@@ -10,6 +10,12 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
     <script defer src="./assets/fontawesome/js/solid.js"></script>
     <script defer src="./assets/fontawesome/js/fontawesome.js"></script>
+    <?php if (isset($_GET['response']))
+        if (json_decode($_GET['response'], true)['success']) { ?>
+        <script defer src="./js/alert_success.js"></script>
+    <?php } else { ?>
+        <script defer src="./js/alert_error.js"></script>
+    <?php }?>
 </head>
 
 <body>

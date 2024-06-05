@@ -7,6 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $user_id = $_SESSION['user_id'];
     $image = NULL;
     $tags = NULL;
+    $response = NULL;
     if (isset($_POST["gametitle"])) {
         $name = $_POST["gametitle"];
     }
@@ -20,9 +21,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $tags = $_POST['tags'];
     }
     if ($name != NULL && $desc != NULL && $image != NULL && $tags != NULL) {
-        $dbh->addNewGame($name, $desc, $user_id, $image, $tags);
+        $response = json_encode($dbh->addNewGame($name, $desc, $user_id, $image, $tags));
     }
-    header("Location: ../create_newgame.php");
+    if ($response == NULL) {
+        $response = json_encode(["success" => false]);
+    }
+    header("Location: ../create_newgame.php?response=$response");
 }
 
 ?>

@@ -97,7 +97,11 @@ class DatabaseHelper {
         $stmt = $this->db->prepare("INSERT INTO `POST` (`text`, `image`, likes, comments, user_id, game_id)
                                     VALUES (?, ?, 0, 0, ?, ?)");
         $stmt->bind_param("ssii", $text, $image, $_SESSION['user_id'], $game_id);
-        return $stmt->execute();
+        if($stmt->execute()) {
+            return ["success" => true];
+        } else {
+            return ["success" => false, "message" => "Error: " . $stmt->error ];
+        }
     }
 
     public function addNewGame($name, $desc, $user_id, $image, $tags) {
@@ -108,12 +112,11 @@ class DatabaseHelper {
             foreach ($tags as $tag) {
                 $stmt = $this->db->prepare("INSERT INTO HAS_TAG (`name`, game_id) VALUES (?, ?)");
                 $stmt->bind_param("si", $tag, $game_id);
-                if(!$stmt->execute()) {
-                    return false;
-                }
+                $stmt->execute();
             }
-        }
-        return true;
+            return ["success" => true];
+        } 
+        return ["success" => false, "message" => "Error: " . $stmt->error ];
     }
     
     public function getPostsByUserId($from_userid) {
