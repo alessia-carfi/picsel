@@ -96,9 +96,14 @@ p {
   padding: 0.5rem;
 }
 
-#save {
+.votes {
+  cursor: pointer;
+}
+
+.save {
   width: 2rem;
   height: auto;
+  cursor: pointer;
 }
 
 .comments-icons {
