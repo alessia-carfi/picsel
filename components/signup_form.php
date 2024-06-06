@@ -24,13 +24,13 @@ if (isset($_GET['error'])) {
         <p class="text">Sign Up</p>
         <form class="signupform" action="" id="signupform" method="post">
             <label hidden for="name" class="namelabel">Name</label>
-            <input class="name" name="name" id="name" type="text" placeholder="Name" />
+            <input class="name" name="name" id="name" type="text" placeholder="Name" autocomplete="off" />
             <span class="nameerror" id="nameerror">Name not valid</span>
             <label hidden for="username" class="usernamelabel">Username</label>
-            <input class="username" name="username" id="username" type="text" placeholder="Username" />
+            <input class="username" name="username" id="username" type="text" placeholder="Username" autocomplete="off" />
             <span class="usernameerror" id="usernameerror">Username not valid</span>
             <label hidden for="email" class="emaillabel">Email</label>
-            <input class="email" name="email" id="email" type="email" placeholder="Email" />
+            <input class="email" name="email" id="email" type="email" placeholder="Email" autocomplete="off" />
             <span class="emailerror" id="emailerror">Email not valid</span>
             <label hidden for="password" class="passwordlabel">Password</label>
             <input class="password" name="password" id="password" type="password" placeholder="Password" />

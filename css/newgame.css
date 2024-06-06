@@ -54,6 +54,10 @@ h1 {
   align-self: end;
 }
 
+.gamebutton:hover {
+  background-color: var(--color-blue) !important;
+}
+
 .gameform > input,
 .description {
   background-color: var(--color-purple);

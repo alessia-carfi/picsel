@@ -236,6 +236,12 @@ a {
   margin-top: 1rem;
   align-self: end;
   font-weight: bold;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.create-comment > .submit-comment:hover {
+  background-color: var(--color-blue);
 }
 
 @media only screen and (min-width: 650px) {
