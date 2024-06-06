@@ -30,10 +30,10 @@
             <input type="file" id="profile-picture" name="profile-picture" accept="image/*" />
         
             <label for="name">Change name: </label>
-            <input type="text" id="name" name="name" autocomplete="off" value="<?php echo $dbh -> getProfileName($_SESSION['user_id']); ?>"/>
+            <input type="text" id="name" name="name" autocomplete="off" placeholder="Insert name..."/>
 
             <label for="nickname">Change username: </label>
-            <input type="text" id="nickname" name="nickname" autocomplete="off" value="<?php echo $_SESSION['username']; ?>"/>
+            <input type="text" id="nickname" name="nickname" autocomplete="off" placeholder="Insert username..."/>
 
             <label for="submit" hidden>Submit</label>
             <input type="submit" id="submit" name="submit" value="Submit" class="submit"/>

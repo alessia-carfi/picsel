@@ -2,11 +2,11 @@
 include __DIR__ . '/../bootstrap.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (isset($_POST['nickname']) && $_POST['nickname'] != $_SESSION['username']) {
+    if (isset($_POST['nickname']) && trim($_POST['nickname']) != "") {
         $newUsername = $_POST['nickname'];
         $dbh->setProfileNickname($newUsername);
     }
-    if (isset($_POST['name']) && $_POST['name'] != $dbh->getProfileName($_SESSION['user_id'])) {
+    if (isset($_POST['name']) && trim($_POST['name']) != "") {
         $newName = $_POST['name'];
         $dbh->setProfileName($newName);
     }

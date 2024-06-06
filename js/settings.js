@@ -4,12 +4,13 @@ window.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", (e) => {
     let username = document.getElementById("nickname");
     let name = document.getElementById("name");
+    let image = document.getElementById("profile-picture");
 
     if (
-      username.value.trim() === "" ||
-      name.value.trim() === ""
+      username.value.trim() === "" &&
+      name.value.trim() === "" &&
+      image.files.length == 0
     ) {
-      e.preventDefault();
       alert(
         "Please enter a new name or username or select a new profile picture."
       );
