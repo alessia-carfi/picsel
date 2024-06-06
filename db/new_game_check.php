@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if (isset($_POST['tags'])) {
         $tags = $_POST['tags'];
     }
-    if ($name != NULL && $desc != NULL && $image != NULL && $tags != NULL) {
+    if ($name != NULL && $desc != NULL && $image != NULL && $tags != NULL && $_FILES["gameimage"]["size"] <= MAX_PACKET) {
         $response = json_encode($dbh->addNewGame($name, $desc, $user_id, $image, $tags));
     }
     if ($response == NULL) {
