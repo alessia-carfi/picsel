@@ -79,6 +79,7 @@
 .loginbutton {
   color: var(--color-white);
   background-color: var(--color-red);
+  font-weight: bold;
   margin-bottom: 1rem;
   border: 0px;
   border-radius: 0.8rem;
