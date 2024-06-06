@@ -1,23 +1,9 @@
-INSERT INTO USR (name, nickname, email, password, image)
-VALUES ('franco baglio', 'francognolo', 'franc@gmail.com', '1234', NULL),
-('FROM Software', 'fromsoftware', 'from@software.com', 'yes1nd33d', null);
+ATTENTION: 
+POPULATE YOUR DATABASE MANUALLY ONLY WITH THE QUERY BELOW!
+DO IT BEFORE USING APP!
 
-INSERT INTO GAME (name, description, user_id)
-VALUES ("Dark Souls 2", "Giocate l'1 e il 3 poi provate questo che è meglio", 2);
-
-INSERT INTO POST (text, image, likes, comments, user_id, game_id)
-VALUES ("Ho vintoooooo", NULL, 0, 2, 1, 1),
-("Che figata sto gioco", NULL, 0, 0, 1, 1);
+----------->
 
 INSERT INTO TAG
 VALUES ("Action"), ("Sports"), ("Simulation"), ("Platformer"), ("RPG"), ("First-person"), ("Adventure"), ("Fighting"), ("Racing"), ("Shooter"), ("Puzzle"), ("Casual"), ("Strategy"), ("Stealth"), ("Party"), ("Survival"), ("Battle Royale"), ("Multiplayer"), ("Crossplatform"), ("Mobile"), ("PC"), ("PlayStation"), ("Xbox"), ("Nintendo Switch"), ("Third-person"), ("Sandbox"), ("Horror");
 
-INSERT INTO COMMENT (`text`, post_id, user_id)
-VALUES ("BRAVOOO", 1, 2),
-("Io ho finito prima", 1, 2);
-
-INSERT INTO FOLLOWS_USER (user_id, Fol_user_id) 
-VALUES (1, 2), (2, 1);
-
-INSERT INTO FOLLOWS_GAME 
-VALUES (1, 1), (1, 2);
