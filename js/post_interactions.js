@@ -94,7 +94,6 @@ function saveOrUnsavePost(button, method) {
         } else {
           press(button)
         }
-        updateLikeCounter(countsMap.get(button.dataset.postId), response.amount6)
       } else {
         console.error("Error: " + response.message);
       }
