@@ -138,19 +138,17 @@ p {
   overflow-x: hidden;
 }
 
+.comment {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
 .comment > p {
   margin: 0 1rem;
 }
 
-.comments hr:last-child {
-  display: none;
-}
-
-.comments hr {
-  border: 1px solid var(--color-blue);
-  border-radius: 5px;
-  width: 100%;
-  margin: 1rem 0;
+li:not(:last-child) {
+  border-top: 1px solid var(--color-white);
 }
 
 a {

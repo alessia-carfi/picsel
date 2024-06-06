@@ -31,7 +31,6 @@
                 <label hidden for="submit-comment">Submit</label>
                 <input class="submit-comment" type="submit" name="submit-comment" id="submit-comment" value="Submit"/>
               </form>
-              <hr />
               <?php $comments = $dbh->getCommentsByPostId($post['post_id']); ?>
               <?php if (count($comments) > 0): ?>
                 <ul class="comments-list">
@@ -42,7 +41,6 @@
                     </p>
                     <p class="text"><?php echo $comment['text']?></p>
                   </li>
-                  <hr />
                 <?php endforeach; ?>
                 </ul>
               <?php else: ?>
