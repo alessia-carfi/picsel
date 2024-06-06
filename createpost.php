@@ -35,8 +35,8 @@
             </select>
             <label hidden for="postcontent">Post content</label>
             <textarea class="postcontentcl" name="postcontent" id="postcontent" placeholder="Text"></textarea>
-            <label hidden for="imageselect">Select image</label>
-            <input id="imageselect" class="imageselect" name="imageselect" type="file" accept="image/*" />
+            <label hidden for="imageselectid">Select image</label>
+            <input class="imageselect" name="imageselect" id="imageselectid"  type="file" accept="image/*" />
             <label hidden for="postbutton">Submit</label>
             <input type="submit" class="postbutton" name="postbutton" id="postbutton" value="Submit" />
         </form>
