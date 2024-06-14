@@ -19,29 +19,29 @@ if (isset($_GET['error'])) {
     <script type="module" src="./js/signup.js"></script>
 </head>
 
-<body>
-    <div class="signup">
-        <p class="text">Sign Up</p>
-        <form class="signupform" action="" id="signupform" method="post">
-            <label hidden for="name" class="namelabel">Name</label>
-            <input class="name" name="name" id="name" type="text" placeholder="Name" autocomplete="off" />
-            <span class="nameerror" id="nameerror">Name not valid</span>
-            <label hidden for="username" class="usernamelabel">Username</label>
-            <input class="username" name="username" id="username" type="text" placeholder="Username" autocomplete="off" />
-            <span class="usernameerror" id="usernameerror">Username not valid</span>
-            <label hidden for="email" class="emaillabel">Email</label>
-            <input class="email" name="email" id="email" type="email" placeholder="Email" autocomplete="off" />
-            <span class="emailerror" id="emailerror">Email not valid</span>
-            <label hidden for="password" class="passwordlabel">Password</label>
-            <input class="password" name="password" id="password" type="password" placeholder="Password" />
-            <span class="passworderror" id="passworderror">Password should be at least 8 characters long</span>
-            <label hidden for="confirmpassword" class="confirmpasswordlabel">Confirm Password</label>
-            <input class="confirmpassword" name="confirmpassword" id="confirmpassword" type="password" placeholder="Confirm Password" />
-            <span class="confirmpassworderror" id="confirmpassworderror">Passwords do not match</span>
-            <label hidden for="button" class="buttonlabel"></label>
-            <input type="submit" class="button" id="button" value="Submit" />
-        </form>
-    </div>
+<body class="signup">
+    <header>
+        <h1 class="text">Sign Up</h1>
+    </header>
+    <form class="signupform" action="" id="signupform" method="post">
+        <label hidden for="name" class="namelabel">Name</label>
+        <input class="name" name="name" id="name" type="text" placeholder="Name" autocomplete="off" />
+        <span class="nameerror" id="nameerror">Name not valid</span>
+        <label hidden for="username" class="usernamelabel">Username</label>
+        <input class="username" name="username" id="username" type="text" placeholder="Username" autocomplete="off" />
+        <span class="usernameerror" id="usernameerror">Username not valid</span>
+        <label hidden for="email" class="emaillabel">Email</label>
+        <input class="email" name="email" id="email" type="email" placeholder="Email" autocomplete="off" />
+        <span class="emailerror" id="emailerror">Email not valid</span>
+        <label hidden for="password" class="passwordlabel">Password</label>
+        <input class="password" name="password" id="password" type="password" placeholder="Password" />
+        <span class="passworderror" id="passworderror">Password should be at least 8 characters long</span>
+        <label hidden for="confirmpassword" class="confirmpasswordlabel">Confirm Password</label>
+        <input class="confirmpassword" name="confirmpassword" id="confirmpassword" type="password" placeholder="Confirm Password" />
+        <span class="confirmpassworderror" id="confirmpassworderror">Passwords do not match</span>
+        <label hidden for="button" class="buttonlabel"></label>
+        <input type="submit" class="button" id="button" value="Submit" />
+    </form>
 </body>
 
 </html>
